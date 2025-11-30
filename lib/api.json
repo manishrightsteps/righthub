@@ -1,0 +1,262 @@
+{
+  "project": {
+    "name": "Rightsteps API Inventory",
+    "version": "4.0.0",
+    "description": "Backend API for Rightsteps",
+    "baseUrl": "http://localhost:5000/v1",
+    "lastUpdated": "2025-11-30"
+  },
+  "modules": [
+    {
+      "name": "Auth Module",
+      "path": "/auth",
+      "description": "Authentication and authorization endpoints including OAuth, registration, login, and password management",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Register",
+        "Verify OTP",
+        "Login",
+        "Get Me",
+        "Refresh Token",
+        "Logout",
+        "Forgot Password",
+        "Reset Password",
+        "Send Verification Email",
+        "Admin Register",
+        "Google OAuth",
+        "Facebook OAuth"
+      ]
+    },
+    {
+      "name": "Profile Module",
+      "path": "/profile",
+      "description": "User profile management for parents, tutors, and children with role-based operations",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Common Profile",
+          "description": "Shared profile operations across all user types",
+          "endpoints": [
+            "Health Check",
+            "Select Role",
+            "Get My Profile"
+          ]
+        },
+        {
+          "name": "Parent Profile",
+          "description": "Parent-specific profile and children management",
+          "endpoints": [
+            "Create Parent Profile",
+            "Update Parent Profile",
+            "Verify Email Update",
+            "Update Child",
+            "Delete Child"
+          ]
+        },
+        {
+          "name": "Tutor Profile",
+          "description": "Tutor profile with admin verification workflow",
+          "endpoints": [
+            "Create Tutor Profile",
+            "Update Tutor Profile"
+          ]
+        },
+        {
+          "name": "Admin Profile Operations",
+          "description": "Admin endpoints for managing profiles",
+          "endpoints": [
+            "Get Child Details",
+            "Get Parent Profiles",
+            "Get Pending Tutor Profiles",
+            "Verify Tutor Profile"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Subscription Module",
+      "path": "/subscription",
+      "description": "Subscription plan management and payment processing with Stripe and PayPal integration",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Subscription Operations",
+          "description": "User subscription management",
+          "endpoints": [
+            "Health Check",
+            "Calculate Pricing",
+            "Subscribe to Plan",
+            "Get My Subscription",
+            "Cancel My Subscription",
+            "Get My Payments"
+          ]
+        },
+        {
+          "name": "Payment Operations",
+          "description": "Payment processing with multiple gateways",
+          "endpoints": [
+            "Get Payment Config",
+            "Create Payment Intent",
+            "Create Checkout Session",
+            "Confirm Stripe Payment",
+            "Capture PayPal Payment"
+          ]
+        },
+        {
+          "name": "Plan Management",
+          "description": "Admin endpoints for managing subscription plans",
+          "endpoints": [
+            "Get All Plans",
+            "Get Plan by ID",
+            "Create Plan",
+            "Update Plan",
+            "Delete Plan",
+            "Update Plan Price",
+            "Add Plan Feature",
+            "Update Plan Feature",
+            "Delete Plan Feature",
+            "Add Multi-Student Discount",
+            "Update Multi-Student Discount",
+            "Delete Multi-Student Discount"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Upload Module",
+      "path": "/upload",
+      "description": "File upload and management with ImageKit and S3 support for images, videos, and documents",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Upload File",
+        "Get My Uploads",
+        "Get Upload by ID",
+        "Get Entity Uploads",
+        "Delete Upload (Soft Delete)",
+        "Delete Upload (Hard Delete)",
+        "Replace Upload"
+      ]
+    },
+    {
+      "name": "Admin Module",
+      "path": "/admin",
+      "description": "Centralized admin dashboard, analytics, and cross-cutting administrative operations",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Dashboard",
+          "description": "Admin dashboard overview and recent activity",
+          "endpoints": [
+            "Health Check",
+            "Dashboard Overview Stats",
+            "Dashboard Recent Activity"
+          ]
+        },
+        {
+          "name": "Analytics",
+          "description": "Platform-wide analytics and statistics",
+          "endpoints": [
+            "Analytics User Stats",
+            "Analytics Subscription Stats",
+            "Analytics Tutor Stats",
+            "Analytics Parent Stats",
+            "Analytics Upload Stats",
+            "Analytics Growth Stats"
+          ]
+        },
+        {
+          "name": "User Management",
+          "description": "Global user management operations",
+          "endpoints": [
+            "Get All Users",
+            "Get User Details",
+            "Update User Roles",
+            "Toggle User Verification",
+            "Delete User"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Notification Module",
+      "path": "/notifications",
+      "description": "User notification system for in-app notifications and announcements",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Create Notification",
+        "Get Notifications",
+        "Get Unread Count",
+        "Mark as Read",
+        "Mark All as Read",
+        "Get Notification Types",
+        "Create Announcement (Admin)"
+      ]
+    },
+    {
+      "name": "Community Module",
+      "path": "/community",
+      "description": "Community platform integration with external community service",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Community Auth",
+        "Sync User Data",
+        "Generate Magic Link"
+      ]
+    },
+    {
+      "name": "Health Module",
+      "path": "/health",
+      "description": "System health monitoring and readiness probes",
+      "status": "completed",
+      "endpoints": [
+        "Basic Health",
+        "Detailed Health",
+        "Readiness Probe",
+        "Liveness Probe",
+        "Database Health",
+        "System Stats"
+      ]
+    }
+  ],
+  "features": {
+    "authentication": {
+      "methods": ["JWT", "OAuth (Google, Facebook)", "2FA with OTP"],
+      "security": ["Rate limiting", "Password hashing", "Token refresh"]
+    },
+    "payments": {
+      "gateways": ["Stripe", "PayPal"],
+      "methods": ["Payment Intent", "Checkout Session", "Webhooks"]
+    },
+    "storage": {
+      "providers": ["ImageKit", "AWS S3"],
+      "fileTypes": ["Images", "Videos", "Documents", "PDFs"]
+    },
+    "userTypes": {
+      "roles": ["USER", "PARENT", "TUTOR", "ADMIN"],
+      "profiles": ["Parent Profile", "Tutor Profile"],
+      "verification": ["Email verification", "Admin verification for tutors"]
+    },
+    "analytics": {
+      "metrics": ["User stats", "Subscription stats", "Revenue stats", "Growth stats"],
+      "filtering": ["Date range", "User role", "Status"]
+    }
+  },
+  "architecture": {
+    "pattern": "Modular architecture with domain separation",
+    "database": "PostgreSQL with Prisma ORM and MonfgoDB for certain modules",
+    "caching": "Redis",
+    "queue": "BullMQ with Redis",
+    "socket": "Socket.io for real-time features",
+    "validation": "Zod schemas",
+    "logging": "Winston logger",
+    "errorHandling": "Centralized error handler with async wrapper"
+  },
+  "documentation": {
+    "postman": "Rightsteps API.postman_collection.json",
+    "apiInventory": "api.json"
+  }
+}
