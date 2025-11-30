@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2025-11-30"
+    "lastUpdated": "2025-12-01"
   },
   "modules": [
     {
@@ -243,6 +243,45 @@
     "analytics": {
       "metrics": ["User stats", "Subscription stats", "Revenue stats", "Growth stats"],
       "filtering": ["Date range", "User role", "Status"]
+    },
+    "emailSystem": {
+      "description": "Component-based email template system with RightSteps branding",
+      "location": "src/shared/services/email/",
+      "architecture": ["Reusable components (header, footer, button, info box)", "Base template wrapper", "Individual templates for each workflow"],
+      "branding": {
+        "colors": {
+          "primary": "#1A2F6E (Navy Blue)",
+          "secondary": ["#60B8F8 (Light Blue)", "#1C2E58 (Dark Blue)"],
+          "accent": ["#60C3AA (Green)", "#FFC24A (Yellow)", "#ED545C (Red)"]
+        },
+        "components": ["Header with gradient", "Footer with branding", "Styled buttons", "Info boxes"]
+      },
+      "templates": {
+        "auth": [
+          "Welcome Email - Generic welcome for new users",
+          "OTP Email - Email verification code (10 min expiry)",
+          "Reset Password Email - Password reset link (1 hour expiry)",
+          "Email Updated - Email change notification (sent to both old and new)",
+          "Email Verified - Email verification success confirmation"
+        ],
+        "profile": [
+          "Parent Welcome - Parent profile completion welcome",
+          "Tutor Submitted - Tutor profile submitted for verification",
+          "Tutor Approved - Tutor profile approved by admin",
+          "Tutor Changes Requested - Admin requests profile changes",
+          "Tutor Rejected - Tutor profile rejected by admin"
+        ],
+        "subscription": [
+          "Payment Success - Payment confirmation with details and receipt"
+        ]
+      },
+      "integration": {
+        "authModule": ["sendOTPEmail", "sendPasswordResetEmail", "sendWelcomeEmail", "sendEmailVerifiedNotification"],
+        "parentProfile": ["sendProfileCompletionEmail", "sendEmailUpdatedNotification"],
+        "tutorProfile": ["sendTutorSubmittedEmail", "sendTutorApprovedEmail", "sendTutorChangesRequestedEmail", "sendTutorRejectedEmail"],
+        "subscriptionPayment": ["sendPaymentSuccessEmail (Stripe, PayPal, Generic)"]
+      },
+      "helperFunctions": "src/shared/services/email.helper.js - All email sending functions with logging and error handling"
     }
   },
   "architecture": {
