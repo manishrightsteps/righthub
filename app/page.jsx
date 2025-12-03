@@ -173,12 +173,6 @@ export default function Home() {
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
               <a
-                href="/changelog"
-                className="px-5 py-2.5 bg-white border-2 border-[#00C38A] text-[#00C38A] rounded-full hover:bg-[#E6F9F4] transition-colors cursor-pointer font-semibold text-sm"
-              >
-                Changelog
-              </a>
-              <a
                 href="https://documenter.getpostman.com/view/47127064/2sB3dLUXer"
                 target="_blank"
                 rel="noopener noreferrer"
