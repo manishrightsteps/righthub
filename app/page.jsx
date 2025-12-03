@@ -15,14 +15,20 @@ import {
   Server,
   FileCode,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  FileType,
+  UserCheck,
+  Wallet
 } from "lucide-react";
 import { useRef } from "react";
 import apiData from "@/lib/api.json";
 import { ModuleCard } from "@/components/module-card";
 import { StatsCard } from "@/components/stats-card";
 import { FeatureCard } from "@/components/feature-card";
+import { FeatureDetailCard } from "@/components/feature-detail-card";
 import { ArchitectureCard } from "@/components/architecture-card";
+import { AnalyticsCard } from "@/components/analytics-card";
+import { EmailSystemCard } from "@/components/email-system-card";
 import { AnimatedBackground } from "@/components/animated-background";
 
 const iconMap = {
@@ -167,6 +173,12 @@ export default function Home() {
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
               <a
+                href="/changelog"
+                className="px-5 py-2.5 bg-white border-2 border-[#00C38A] text-[#00C38A] rounded-full hover:bg-[#E6F9F4] transition-colors cursor-pointer font-semibold text-sm"
+              >
+                Changelog
+              </a>
+              <a
                 href="https://documenter.getpostman.com/view/47127064/2sB3dLUXer"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -293,6 +305,116 @@ export default function Home() {
               delay={0.5}
             />
           </div>
+        </div>
+      </section>
+
+      {/* Detailed Features Section */}
+      <section className="relative py-12 px-6">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <div className="inline-block px-3 py-1.5 rounded-full bg-[#142C8E]/10 mb-3">
+              <span className="text-xs font-bold text-[#142C8E]">ADVANCED FEATURES</span>
+            </div>
+            <h2 className="text-3xl font-black text-[#1C2C4E] mb-2">
+              Feature Deep Dive
+            </h2>
+            <p className="text-sm text-[#7C7C7C] max-w-2xl mx-auto">
+              Comprehensive feature set with security, payment methods, and user management
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <FeatureDetailCard
+              title="Authentication Security"
+              sections={[
+                {
+                  label: "Security Features",
+                  items: apiData.features.authentication.security
+                }
+              ]}
+              icon={Shield}
+              color="primary"
+              delay={0.2}
+            />
+            <FeatureDetailCard
+              title="Payment Methods"
+              sections={[
+                {
+                  label: "Integration Methods",
+                  items: apiData.features.payments.methods
+                }
+              ]}
+              icon={Wallet}
+              color="green"
+              delay={0.3}
+            />
+            <FeatureDetailCard
+              title="Storage & File Types"
+              sections={[
+                {
+                  label: "Supported Files",
+                  items: apiData.features.storage.fileTypes
+                }
+              ]}
+              icon={FileType}
+              color="yellow"
+              delay={0.4}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FeatureDetailCard
+              title="User Management"
+              sections={[
+                {
+                  label: "Profile Types",
+                  items: apiData.features.userTypes.profiles
+                },
+                {
+                  label: "Verification",
+                  items: apiData.features.userTypes.verification
+                }
+              ]}
+              icon={UserCheck}
+              color="coral"
+              delay={0.5}
+            />
+            <AnalyticsCard
+              data={apiData.features.analytics}
+              delay={0.6}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Email System Section */}
+      <section className="relative py-12 px-6 bg-linear-to-b from-[#F5F6F7] to-white">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <div className="inline-block px-3 py-1.5 rounded-full bg-[#51A8DD]/10 mb-3">
+              <span className="text-xs font-bold text-[#51A8DD]">COMMUNICATION</span>
+            </div>
+            <h2 className="text-3xl font-black text-[#1C2C4E]">
+              Email System
+            </h2>
+          </motion.div>
+
+          <EmailSystemCard
+            data={apiData.features.emailSystem}
+            delay={0.2}
+          />
         </div>
       </section>
 
