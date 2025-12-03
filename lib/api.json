@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "5.0.2",
+    "version": "6.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2025-12-01"
+    "lastUpdated": "2025-12-03"
   },
   "modules": [
     {
@@ -63,13 +63,93 @@
           ]
         },
         {
+          "name": "Speech Therapist Profile",
+          "description": "Speech therapist profile with admin verification workflow",
+          "endpoints": [
+            "Create Speech Therapist Profile",
+            "Update Speech Therapist Profile"
+          ]
+        },
+        {
+          "name": "Child Psychologist Profile",
+          "description": "Child psychologist profile with admin verification workflow",
+          "endpoints": [
+            "Create Child Psychologist Profile",
+            "Update Child Psychologist Profile"
+          ]
+        },
+        {
+          "name": "Career Counselor Profile",
+          "description": "Career counselor profile with admin verification workflow",
+          "endpoints": [
+            "Create Career Counselor Profile",
+            "Update Career Counselor Profile"
+          ]
+        },
+        {
+          "name": "Occupational Therapist Profile",
+          "description": "Occupational therapist profile with admin verification workflow",
+          "endpoints": [
+            "Create Occupational Therapist Profile",
+            "Update Occupational Therapist Profile"
+          ]
+        },
+        {
+          "name": "Social Skills Coach Profile",
+          "description": "Social skills coach profile with admin verification workflow",
+          "endpoints": [
+            "Create Social Skills Coach Profile",
+            "Update Social Skills Coach Profile"
+          ]
+        },
+        {
+          "name": "SEN Practitioner Profile",
+          "description": "SEN practitioner profile with admin verification workflow",
+          "endpoints": [
+            "Create SEN Practitioner Profile",
+            "Update SEN Practitioner Profile"
+          ]
+        },
+        {
+          "name": "Nutrition Advisor Profile",
+          "description": "Nutrition advisor profile with admin verification workflow",
+          "endpoints": [
+            "Create Nutrition Advisor Profile",
+            "Update Nutrition Advisor Profile"
+          ]
+        },
+        {
+          "name": "Digital Wellbeing Practitioner Profile",
+          "description": "Digital wellbeing practitioner profile with admin verification workflow",
+          "endpoints": [
+            "Create Digital Wellbeing Practitioner Profile",
+            "Update Digital Wellbeing Practitioner Profile"
+          ]
+        },
+        {
           "name": "Admin Profile Operations",
           "description": "Admin endpoints for managing profiles",
           "endpoints": [
             "Get Child Details",
             "Get Parent Profiles",
             "Get Pending Tutor Profiles",
-            "Verify Tutor Profile"
+            "Verify Tutor Profile",
+            "Get Pending Speech Therapist Profiles",
+            "Verify Speech Therapist Profile",
+            "Get Pending Child Psychologist Profiles",
+            "Verify Child Psychologist Profile",
+            "Get Pending Career Counselor Profiles",
+            "Verify Career Counselor Profile",
+            "Get Pending Occupational Therapist Profiles",
+            "Verify Occupational Therapist Profile",
+            "Get Pending Social Skills Coach Profiles",
+            "Verify Social Skills Coach Profile",
+            "Get Pending SEN Practitioner Profiles",
+            "Verify SEN Practitioner Profile",
+            "Get Pending Nutrition Advisor Profiles",
+            "Verify Nutrition Advisor Profile",
+            "Get Pending Digital Wellbeing Practitioner Profiles",
+            "Verify Digital Wellbeing Practitioner Profile"
           ]
         }
       ]
@@ -236,9 +316,9 @@
       "fileTypes": ["Images", "Videos", "Documents", "PDFs"]
     },
     "userTypes": {
-      "roles": ["USER", "PARENT", "TUTOR", "ADMIN"],
-      "profiles": ["Parent Profile", "Tutor Profile"],
-      "verification": ["Email verification", "Admin verification for tutors"]
+      "roles": ["USER", "PARENT", "TUTOR", "SPEECH_THERAPIST", "CHILD_PSYCHOLOGIST", "CAREER_COUNSELOR", "OCCUPATIONAL_THERAPIST", "SOCIAL_SKILLS_COACH", "SEN_PRACTITIONER", "NUTRITION_ADVISOR", "DIGITAL_WELLBEING_PRACTITIONER", "ADMIN"],
+      "profiles": ["Parent Profile", "Tutor Profile", "Speech Therapist Profile", "Child Psychologist Profile", "Career Counselor Profile", "Occupational Therapist Profile", "Social Skills Coach Profile", "SEN Practitioner Profile", "Nutrition Advisor Profile", "Digital Wellbeing Practitioner Profile"],
+      "verification": ["Email verification", "Admin verification for professional profiles"]
     },
     "analytics": {
       "metrics": ["User stats", "Subscription stats", "Revenue stats", "Growth stats"],
@@ -269,7 +349,39 @@
           "Tutor Submitted - Tutor profile submitted for verification",
           "Tutor Approved - Tutor profile approved by admin",
           "Tutor Changes Requested - Admin requests profile changes",
-          "Tutor Rejected - Tutor profile rejected by admin"
+          "Tutor Rejected - Tutor profile rejected by admin",
+          "Speech Therapist Submitted - Speech therapist profile submitted for verification",
+          "Speech Therapist Approved - Speech therapist profile approved by admin",
+          "Speech Therapist Changes Requested - Admin requests profile changes",
+          "Speech Therapist Rejected - Speech therapist profile rejected by admin",
+          "Child Psychologist Submitted - Child psychologist profile submitted for verification",
+          "Child Psychologist Approved - Child psychologist profile approved by admin",
+          "Child Psychologist Changes Requested - Admin requests profile changes",
+          "Child Psychologist Rejected - Child psychologist profile rejected by admin",
+          "Career Counselor Submitted - Career counselor profile submitted for verification",
+          "Career Counselor Approved - Career counselor profile approved by admin",
+          "Career Counselor Changes Requested - Admin requests profile changes",
+          "Career Counselor Rejected - Career counselor profile rejected by admin",
+          "Occupational Therapist Submitted - Occupational therapist profile submitted for verification",
+          "Occupational Therapist Approved - Occupational therapist profile approved by admin",
+          "Occupational Therapist Changes Requested - Admin requests profile changes",
+          "Occupational Therapist Rejected - Occupational therapist profile rejected by admin",
+          "Social Skills Coach Submitted - Social skills coach profile submitted for verification",
+          "Social Skills Coach Approved - Social skills coach profile approved by admin",
+          "Social Skills Coach Changes Requested - Admin requests profile changes",
+          "Social Skills Coach Rejected - Social skills coach profile rejected by admin",
+          "SEN Practitioner Submitted - SEN practitioner profile submitted for verification",
+          "SEN Practitioner Approved - SEN practitioner profile approved by admin",
+          "SEN Practitioner Changes Requested - Admin requests profile changes",
+          "SEN Practitioner Rejected - SEN practitioner profile rejected by admin",
+          "Nutrition Advisor Submitted - Nutrition advisor profile submitted for verification",
+          "Nutrition Advisor Approved - Nutrition advisor profile approved by admin",
+          "Nutrition Advisor Changes Requested - Admin requests profile changes",
+          "Nutrition Advisor Rejected - Nutrition advisor profile rejected by admin",
+          "Digital Wellbeing Practitioner Submitted - Digital wellbeing practitioner profile submitted for verification",
+          "Digital Wellbeing Practitioner Approved - Digital wellbeing practitioner profile approved by admin",
+          "Digital Wellbeing Practitioner Changes Requested - Admin requests profile changes",
+          "Digital Wellbeing Practitioner Rejected - Digital wellbeing practitioner profile rejected by admin"
         ],
         "subscription": [
           "Payment Success - Payment confirmation with details and receipt"
@@ -279,6 +391,14 @@
         "authModule": ["sendOTPEmail", "sendPasswordResetEmail", "sendWelcomeEmail", "sendEmailVerifiedNotification"],
         "parentProfile": ["sendProfileCompletionEmail", "sendEmailUpdatedNotification"],
         "tutorProfile": ["sendTutorSubmittedEmail", "sendTutorApprovedEmail", "sendTutorChangesRequestedEmail", "sendTutorRejectedEmail"],
+        "speechTherapistProfile": ["sendSpeechTherapistSubmittedEmail", "sendSpeechTherapistApprovedEmail", "sendSpeechTherapistChangesRequestedEmail", "sendSpeechTherapistRejectedEmail"],
+        "childPsychologistProfile": ["sendChildPsychologistSubmittedEmail", "sendChildPsychologistApprovedEmail", "sendChildPsychologistChangesRequestedEmail", "sendChildPsychologistRejectedEmail"],
+        "careerCounselorProfile": ["sendCareerCounselorSubmittedEmail", "sendCareerCounselorApprovedEmail", "sendCareerCounselorChangesRequestedEmail", "sendCareerCounselorRejectedEmail"],
+        "occupationalTherapistProfile": ["sendOccupationalTherapistSubmittedEmail", "sendOccupationalTherapistApprovedEmail", "sendOccupationalTherapistChangesRequestedEmail", "sendOccupationalTherapistRejectedEmail"],
+        "socialSkillsCoachProfile": ["sendSocialSkillsCoachSubmittedEmail", "sendSocialSkillsCoachApprovedEmail", "sendSocialSkillsCoachChangesRequestedEmail", "sendSocialSkillsCoachRejectedEmail"],
+        "senPractitionerProfile": ["sendSenPractitionerSubmittedEmail", "sendSenPractitionerApprovedEmail", "sendSenPractitionerChangesRequestedEmail", "sendSenPractitionerRejectedEmail"],
+        "nutritionAdvisorProfile": ["sendNutritionAdvisorSubmittedEmail", "sendNutritionAdvisorApprovedEmail", "sendNutritionAdvisorChangesRequestedEmail", "sendNutritionAdvisorRejectedEmail"],
+        "digitalWellbeingPractitionerProfile": ["sendDigitalWellbeingPractitionerSubmittedEmail", "sendDigitalWellbeingPractitionerApprovedEmail", "sendDigitalWellbeingPractitionerChangesRequestedEmail", "sendDigitalWellbeingPractitionerRejectedEmail"],
         "subscriptionPayment": ["sendPaymentSuccessEmail (Stripe, PayPal, Generic)"]
       },
       "helperFunctions": "src/shared/services/email.helper.js - All email sending functions with logging and error handling"
