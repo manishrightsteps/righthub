@@ -148,11 +148,13 @@ export function EmailSystemCard({ data, delay = 0 }) {
               className="overflow-hidden"
             >
               <div className="space-y-3 pt-2">
-                {Object.entries(data.templates || {}).map(([category, templates], idx) => (
+                {Object.entries(data.templates || {})
+                  .filter(([category]) => category !== 'implementation')
+                  .map(([category, templates], idx) => (
                   <div key={idx}>
                     <p className="text-[10px] font-bold text-[#51A8DD] mb-1.5 uppercase">{category}</p>
                     <div className="space-y-1.5">
-                      {templates?.map((template, tIdx) => (
+                      {Array.isArray(templates) && templates.map((template, tIdx) => (
                         <div
                           key={tIdx}
                           className="bg-[#EBF1FF] px-2.5 py-1.5 rounded-lg text-[10px] text-[#1C2C4E] font-medium"
