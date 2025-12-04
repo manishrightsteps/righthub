@@ -29,7 +29,7 @@ export function AnalyticsCard({ data, delay = 0 }) {
             <h4 className="text-xs font-bold text-[#90B8F8] uppercase tracking-wider">Metrics</h4>
           </div>
           <div className="grid grid-cols-2 gap-2">
-            {data.metrics.map((metric, idx) => (
+            {data.metrics?.map((metric, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -50,7 +50,7 @@ export function AnalyticsCard({ data, delay = 0 }) {
             <h4 className="text-xs font-bold text-[#90B8F8] uppercase tracking-wider">Filtering Options</h4>
           </div>
           <div className="flex flex-wrap gap-2">
-            {data.filtering.map((filter, idx) => (
+            {data.filtering?.map((filter, idx) => (
               <motion.span
                 key={idx}
                 initial={{ opacity: 0, x: -8 }}

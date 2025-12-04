@@ -53,7 +53,7 @@ export function FeatureCard({ title, items, icon: Icon, color, delay = 0 }) {
       <h3 className="text-base font-black text-[#1C2C4E] mb-3">{title}</h3>
 
       <ul className="space-y-2">
-        {items.map((item, idx) => (
+        {items?.map((item, idx) => (
           <motion.li
             key={idx}
             initial={{ opacity: 0, x: -8 }}

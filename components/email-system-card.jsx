@@ -39,7 +39,7 @@ export function EmailSystemCard({ data, delay = 0 }) {
           <h4 className="text-xs font-bold text-[#51A8DD] uppercase tracking-wider">Architecture</h4>
         </div>
         <div className="space-y-1.5">
-          {data.architecture.map((item, idx) => (
+          {data.architecture?.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -8 }}
@@ -94,7 +94,7 @@ export function EmailSystemCard({ data, delay = 0 }) {
                 <div>
                   <p className="text-[10px] font-bold text-[#7C7C7C] mb-1.5">Secondary</p>
                   <div className="flex flex-wrap gap-2">
-                    {data.branding.colors.secondary.map((color, idx) => (
+                    {data.branding.colors.secondary?.map((color, idx) => (
                       <div key={idx} className="flex items-center gap-2">
                         <div className="w-6 h-6 rounded-lg" style={{ backgroundColor: color.split(' ')[0] }} />
                         <span className="text-[10px] text-[#3D3D3D] font-mono">{color}</span>
@@ -106,7 +106,7 @@ export function EmailSystemCard({ data, delay = 0 }) {
                 <div>
                   <p className="text-[10px] font-bold text-[#7C7C7C] mb-1.5">Accent</p>
                   <div className="flex flex-wrap gap-2">
-                    {data.branding.colors.accent.map((color, idx) => (
+                    {data.branding.colors.accent?.map((color, idx) => (
                       <div key={idx} className="flex items-center gap-2">
                         <div className="w-6 h-6 rounded-lg" style={{ backgroundColor: color.split(' ')[0] }} />
                         <span className="text-[10px] text-[#3D3D3D] font-mono">{color}</span>
@@ -148,11 +148,11 @@ export function EmailSystemCard({ data, delay = 0 }) {
               className="overflow-hidden"
             >
               <div className="space-y-3 pt-2">
-                {Object.entries(data.templates).map(([category, templates], idx) => (
+                {Object.entries(data.templates || {}).map(([category, templates], idx) => (
                   <div key={idx}>
                     <p className="text-[10px] font-bold text-[#51A8DD] mb-1.5 uppercase">{category}</p>
                     <div className="space-y-1.5">
-                      {templates.map((template, tIdx) => (
+                      {templates?.map((template, tIdx) => (
                         <div
                           key={tIdx}
                           className="bg-[#EBF1FF] px-2.5 py-1.5 rounded-lg text-[10px] text-[#1C2C4E] font-medium"
