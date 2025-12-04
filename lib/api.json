@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "6.0.0",
+    "version": "6.0.1",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2025-12-03"
+    "lastUpdated": "2025-12-04"
   },
   "modules": [
     {
@@ -240,7 +240,7 @@
           "endpoints": [
             "Analytics User Stats",
             "Analytics Subscription Stats",
-            "Analytics Tutor Stats",
+            "Analytics Professional Stats (includes all professional profiles)",
             "Analytics Parent Stats",
             "Analytics Upload Stats",
             "Analytics Growth Stats"
@@ -346,46 +346,34 @@
         ],
         "profile": [
           "Parent Welcome - Parent profile completion welcome",
-          "Tutor Submitted - Tutor profile submitted for verification",
-          "Tutor Approved - Tutor profile approved by admin",
-          "Tutor Changes Requested - Admin requests profile changes",
-          "Tutor Rejected - Tutor profile rejected by admin",
-          "Speech Therapist Submitted - Speech therapist profile submitted for verification",
-          "Speech Therapist Approved - Speech therapist profile approved by admin",
-          "Speech Therapist Changes Requested - Admin requests profile changes",
-          "Speech Therapist Rejected - Speech therapist profile rejected by admin",
-          "Child Psychologist Submitted - Child psychologist profile submitted for verification",
-          "Child Psychologist Approved - Child psychologist profile approved by admin",
-          "Child Psychologist Changes Requested - Admin requests profile changes",
-          "Child Psychologist Rejected - Child psychologist profile rejected by admin",
-          "Career Counselor Submitted - Career counselor profile submitted for verification",
-          "Career Counselor Approved - Career counselor profile approved by admin",
-          "Career Counselor Changes Requested - Admin requests profile changes",
-          "Career Counselor Rejected - Career counselor profile rejected by admin",
-          "Occupational Therapist Submitted - Occupational therapist profile submitted for verification",
-          "Occupational Therapist Approved - Occupational therapist profile approved by admin",
-          "Occupational Therapist Changes Requested - Admin requests profile changes",
-          "Occupational Therapist Rejected - Occupational therapist profile rejected by admin",
-          "Social Skills Coach Submitted - Social skills coach profile submitted for verification",
-          "Social Skills Coach Approved - Social skills coach profile approved by admin",
-          "Social Skills Coach Changes Requested - Admin requests profile changes",
-          "Social Skills Coach Rejected - Social skills coach profile rejected by admin",
-          "SEN Practitioner Submitted - SEN practitioner profile submitted for verification",
-          "SEN Practitioner Approved - SEN practitioner profile approved by admin",
-          "SEN Practitioner Changes Requested - Admin requests profile changes",
-          "SEN Practitioner Rejected - SEN practitioner profile rejected by admin",
-          "Nutrition Advisor Submitted - Nutrition advisor profile submitted for verification",
-          "Nutrition Advisor Approved - Nutrition advisor profile approved by admin",
-          "Nutrition Advisor Changes Requested - Admin requests profile changes",
-          "Nutrition Advisor Rejected - Nutrition advisor profile rejected by admin",
-          "Digital Wellbeing Practitioner Submitted - Digital wellbeing practitioner profile submitted for verification",
-          "Digital Wellbeing Practitioner Approved - Digital wellbeing practitioner profile approved by admin",
-          "Digital Wellbeing Practitioner Changes Requested - Admin requests profile changes",
-          "Digital Wellbeing Practitioner Rejected - Digital wellbeing practitioner profile rejected by admin"
+          "Professional Submitted - Generic template for all professional profiles submitted for verification (used by tutors and 8 professional types)",
+          "Professional Approved - Generic template for all professional profiles approved by admin",
+          "Professional Changes Requested - Generic template when admin requests profile changes",
+          "Professional Rejected - Generic template for all professional profiles rejected by admin"
         ],
         "subscription": [
           "Payment Success - Payment confirmation with details and receipt"
-        ]
+        ],
+        "implementation": {
+          "note": "Profile email templates use a generic system with professional type as a parameter",
+          "genericTemplates": [
+            "professional-submitted.template.js - Accepts professionalType (e.g., 'tutor', 'speech therapist') and professionalName",
+            "professional-approved.template.js - Accepts professionalType, professionalName, and dashboardUrl",
+            "professional-changes-requested.template.js - Accepts professionalType, professionalName, adminNotes, and profileUrl",
+            "professional-rejected.template.js - Accepts professionalType, professionalName, and adminNotes"
+          ],
+          "professionalTypes": [
+            "tutor",
+            "speech therapist",
+            "child psychologist",
+            "career counselor",
+            "occupational therapist",
+            "social skills coach",
+            "SEN practitioner",
+            "nutrition advisor",
+            "digital wellbeing practitioner"
+          ]
+        }
       },
       "integration": {
         "authModule": ["sendOTPEmail", "sendPasswordResetEmail", "sendWelcomeEmail", "sendEmailVerifiedNotification"],
@@ -417,5 +405,102 @@
   "documentation": {
     "postman": "Rightsteps API.postman_collection.json",
     "apiInventory": "api.json"
+  },
+  "changelog": {
+    "6.0.1": {
+      "date": "2025-12-04",
+      "changes": [
+        {
+          "category": "Email System Refactoring",
+          "type": "improvement",
+          "description": "Refactored professional profile email templates from 36 individual files to 4 generic templates",
+          "details": [
+            "Reduced template files from 36 to 4 (professional-submitted, professional-approved, professional-changes-requested, professional-rejected)",
+            "Templates now accept professionalType as a parameter (e.g., 'tutor', 'speech therapist')",
+            "Easier to maintain - one change updates all profile types",
+            "Email helper functions remain the same (backward compatible)"
+          ],
+          "files": [
+            "src/shared/services/email/templates/profile/professional-*.template.js",
+            "src/shared/services/email.helper.js",
+            "src/shared/services/email/index.js"
+          ]
+        },
+        {
+          "category": "Auth API Enhancement",
+          "type": "feature",
+          "description": "Enhanced GET /v1/auth/me endpoint to include all professional profiles",
+          "details": [
+            "Now includes all 9 professional profile types (speechTherapist, childPsychologist, careerCounselor, occupationalTherapist, socialSkillsCoach, senPractitioner, nutritionAdvisor, digitalWellbeingPractitioner)",
+            "Added oauthProvider field to user response",
+            "Enhanced profile completion detection for all professional types",
+            "Returns all active profiles for users with multiple roles",
+            "Improved requiresProfileCreation logic to check all profile types"
+          ],
+          "endpoint": "GET /v1/auth/me",
+          "files": ["src/modules/auth/controllers/auth.controller.js"]
+        },
+        {
+          "category": "Google OAuth Testing",
+          "type": "feature",
+          "description": "Added Google OAuth login test page in client for testing purposes",
+          "details": [
+            "Created GoogleLoginTest page with Google sign-in button",
+            "Added AuthCallback handler for OAuth redirect",
+            "Displays user information and JWT token after login",
+            "Includes logout functionality",
+            "Added documentation in client/GOOGLE_LOGIN_TEST.md"
+          ],
+          "files": [
+            "client/src/pages/GoogleLoginTest.jsx",
+            "client/src/pages/AuthCallback.jsx",
+            "client/src/App.jsx",
+            "client/.env",
+            "client/GOOGLE_LOGIN_TEST.md"
+          ]
+        },
+        {
+          "category": "Postman Collection",
+          "type": "update",
+          "description": "Added missing Verify Email Update endpoint to Parent Profile Module",
+          "details": [
+            "Added POST /v1/profile/parent/verify-email endpoint",
+            "Endpoint verifies OTP for email address updates",
+            "Positioned after Update Parent Profile in collection"
+          ],
+          "files": ["Rightsteps API.postman_collection.json"]
+        }
+      ]
+    },
+    "6.0.0": {
+      "date": "2025-12-03",
+      "changes": [
+        {
+          "category": "Professional Profiles",
+          "type": "feature",
+          "description": "Added 8 new professional profile types with admin verification workflows",
+          "details": [
+            "Speech Therapist Profile",
+            "Child Psychologist Profile",
+            "Career Counselor Profile",
+            "Occupational Therapist Profile",
+            "Social Skills Coach Profile",
+            "SEN Practitioner Profile",
+            "Nutrition Advisor Profile",
+            "Digital Wellbeing Practitioner Profile"
+          ]
+        },
+        {
+          "category": "Analytics",
+          "type": "feature",
+          "description": "Unified professional analytics endpoint",
+          "details": [
+            "Replaced getTutorStats with getProfessionalStats",
+            "Includes statistics for all 9 professional types (tutor + 8 new profiles)",
+            "Dashboard now shows totalProfessionals and pendingProfessionals"
+          ]
+        }
+      ]
+    }
   }
 }
