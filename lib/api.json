@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "6.0.1",
+    "version": "6.0.2",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2025-12-04"
+    "lastUpdated": "2025-12-06"
   },
   "modules": [
     {
@@ -45,9 +45,10 @@
         },
         {
           "name": "Parent Profile",
-          "description": "Parent-specific profile and children management",
+          "description": "Parent-specific profile and children management with progressive registration",
           "endpoints": [
             "Create Parent Profile",
+            "Add Children",
             "Update Parent Profile",
             "Verify Email Update",
             "Update Child",
@@ -56,7 +57,7 @@
         },
         {
           "name": "Tutor Profile",
-          "description": "Tutor profile with admin verification workflow",
+          "description": "Tutor profile with progressive registration (6 steps) and admin verification workflow",
           "endpoints": [
             "Create Tutor Profile",
             "Update Tutor Profile"
@@ -407,6 +408,62 @@
     "apiInventory": "api.json"
   },
   "changelog": {
+    "6.0.2": {
+      "date": "2025-12-05",
+      "changes": [
+        {
+          "category": "Parent Profile Progressive Registration",
+          "type": "feature",
+          "description": "Implemented progressive registration flow for parent profiles with multi-step tracking",
+          "details": [
+            "Added registrationStep (1-4) and isRegistrationComplete fields to all profile models",
+            "Step 1: Personal Information (children optional)",
+            "Step 2: Add Children (new endpoint: POST /v1/profile/parent/add-children)",
+            "Step 3: Subscription Plan",
+            "Step 4: Registration Complete",
+            "All APIs now return nextStep object with route, step number, and message",
+            "Users can logout and resume registration from where they left off",
+            "Added securityAnswer field to all 10 profile models for account recovery",
+            "Created registrationSteps.js constants for all 10 personas",
+            "Created determineNextStep() helper function for smart navigation",
+            "Enhanced /v1/auth/me and /v1/profile/me to exclude sensitive fields (pin, securityQuestion, securityAnswer)"
+          ],
+          "endpoints": [
+            "POST /v1/profile/parent - Now accepts optional children array",
+            "POST /v1/profile/parent/add-children - New endpoint for Step 2",
+            "GET /v1/auth/me - Returns nextStep for progressive navigation",
+            "GET /v1/profile/me - Returns nextStep and current progress",
+            "POST /v1/auth/login - Returns nextStep to redirect user"
+          ],
+          "files": [
+            "prisma/schema.prisma - Added registrationStep, isRegistrationComplete, securityAnswer to all profiles",
+            "src/shared/constants/registrationSteps.js - Created registration steps for all personas",
+            "src/shared/utils/helper/registrationHelper.js - Created determineNextStep() function",
+            "src/modules/profile/validations/parent.schema.js - Made children optional, added securityAnswer",
+            "src/modules/profile/controllers/parent.controller.js - Added addChildren endpoint, auto-detect step",
+            "src/modules/profile/controllers/profile.controller.js - Added nextStep to response",
+            "src/modules/auth/controllers/auth.controller.js - Added children relationship, excluded sensitive fields, added nextStep",
+            "src/modules/subscription/services/subscription.service.js - Update registrationStep on subscription",
+            "src/modules/profile/routes/profile.route.js - Added /parent/add-children route",
+            "docs/frontend-guide/profile-docs.md - Created comprehensive documentation",
+            "Rightsteps API.postman_collection.json - Added Add Children endpoint with examples"
+          ]
+        },
+        {
+          "category": "Documentation",
+          "type": "feature",
+          "description": "Created comprehensive profile API documentation for frontend developers",
+          "details": [
+            "Step-by-step API documentation with request/response examples",
+            "Progressive registration flow chart",
+            "nextStep usage guide with code examples",
+            "Field validations and error handling",
+            "Complete walkthrough from signup to dashboard"
+          ],
+          "files": ["docs/frontend-guide/profile-docs.md"]
+        }
+      ]
+    },
     "6.0.1": {
       "date": "2025-12-04",
       "changes": [
