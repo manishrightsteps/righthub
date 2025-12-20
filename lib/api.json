@@ -1,0 +1,639 @@
+{
+  "project": {
+    "name": "Rightsteps API Inventory",
+    "version": "8.0.0",
+    "description": "Backend API for Rightsteps",
+    "baseUrl": "http://localhost:5000/v1",
+    "lastUpdated": "2025-12-19"
+  },
+  "modules": [
+    {
+      "name": "Auth Module",
+      "path": "/auth",
+      "description": "Authentication and authorization endpoints including OAuth, registration, login, and password management",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Register",
+        "Verify OTP",
+        "Login",
+        "Get Me",
+        "Refresh Token",
+        "Logout",
+        "Forgot Password",
+        "Reset Password",
+        "Send Verification Email",
+        "Admin Register",
+        "Google OAuth",
+        "Facebook OAuth"
+      ]
+    },
+    {
+      "name": "Profile Module",
+      "path": "/profile",
+      "description": "User profile management for parents, tutors, and children with role-based operations",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Common Profile",
+          "description": "Shared profile operations across all user types",
+          "endpoints": [
+            "Health Check",
+            "Select Role",
+            "Get My Profile"
+          ]
+        },
+        {
+          "name": "Parent Profile",
+          "description": "Parent-specific profile and children management with progressive registration",
+          "endpoints": [
+            "Create Parent Profile",
+            "Add Children",
+            "Update Parent Profile",
+            "Verify Email Update",
+            "Update Child",
+            "Delete Child"
+          ]
+        },
+        {
+          "name": "Parent Access Control",
+          "description": "Parent/child profile switching with PIN authentication and account recovery",
+          "endpoints": [
+            "Select Profile (Parent/Child)",
+            "Validate PIN",
+            "Verify Security Answer",
+            "Verify OTP and Reset PIN",
+            "Validate Temp PIN and Change PIN"
+          ]
+        },
+        {
+          "name": "Tutor Profile",
+          "description": "Tutor profile with progressive registration (8 steps: 6 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Tutor Profile",
+            "Update Tutor Profile"
+          ]
+        },
+        {
+          "name": "Speech Therapist Profile",
+          "description": "Speech therapist profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Speech Therapist Profile",
+            "Update Speech Therapist Profile"
+          ]
+        },
+        {
+          "name": "Child Psychologist Profile",
+          "description": "Child psychologist profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Child Psychologist Profile",
+            "Update Child Psychologist Profile"
+          ]
+        },
+        {
+          "name": "Career Counselor Profile",
+          "description": "Career counselor profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Career Counselor Profile",
+            "Update Career Counselor Profile"
+          ]
+        },
+        {
+          "name": "Occupational Therapist Profile",
+          "description": "Occupational therapist profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Occupational Therapist Profile",
+            "Update Occupational Therapist Profile"
+          ]
+        },
+        {
+          "name": "Social Skills Coach Profile",
+          "description": "Social skills coach profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Social Skills Coach Profile",
+            "Update Social Skills Coach Profile"
+          ]
+        },
+        {
+          "name": "SEN Practitioner Profile",
+          "description": "SEN practitioner profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create SEN Practitioner Profile",
+            "Update SEN Practitioner Profile"
+          ]
+        },
+        {
+          "name": "Nutrition Advisor Profile",
+          "description": "Nutrition advisor profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Nutrition Advisor Profile",
+            "Update Nutrition Advisor Profile"
+          ]
+        },
+        {
+          "name": "Digital Wellbeing Practitioner Profile",
+          "description": "Digital wellbeing practitioner profile with progressive registration (7 steps: 5 registration + verification pending + completed) and admin verification workflow",
+          "endpoints": [
+            "Create Digital Wellbeing Practitioner Profile",
+            "Update Digital Wellbeing Practitioner Profile"
+          ]
+        },
+        {
+          "name": "Admin Profile Operations",
+          "description": "Admin endpoints for managing profiles",
+          "endpoints": [
+            "Get Child Details",
+            "Get Parent Profiles",
+            "Get Pending Tutor Profiles",
+            "Verify Tutor Profile",
+            "Get Pending Speech Therapist Profiles",
+            "Verify Speech Therapist Profile",
+            "Get Pending Child Psychologist Profiles",
+            "Verify Child Psychologist Profile",
+            "Get Pending Career Counselor Profiles",
+            "Verify Career Counselor Profile",
+            "Get Pending Occupational Therapist Profiles",
+            "Verify Occupational Therapist Profile",
+            "Get Pending Social Skills Coach Profiles",
+            "Verify Social Skills Coach Profile",
+            "Get Pending SEN Practitioner Profiles",
+            "Verify SEN Practitioner Profile",
+            "Get Pending Nutrition Advisor Profiles",
+            "Verify Nutrition Advisor Profile",
+            "Get Pending Digital Wellbeing Practitioner Profiles",
+            "Verify Digital Wellbeing Practitioner Profile"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Subscription Module",
+      "path": "/subscription",
+      "description": "Subscription plan management and payment processing with Stripe and PayPal integration",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Subscription Operations",
+          "description": "User subscription management",
+          "endpoints": [
+            "Health Check",
+            "Calculate Pricing",
+            "Subscribe to Plan",
+            "Get My Subscription",
+            "Cancel My Subscription",
+            "Get My Payments"
+          ]
+        },
+        {
+          "name": "Payment Operations",
+          "description": "Payment processing with multiple gateways",
+          "endpoints": [
+            "Get Payment Config",
+            "Create Payment Intent",
+            "Create Checkout Session",
+            "Confirm Stripe Payment",
+            "Capture PayPal Payment"
+          ]
+        },
+        {
+          "name": "Plan Management",
+          "description": "Admin endpoints for managing subscription plans",
+          "endpoints": [
+            "Get All Plans",
+            "Get Plan by ID",
+            "Create Plan",
+            "Update Plan",
+            "Delete Plan",
+            "Update Plan Price",
+            "Add Plan Feature",
+            "Update Plan Feature",
+            "Delete Plan Feature",
+            "Add Multi-Student Discount",
+            "Update Multi-Student Discount",
+            "Delete Multi-Student Discount"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Upload Module",
+      "path": "/upload",
+      "description": "File upload and management with ImageKit and S3 support for images, videos, and documents",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Upload File",
+        "Get My Uploads",
+        "Get Upload by ID",
+        "Get Entity Uploads",
+        "Delete Upload (Soft Delete)",
+        "Delete Upload (Hard Delete)",
+        "Replace Upload"
+      ]
+    },
+    {
+      "name": "Admin Module",
+      "path": "/admin",
+      "description": "Centralized admin dashboard, analytics, and cross-cutting administrative operations",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Dashboard",
+          "description": "Admin dashboard overview and recent activity",
+          "endpoints": [
+            "Health Check",
+            "Dashboard Overview Stats",
+            "Dashboard Recent Activity"
+          ]
+        },
+        {
+          "name": "Analytics",
+          "description": "Platform-wide analytics and statistics",
+          "endpoints": [
+            "Analytics User Stats",
+            "Analytics Subscription Stats",
+            "Analytics Professional Stats (includes all professional profiles)",
+            "Analytics Parent Stats",
+            "Analytics Upload Stats",
+            "Analytics Growth Stats"
+          ]
+        },
+        {
+          "name": "User Management",
+          "description": "Global user management operations",
+          "endpoints": [
+            "Get All Users",
+            "Get User Details",
+            "Update User Roles",
+            "Toggle User Verification",
+            "Delete User",
+            "Send Temp PIN (Parent Recovery)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Notification Module",
+      "path": "/notifications",
+      "description": "User notification system for in-app notifications and announcements",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Create Notification",
+        "Get Notifications",
+        "Get Unread Count",
+        "Mark as Read",
+        "Mark All as Read",
+        "Get Notification Types",
+        "Create Announcement (Admin)"
+      ]
+    },
+    {
+      "name": "Community Module",
+      "path": "/community",
+      "description": "Community platform integration with external community service",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Community Auth",
+        "Sync User Data",
+        "Generate Magic Link"
+      ]
+    },
+    {
+      "name": "Health Module",
+      "path": "/health",
+      "description": "System health monitoring and readiness probes",
+      "status": "completed",
+      "endpoints": [
+        "Basic Health",
+        "Detailed Health",
+        "Readiness Probe",
+        "Liveness Probe",
+        "Database Health",
+        "System Stats"
+      ]
+    }
+  ],
+  "features": {
+    "authentication": {
+      "methods": ["JWT", "OAuth (Google, Facebook)", "2FA with OTP"],
+      "security": ["Rate limiting", "Password hashing", "Token refresh"]
+    },
+    "payments": {
+      "gateways": ["Stripe", "PayPal"],
+      "methods": ["Payment Intent", "Checkout Session", "Webhooks"]
+    },
+    "storage": {
+      "providers": ["ImageKit", "AWS S3"],
+      "fileTypes": ["Images", "Videos", "Documents", "PDFs"]
+    },
+    "userTypes": {
+      "roles": ["USER", "PARENT", "TUTOR", "SPEECH_THERAPIST", "CHILD_PSYCHOLOGIST", "CAREER_COUNSELOR", "OCCUPATIONAL_THERAPIST", "SOCIAL_SKILLS_COACH", "SEN_PRACTITIONER", "NUTRITION_ADVISOR", "DIGITAL_WELLBEING_PRACTITIONER", "ADMIN"],
+      "profiles": ["Parent Profile", "Tutor Profile", "Speech Therapist Profile", "Child Psychologist Profile", "Career Counselor Profile", "Occupational Therapist Profile", "Social Skills Coach Profile", "SEN Practitioner Profile", "Nutrition Advisor Profile", "Digital Wellbeing Practitioner Profile"],
+      "verification": ["Email verification", "Admin verification for professional profiles"]
+    },
+    "analytics": {
+      "metrics": ["User stats", "Subscription stats", "Revenue stats", "Growth stats"],
+      "filtering": ["Date range", "User role", "Status"]
+    },
+    "emailSystem": {
+      "description": "Component-based email template system with RightSteps branding",
+      "location": "src/shared/services/email/",
+      "architecture": ["Reusable components (header, footer, button, info box)", "Base template wrapper", "Individual templates for each workflow"],
+      "branding": {
+        "colors": {
+          "primary": "#1A2F6E (Navy Blue)",
+          "secondary": ["#60B8F8 (Light Blue)", "#1C2E58 (Dark Blue)"],
+          "accent": ["#60C3AA (Green)", "#FFC24A (Yellow)", "#ED545C (Red)"]
+        },
+        "components": ["Header with gradient", "Footer with branding", "Styled buttons", "Info boxes"]
+      },
+      "templates": {
+        "auth": [
+          "Welcome Email - Generic welcome for new users",
+          "OTP Email - Email verification code (10 min expiry)",
+          "Reset Password Email - Password reset link (1 hour expiry)",
+          "Email Updated - Email change notification (sent to both old and new)",
+          "Email Verified - Email verification success confirmation"
+        ],
+        "profile": [
+          "Parent Welcome - Parent profile completion welcome",
+          "Professional Submitted - Generic template for all professional profiles submitted for verification (used by tutors and 8 professional types)",
+          "Professional Approved - Generic template for all professional profiles approved by admin",
+          "Professional Changes Requested - Generic template when admin requests profile changes",
+          "Professional Rejected - Generic template for all professional profiles rejected by admin"
+        ],
+        "subscription": [
+          "Payment Success - Payment confirmation with details and receipt"
+        ],
+        "implementation": {
+          "note": "Profile email templates use a generic system with professional type as a parameter",
+          "genericTemplates": [
+            "professional-submitted.template.js - Accepts professionalType (e.g., 'tutor', 'speech therapist') and professionalName",
+            "professional-approved.template.js - Accepts professionalType, professionalName, and dashboardUrl",
+            "professional-changes-requested.template.js - Accepts professionalType, professionalName, adminNotes, and profileUrl",
+            "professional-rejected.template.js - Accepts professionalType, professionalName, and adminNotes"
+          ],
+          "professionalTypes": [
+            "tutor",
+            "speech therapist",
+            "child psychologist",
+            "career counselor",
+            "occupational therapist",
+            "social skills coach",
+            "SEN practitioner",
+            "nutrition advisor",
+            "digital wellbeing practitioner"
+          ]
+        }
+      },
+      "integration": {
+        "authModule": ["sendOTPEmail", "sendPasswordResetEmail", "sendWelcomeEmail", "sendEmailVerifiedNotification"],
+        "parentProfile": ["sendProfileCompletionEmail", "sendEmailUpdatedNotification"],
+        "tutorProfile": ["sendTutorSubmittedEmail", "sendTutorApprovedEmail", "sendTutorChangesRequestedEmail", "sendTutorRejectedEmail"],
+        "speechTherapistProfile": ["sendSpeechTherapistSubmittedEmail", "sendSpeechTherapistApprovedEmail", "sendSpeechTherapistChangesRequestedEmail", "sendSpeechTherapistRejectedEmail"],
+        "childPsychologistProfile": ["sendChildPsychologistSubmittedEmail", "sendChildPsychologistApprovedEmail", "sendChildPsychologistChangesRequestedEmail", "sendChildPsychologistRejectedEmail"],
+        "careerCounselorProfile": ["sendCareerCounselorSubmittedEmail", "sendCareerCounselorApprovedEmail", "sendCareerCounselorChangesRequestedEmail", "sendCareerCounselorRejectedEmail"],
+        "occupationalTherapistProfile": ["sendOccupationalTherapistSubmittedEmail", "sendOccupationalTherapistApprovedEmail", "sendOccupationalTherapistChangesRequestedEmail", "sendOccupationalTherapistRejectedEmail"],
+        "socialSkillsCoachProfile": ["sendSocialSkillsCoachSubmittedEmail", "sendSocialSkillsCoachApprovedEmail", "sendSocialSkillsCoachChangesRequestedEmail", "sendSocialSkillsCoachRejectedEmail"],
+        "senPractitionerProfile": ["sendSenPractitionerSubmittedEmail", "sendSenPractitionerApprovedEmail", "sendSenPractitionerChangesRequestedEmail", "sendSenPractitionerRejectedEmail"],
+        "nutritionAdvisorProfile": ["sendNutritionAdvisorSubmittedEmail", "sendNutritionAdvisorApprovedEmail", "sendNutritionAdvisorChangesRequestedEmail", "sendNutritionAdvisorRejectedEmail"],
+        "digitalWellbeingPractitionerProfile": ["sendDigitalWellbeingPractitionerSubmittedEmail", "sendDigitalWellbeingPractitionerApprovedEmail", "sendDigitalWellbeingPractitionerChangesRequestedEmail", "sendDigitalWellbeingPractitionerRejectedEmail"],
+        "subscriptionPayment": ["sendPaymentSuccessEmail (Stripe, PayPal, Generic)"]
+      },
+      "helperFunctions": "src/shared/services/email.helper.js - All email sending functions with logging and error handling"
+    }
+  },
+  "architecture": {
+    "pattern": "Modular architecture with domain separation",
+    "database": "PostgreSQL with Prisma ORM and MonfgoDB for certain modules",
+    "caching": "Redis",
+    "queue": "BullMQ with Redis",
+    "socket": "Socket.io for real-time features",
+    "validation": "Zod schemas",
+    "logging": "Winston logger",
+    "errorHandling": "Centralized error handler with async wrapper"
+  },
+  "documentation": {
+    "postman": "Rightsteps API.postman_collection.json",
+    "apiInventory": "api.json"
+  },
+  "changelog": {
+    "8.0.0": {
+      "date": "2025-12-19",
+      "changes": [
+        {
+          "category": "Professional Profiles Progressive Registration",
+          "type": "feature",
+          "description": "Implemented 5-step progressive registration for all 8 professional profiles matching tutor quality standard",
+          "details": [
+            "All 8 professional profiles now have standardized 5-step registration structure:",
+            "Step 1: Personal Information (firstName, lastName, DOB, mobile, address, PIN, security Q&A)",
+            "Step 2: Background and Safety (ID verification, DBS certificate, Right to Work)",
+            "Step 3: Professional Qualifications (profile-specific credentials and certifications)",
+            "Step 4: Client Focus (age groups, service categories)",
+            "Step 5: Pricing (hourly rate, payment method, consent) - triggers PENDING_VERIFICATION",
+            "Added ChildPsychologistService enum with 10 service types",
+            "Added ageGroups and serviceCategories fields to ChildPsychologistProfile",
+            "Comprehensive validation coverage (100%) for all required fields at each step",
+            "Email notifications on profile submission (step 5 completion)",
+            "Admin verification workflow (approve/reject/request changes)",
+            "Cache invalidation on profile updates",
+            "Production-grade code with proper error handling and logging"
+          ],
+          "affected_profiles": [
+            "Speech Therapist (HCPC, RCSLT membership, professional indemnity)",
+            "Child Psychologist (professional qualifications, indemnity insurance)",
+            "Career Counselor (professional qualifications, indemnity insurance)",
+            "Occupational Therapist (qualifications, experience history, references)",
+            "Social Skills Coach (professional qualifications)",
+            "SEN Practitioner (professional qualifications)",
+            "Nutrition Advisor (professional qualifications)",
+            "Digital Wellbeing Practitioner (professional qualifications)"
+          ],
+          "files": [
+            "prisma/schema.prisma - Added ChildPsychologistService enum, updated ChildPsychologistProfile model",
+            "src/modules/profile/constants/registration.step.js - Complete restructure to 7-step structure for all profiles",
+            "src/modules/profile/helpers/*.helper.js - Rewrote all 8 helper files with progressive validation",
+            "src/modules/profile/controllers/*.controller.js - Updated all 8 controllers with verification workflow",
+            "All files follow tutor quality standard with no comments and clean production code"
+          ]
+        },
+        {
+          "category": "Database Schema",
+          "type": "migration",
+          "description": "Applied Prisma migration for ChildPsychologist profile enhancements",
+          "details": [
+            "Migration: 20251219131012_add_child_psychologist_service_fields",
+            "Added ChildPsychologistService enum to database",
+            "Added ageGroups and serviceCategories columns to ChildPsychologistProfile table",
+            "Ensures consistency across all professional profile models"
+          ]
+        },
+        {
+          "category": "Code Quality",
+          "type": "improvement",
+          "description": "Fixed all ESLint issues and improved code formatting",
+          "details": [
+            "Fixed max-len violations in all 8 professional controller files",
+            "Fixed object-shorthand issues in payment and subscription services",
+            "All code now passes ESLint with 0 errors and 0 warnings",
+            "Improved code readability with proper line breaks"
+          ]
+        }
+      ]
+    },
+    "6.0.2": {
+      "date": "2025-12-05",
+      "changes": [
+        {
+          "category": "Parent Profile Progressive Registration",
+          "type": "feature",
+          "description": "Implemented progressive registration flow for parent profiles with multi-step tracking",
+          "details": [
+            "Added registrationStep (1-4) and isRegistrationComplete fields to all profile models",
+            "Step 1: Personal Information (children optional)",
+            "Step 2: Add Children (new endpoint: POST /v1/profile/parent/add-children)",
+            "Step 3: Subscription Plan",
+            "Step 4: Registration Complete",
+            "All APIs now return nextStep object with route, step number, and message",
+            "Users can logout and resume registration from where they left off",
+            "Added securityAnswer field to all 10 profile models for account recovery",
+            "Created registrationSteps.js constants for all 10 personas",
+            "Created determineNextStep() helper function for smart navigation",
+            "Enhanced /v1/auth/me and /v1/profile/me to exclude sensitive fields (pin, securityQuestion, securityAnswer)"
+          ],
+          "endpoints": [
+            "POST /v1/profile/parent - Now accepts optional children array",
+            "POST /v1/profile/parent/add-children - New endpoint for Step 2",
+            "GET /v1/auth/me - Returns nextStep for progressive navigation",
+            "GET /v1/profile/me - Returns nextStep and current progress",
+            "POST /v1/auth/login - Returns nextStep to redirect user"
+          ],
+          "files": [
+            "prisma/schema.prisma - Added registrationStep, isRegistrationComplete, securityAnswer to all profiles",
+            "src/shared/constants/registrationSteps.js - Created registration steps for all personas",
+            "src/shared/utils/helper/registrationHelper.js - Created determineNextStep() function",
+            "src/modules/profile/validations/parent.schema.js - Made children optional, added securityAnswer",
+            "src/modules/profile/controllers/parent.controller.js - Added addChildren endpoint, auto-detect step",
+            "src/modules/profile/controllers/profile.controller.js - Added nextStep to response",
+            "src/modules/auth/controllers/auth.controller.js - Added children relationship, excluded sensitive fields, added nextStep",
+            "src/modules/subscription/services/subscription.service.js - Update registrationStep on subscription",
+            "src/modules/profile/routes/profile.route.js - Added /parent/add-children route",
+            "docs/frontend-guide/profile-docs.md - Created comprehensive documentation",
+            "Rightsteps API.postman_collection.json - Added Add Children endpoint with examples"
+          ]
+        },
+        {
+          "category": "Documentation",
+          "type": "feature",
+          "description": "Created comprehensive profile API documentation for frontend developers",
+          "details": [
+            "Step-by-step API documentation with request/response examples",
+            "Progressive registration flow chart",
+            "nextStep usage guide with code examples",
+            "Field validations and error handling",
+            "Complete walkthrough from signup to dashboard"
+          ],
+          "files": ["docs/frontend-guide/profile-docs.md"]
+        }
+      ]
+    },
+    "6.0.1": {
+      "date": "2025-12-04",
+      "changes": [
+        {
+          "category": "Email System Refactoring",
+          "type": "improvement",
+          "description": "Refactored professional profile email templates from 36 individual files to 4 generic templates",
+          "details": [
+            "Reduced template files from 36 to 4 (professional-submitted, professional-approved, professional-changes-requested, professional-rejected)",
+            "Templates now accept professionalType as a parameter (e.g., 'tutor', 'speech therapist')",
+            "Easier to maintain - one change updates all profile types",
+            "Email helper functions remain the same (backward compatible)"
+          ],
+          "files": [
+            "src/shared/services/email/templates/profile/professional-*.template.js",
+            "src/shared/services/email.helper.js",
+            "src/shared/services/email/index.js"
+          ]
+        },
+        {
+          "category": "Auth API Enhancement",
+          "type": "feature",
+          "description": "Enhanced GET /v1/auth/me endpoint to include all professional profiles",
+          "details": [
+            "Now includes all 9 professional profile types (speechTherapist, childPsychologist, careerCounselor, occupationalTherapist, socialSkillsCoach, senPractitioner, nutritionAdvisor, digitalWellbeingPractitioner)",
+            "Added oauthProvider field to user response",
+            "Enhanced profile completion detection for all professional types",
+            "Returns all active profiles for users with multiple roles",
+            "Improved requiresProfileCreation logic to check all profile types"
+          ],
+          "endpoint": "GET /v1/auth/me",
+          "files": ["src/modules/auth/controllers/auth.controller.js"]
+        },
+        {
+          "category": "Google OAuth Testing",
+          "type": "feature",
+          "description": "Added Google OAuth login test page in client for testing purposes",
+          "details": [
+            "Created GoogleLoginTest page with Google sign-in button",
+            "Added AuthCallback handler for OAuth redirect",
+            "Displays user information and JWT token after login",
+            "Includes logout functionality",
+            "Added documentation in client/GOOGLE_LOGIN_TEST.md"
+          ],
+          "files": [
+            "client/src/pages/GoogleLoginTest.jsx",
+            "client/src/pages/AuthCallback.jsx",
+            "client/src/App.jsx",
+            "client/.env",
+            "client/GOOGLE_LOGIN_TEST.md"
+          ]
+        },
+        {
+          "category": "Postman Collection",
+          "type": "update",
+          "description": "Added missing Verify Email Update endpoint to Parent Profile Module",
+          "details": [
+            "Added POST /v1/profile/parent/verify-email endpoint",
+            "Endpoint verifies OTP for email address updates",
+            "Positioned after Update Parent Profile in collection"
+          ],
+          "files": ["Rightsteps API.postman_collection.json"]
+        }
+      ]
+    },
+    "6.0.0": {
+      "date": "2025-12-03",
+      "changes": [
+        {
+          "category": "Professional Profiles",
+          "type": "feature",
+          "description": "Added 8 new professional profile types with admin verification workflows",
+          "details": [
+            "Speech Therapist Profile",
+            "Child Psychologist Profile",
+            "Career Counselor Profile",
+            "Occupational Therapist Profile",
+            "Social Skills Coach Profile",
+            "SEN Practitioner Profile",
+            "Nutrition Advisor Profile",
+            "Digital Wellbeing Practitioner Profile"
+          ]
+        },
+        {
+          "category": "Analytics",
+          "type": "feature",
+          "description": "Unified professional analytics endpoint",
+          "details": [
+            "Replaced getTutorStats with getProfessionalStats",
+            "Includes statistics for all 9 professional types (tutor + 8 new profiles)",
+            "Dashboard now shows totalProfessionals and pendingProfessionals"
+          ]
+        }
+      ]
+    }
+  }
+}
