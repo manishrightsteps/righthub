@@ -1,16 +1,16 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "8.0.0",
+    "version": "8.3.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2025-12-19"
+    "lastUpdated": "2026-01-15"
   },
   "modules": [
     {
       "name": "Auth Module",
       "path": "/auth",
-      "description": "Authentication and authorization endpoints including OAuth, registration, login, and password management",
+      "description": "Authentication and authorization endpoints including OAuth, registration, login, password management, and session management",
       "status": "completed",
       "endpoints": [
         "Health Check",
@@ -20,6 +20,9 @@
         "Get Me",
         "Refresh Token",
         "Logout",
+        "Logout All Devices",
+        "Get Active Sessions",
+        "Revoke Session",
         "Forgot Password",
         "Reset Password",
         "Send Verification Email",
@@ -313,6 +316,174 @@
         "Database Health",
         "System Stats"
       ]
+    },
+    {
+      "name": "AI Tutor Module",
+      "path": "/ai-tutor",
+      "description": "AI-powered tutoring system for student questions and answers",
+      "status": "completed",
+      "endpoints": [
+        "Ask Question",
+        "Get Question Result"
+      ]
+    },
+    {
+      "name": "Curriculum Module",
+      "path": "/curriculum",
+      "description": "UK Curriculum management with 5-level hierarchy: Year Groups → Subjects → Topics → Sub-Topics → Learning Objectives. Auto-generates objective IDs in format SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Year Groups",
+          "description": "Year group management (e.g., Year 10, Year 11) with key stages and age ranges",
+          "endpoints": [
+            "Health Check",
+            "Create Year Group (Admin)",
+            "Get All Year Groups (Public)",
+            "Get Year Group by ID (Public)",
+            "Get Year Group Hierarchy (Public)",
+            "Update Year Group (Admin)",
+            "Delete Year Group (Admin)"
+          ]
+        },
+        {
+          "name": "Subjects",
+          "description": "Subject management within year groups (e.g., Mathematics, English, Science)",
+          "endpoints": [
+            "Create Subject (Admin)",
+            "Get All Subjects (Public)",
+            "Get Subject by ID (Public)",
+            "Update Subject (Admin)",
+            "Delete Subject (Admin)"
+          ]
+        },
+        {
+          "name": "Topics",
+          "description": "Topic management within subjects (e.g., Algebra, Geometry, Statistics)",
+          "endpoints": [
+            "Create Topic (Admin)",
+            "Get All Topics (Public)",
+            "Get Topic by ID (Public)",
+            "Update Topic (Admin)",
+            "Delete Topic (Admin)"
+          ]
+        },
+        {
+          "name": "Sub-Topics",
+          "description": "Sub-topic management within topics (e.g., Linear Equations, Quadratic Equations)",
+          "endpoints": [
+            "Create Sub-Topic (Admin)",
+            "Get All Sub-Topics (Public)",
+            "Get Sub-Topic by ID (Public)",
+            "Update Sub-Topic (Admin)",
+            "Delete Sub-Topic (Admin)"
+          ]
+        },
+        {
+          "name": "Learning Objectives",
+          "description": "Learning objective management with auto-generated IDs and difficulty levels (Foundation, Intermediate, Higher)",
+          "endpoints": [
+            "Create Objective (Admin)",
+            "Get All Objectives (Public)",
+            "Get Objective by ID (Public)",
+            "Get Objective by ObjectiveId (Public)",
+            "Update Objective (Admin)",
+            "Delete Objective (Admin)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Content Module",
+      "path": "/content",
+      "description": "Educational content management, marketplace, creator monetization, and analytics. Supports RIGHTSTEPS official content and CREATOR marketplace content with moderation workflow (DRAFT → PENDING_REVIEW → APPROVED → PUBLISHED). Includes 70/30 revenue split, content promotion, badge system, and comprehensive analytics.",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Content Management",
+          "description": "Create, read, update, delete educational content (video, PDF, audio, interactive)",
+          "endpoints": [
+            "Health Check",
+            "Create Content",
+            "Get All Content (with filtering)",
+            "Get My Content",
+            "Get Content by ID",
+            "Update Content",
+            "Delete Content (soft delete/archive)"
+          ]
+        },
+        {
+          "name": "Content Lifecycle",
+          "description": "Content submission, publishing, and promotion workflow",
+          "endpoints": [
+            "Submit Content for Review",
+            "Publish Content",
+            "Promote Content (BASIC £10, PREMIUM £25)"
+          ]
+        },
+        {
+          "name": "Marketplace - Reviews",
+          "description": "Content reviews, ratings, and creator replies",
+          "endpoints": [
+            "Create Review",
+            "Get Content Reviews",
+            "Reply to Review (Creator)"
+          ]
+        },
+        {
+          "name": "Marketplace - Purchases",
+          "description": "Content purchases, access control, and sharing",
+          "endpoints": [
+            "Purchase Content",
+            "Get My Purchases",
+            "Check Content Access",
+            "Generate Share Link",
+            "Access Shared Content"
+          ]
+        },
+        {
+          "name": "Marketplace - Earnings",
+          "description": "Creator earnings tracking and payout requests",
+          "endpoints": [
+            "Get My Earnings",
+            "Request Payout"
+          ]
+        },
+        {
+          "name": "Analytics",
+          "description": "Content analytics, tracking, and performance metrics",
+          "endpoints": [
+            "Track Content View",
+            "Track Content Completion",
+            "Get Content Analytics",
+            "Get User Engagement",
+            "Get Creator Dashboard",
+            "Get Content Performance",
+            "Get Revenue Analytics",
+            "Get Trending Content",
+            "Get Platform Analytics (Admin)"
+          ]
+        },
+        {
+          "name": "Admin - Moderation",
+          "description": "Content moderation and management (Admin only)",
+          "endpoints": [
+            "Moderate Content (Approve/Reject)",
+            "Feature Content",
+            "Update Content Tags",
+            "Update Badges (Batch)",
+            "Process Payout"
+          ]
+        },
+        {
+          "name": "Admin - Analytics",
+          "description": "Platform statistics and insights (Admin only)",
+          "endpoints": [
+            "Get Content Stats",
+            "Get Pending Reviews"
+          ]
+        }
+      ]
     }
   ],
   "features": {
@@ -336,6 +507,13 @@
     "analytics": {
       "metrics": ["User stats", "Subscription stats", "Revenue stats", "Growth stats"],
       "filtering": ["Date range", "User role", "Status"]
+    },
+    "curriculum": {
+      "hierarchy": ["Year Groups", "Subjects", "Topics", "Sub-Topics", "Learning Objectives"],
+      "keyStages": ["KS1", "KS2", "KS3", "KS4", "KS5"],
+      "difficultyLevels": ["Foundation", "Intermediate", "Higher"],
+      "features": ["Auto-generated objective IDs", "Full hierarchy endpoint", "Pagination and filtering", "Redis caching", "Cascade deletes"],
+      "objectiveIdFormat": "SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)"
     },
     "emailSystem": {
       "description": "Component-based email template system with RightSteps branding",
@@ -420,6 +598,184 @@
     "apiInventory": "api.json"
   },
   "changelog": {
+    "8.3.0": {
+      "date": "2026-01-15",
+      "changes": [
+        {
+          "category": "Content Module",
+          "type": "feature",
+          "description": "Implemented comprehensive educational content management system with marketplace, creator monetization, and analytics",
+          "details": [
+            "39 endpoints across 8 sub-modules (Content Management, Lifecycle, Reviews, Purchases, Earnings, Analytics, Admin Moderation, Admin Analytics)",
+            "Content creation and management for RIGHTSTEPS official and CREATOR marketplace content",
+            "Moderation workflow: DRAFT → PENDING_REVIEW → APPROVED → PUBLISHED → REJECTED/ARCHIVED",
+            "Marketplace with reviews, ratings, and creator replies",
+            "Content purchase system with 70/30 revenue split (creator/platform)",
+            "Creator earnings tracking and payout request system",
+            "Content promotion tiers: BASIC (£10), PREMIUM (£25)",
+            "Badge system: Popular (50+ enrollments), Trending (10+ views/day), Recommended",
+            "Comprehensive analytics: view tracking, completion tracking, engagement metrics",
+            "Creator dashboard with earnings, performance, and revenue analytics",
+            "Platform-wide analytics for admin (content stats, trending content)",
+            "Support for multiple content formats: VIDEO, PDF, AUDIO, INTERACTIVE",
+            "Multi-language support: ENGLISH, WELSH, BILINGUAL",
+            "Content sharing with access control and share links",
+            "Soft delete/archive with purchase protection",
+            "Admin moderation tools for content approval, featuring, and badge management",
+            "Integration with curriculum objectives for content categorization",
+            "Redis caching for performance optimization",
+            "Production-grade validation using Zod schemas",
+            "Comprehensive OpenAPI 3.0 documentation"
+          ],
+          "endpoints": {
+            "contentManagement": [
+              "GET /v1/content/health",
+              "POST /v1/content",
+              "GET /v1/content",
+              "GET /v1/content/my",
+              "GET /v1/content/:id",
+              "PUT /v1/content/:id",
+              "DELETE /v1/content/:id"
+            ],
+            "contentLifecycle": [
+              "POST /v1/content/:id/submit",
+              "POST /v1/content/:id/publish",
+              "POST /v1/content/:id/promote"
+            ],
+            "marketplaceReviews": [
+              "POST /v1/content/marketplace/:contentId/reviews",
+              "GET /v1/content/marketplace/:contentId/reviews",
+              "POST /v1/content/marketplace/reviews/:reviewId/reply"
+            ],
+            "marketplacePurchases": [
+              "POST /v1/content/marketplace/:contentId/purchase",
+              "GET /v1/content/marketplace/purchases/my",
+              "GET /v1/content/marketplace/:contentId/access",
+              "POST /v1/content/marketplace/:id/share/generate",
+              "GET /v1/content/marketplace/share/:shareToken"
+            ],
+            "marketplaceEarnings": [
+              "GET /v1/content/marketplace/earnings",
+              "POST /v1/content/marketplace/payouts/request"
+            ],
+            "analytics": [
+              "POST /v1/content/analytics/:id/track-view",
+              "POST /v1/content/analytics/:id/track-completion",
+              "GET /v1/content/analytics/:id/analytics",
+              "GET /v1/content/analytics/:id/engagement",
+              "GET /v1/content/analytics/creator/dashboard",
+              "GET /v1/content/analytics/creator/performance",
+              "GET /v1/content/analytics/creator/revenue",
+              "GET /v1/content/analytics/trending",
+              "GET /v1/content/analytics/platform"
+            ],
+            "adminModeration": [
+              "POST /v1/content/admin/content/:id/moderate",
+              "POST /v1/content/admin/content/:id/feature",
+              "PUT /v1/content/admin/content/:id/tags",
+              "POST /v1/content/admin/content/badges/update",
+              "POST /v1/content/admin/payouts/:payoutId/process"
+            ],
+            "adminAnalytics": [
+              "GET /v1/content/admin/content/stats",
+              "GET /v1/content/admin/content/pending-reviews"
+            ]
+          },
+          "files": [
+            "prisma/schema.prisma - Added Content, ContentReview, ContentPurchase, CreatorEarnings, CreatorPayout models",
+            "src/modules/content/controllers/*.controller.js - 4 controller files (content, marketplace, admin, analytics)",
+            "src/modules/content/services/*.service.js - 4 service files with business logic",
+            "src/modules/content/routes/*.route.js - 4 route files (content, marketplace, admin, analytics)",
+            "src/modules/content/validations/*.schema.js - 4 validation schema files",
+            "src/modules/content/index.js - Module exports and route mounting",
+            "src/routes/index.js - Registered content routes at /content",
+            "docs/content-openapi.yaml - Complete OpenAPI 3.0 specification with 39 endpoints",
+            "src/config/swagger.js - Added content docs to Swagger UI",
+            "src/app.js - Added content docs route handler",
+            "api.json - Updated with Content module documentation"
+          ]
+        }
+      ]
+    },
+    "8.2.0": {
+      "date": "2026-01-10",
+      "changes": [
+        {
+          "category": "Curriculum Module",
+          "type": "feature",
+          "description": "Implemented comprehensive UK Curriculum management system with 5-level hierarchy",
+          "details": [
+            "5-level hierarchy: Year Groups → Subjects → Topics → Sub-Topics → Learning Objectives",
+            "Auto-generated objective IDs in format SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)",
+            "31 endpoints across 5 entity types (Year Groups, Subjects, Topics, Sub-Topics, Objectives)",
+            "Full hierarchy endpoint to retrieve complete curriculum tree structure",
+            "Public GET endpoints (no auth required) for curriculum browsing",
+            "Admin-protected POST/PATCH/DELETE endpoints for curriculum management",
+            "Pagination and filtering for all GET endpoints with search capability",
+            "Three difficulty levels: Foundation, Intermediate, Higher",
+            "UK Key Stages support: KS1, KS2, KS3, KS4, KS5",
+            "Redis caching with graceful fallback on cache failures",
+            "Cascade deletes across hierarchy levels",
+            "Sequential numbering system for objectives within each sub-topic",
+            "Production-grade error handling with specific error messages",
+            "Comprehensive validation using Zod schemas",
+            "Follows existing code patterns (no comments, kebab-case filenames, CacheManager usage)"
+          ],
+          "endpoints": {
+            "yearGroups": [
+              "GET /v1/curriculum/health",
+              "POST /v1/curriculum/year-groups (Admin)",
+              "GET /v1/curriculum/year-groups (Public)",
+              "GET /v1/curriculum/year-groups/:id (Public)",
+              "GET /v1/curriculum/year-groups/:id/hierarchy (Public)",
+              "PATCH /v1/curriculum/year-groups/:id (Admin)",
+              "DELETE /v1/curriculum/year-groups/:id (Admin)"
+            ],
+            "subjects": [
+              "POST /v1/curriculum/subjects (Admin)",
+              "GET /v1/curriculum/subjects (Public)",
+              "GET /v1/curriculum/subjects/:id (Public)",
+              "PATCH /v1/curriculum/subjects/:id (Admin)",
+              "DELETE /v1/curriculum/subjects/:id (Admin)"
+            ],
+            "topics": [
+              "POST /v1/curriculum/topics (Admin)",
+              "GET /v1/curriculum/topics (Public)",
+              "GET /v1/curriculum/topics/:id (Public)",
+              "PATCH /v1/curriculum/topics/:id (Admin)",
+              "DELETE /v1/curriculum/topics/:id (Admin)"
+            ],
+            "subTopics": [
+              "POST /v1/curriculum/sub-topics (Admin)",
+              "GET /v1/curriculum/sub-topics (Public)",
+              "GET /v1/curriculum/sub-topics/:id (Public)",
+              "PATCH /v1/curriculum/sub-topics/:id (Admin)",
+              "DELETE /v1/curriculum/sub-topics/:id (Admin)"
+            ],
+            "objectives": [
+              "POST /v1/curriculum/objectives (Admin)",
+              "GET /v1/curriculum/objectives (Public)",
+              "GET /v1/curriculum/objectives/:id (Public)",
+              "GET /v1/curriculum/objectives/by-objective-id/:objectiveId (Public)",
+              "PATCH /v1/curriculum/objectives/:id (Admin)",
+              "DELETE /v1/curriculum/objectives/:id (Admin)"
+            ]
+          },
+          "files": [
+            "prisma/schema.prisma - Added 5 curriculum models with relationships and indexes",
+            "src/modules/curriculum/utils/objective-id-generator.js - Auto-generates unique objective IDs",
+            "src/modules/curriculum/services/*.service.js - 5 service files with CacheManager integration",
+            "src/modules/curriculum/controllers/*.controller.js - 5 controller files with error handling",
+            "src/modules/curriculum/validations/curriculum.schema.js - Comprehensive Zod validation schemas",
+            "src/modules/curriculum/routes/curriculum.route.js - All 31 routes with middleware",
+            "src/modules/curriculum/index.js - Module exports",
+            "src/routes/index.js - Registered curriculum routes",
+            "Rightsteps API.postman_collection.json - Added Curriculum Module with 31 endpoints",
+            "api.json - Updated with curriculum documentation"
+          ]
+        }
+      ]
+    },
     "8.0.0": {
       "date": "2025-12-19",
       "changes": [
@@ -637,3 +993,4 @@
     }
   }
 }
+
