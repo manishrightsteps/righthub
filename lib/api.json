@@ -414,11 +414,12 @@
         },
         {
           "name": "Content Lifecycle",
-          "description": "Content submission, publishing, and promotion workflow",
+          "description": "Content submission, publishing, promotion, and access",
           "endpoints": [
             "Submit Content for Review",
             "Publish Content",
-            "Promote Content (BASIC £10, PREMIUM £25)"
+            "Promote Content (BASIC £10, PREMIUM £25)",
+            "Get Secure Content URL (Signed URL for video playback)"
           ]
         },
         {
@@ -492,15 +493,23 @@
       "status": "completed",
       "subModules": [
         {
+          "name": "Discovery",
+          "description": "Browse practitioners and marketplace content",
+          "endpoints": [
+            "Get Practitioners",
+            "Get Practitioner by ID",
+            "Get Marketplace Content",
+            "Get Content by ID"
+          ]
+        },
+        {
           "name": "Purchases",
           "description": "Content purchase flow with Stripe PaymentIntent",
           "endpoints": [
             "Health Check",
             "Purchase Content (Stripe PaymentIntent)",
-            "Confirm Payment",
             "Get My Purchases",
-            "Check Content Access",
-            "Get Secure Content URL (Signed URL for video playback)"
+            "Check Content Access"
           ]
         },
         {
@@ -513,12 +522,18 @@
           ]
         },
         {
-          "name": "Payouts",
-          "description": "Creator earnings and payout requests",
+          "name": "Earnings",
+          "description": "Creator earnings tracking",
           "endpoints": [
             "Get My Earnings",
-            "Request Payout",
-            "Get Payout History"
+            "Get Earnings Summary"
+          ]
+        },
+        {
+          "name": "Admin",
+          "description": "Admin payout processing",
+          "endpoints": [
+            "Process Payout (Admin)"
           ]
         }
       ]
@@ -536,8 +551,10 @@
         "Update Availability",
         "Delete Availability",
         "Get Available Slots",
-        "Block Time Slot",
-        "Unblock Time Slot"
+        "Check Availability Set",
+        "Add Override",
+        "Get Overrides",
+        "Delete Override"
       ]
     },
     {
@@ -573,6 +590,63 @@
             "Get Pending Payouts",
             "Process Payout",
             "Get Platform Revenue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Booking Module",
+      "path": "/bookings",
+      "description": "Booking system for scheduling lessons, managing packages, credits, and trial sessions",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Bookings",
+          "description": "Lesson booking management",
+          "endpoints": [
+            "Health Check",
+            "Payment Config",
+            "Create Booking",
+            "Get My Bookings",
+            "Get Upcoming Bookings",
+            "Get Booking by ID",
+            "Reschedule Booking",
+            "Cancel Booking",
+            "Confirm Lesson Completed"
+          ]
+        },
+        {
+          "name": "Packages",
+          "description": "Lesson package management and purchasing",
+          "endpoints": [
+            "Create Package",
+            "Get My Packages",
+            "Get Expiring Packages",
+            "Get Package by ID",
+            "Package Payment Success",
+            "Create Package Checkout",
+            "Create Package Payment Intent",
+            "Confirm Package Payment"
+          ]
+        },
+        {
+          "name": "Credits",
+          "description": "Credit management and transfers",
+          "endpoints": [
+            "Get All My Credits",
+            "Get Child All Credits",
+            "Get Child Credits for Tutor",
+            "Transfer Credits",
+            "Transfer Credits to Child"
+          ]
+        },
+        {
+          "name": "Trial Sessions",
+          "description": "Trial session purchasing",
+          "endpoints": [
+            "Create Trial Checkout",
+            "Create Trial Payment Intent",
+            "Confirm Trial Payment"
           ]
         }
       ]
