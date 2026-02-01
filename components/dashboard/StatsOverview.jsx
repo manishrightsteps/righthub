@@ -4,6 +4,7 @@ import apiInventory from '@/lib/api.json';
 
 export function StatsOverview({
   totalEndpoints,
+  monitoredEndpoints,
   healthyCount,
   unhealthyCount,
   responseTime,
@@ -17,8 +18,8 @@ export function StatsOverview({
     return healthData[healthPath]?.status === 'healthy';
   }).length;
 
-  const healthRate = totalEndpoints > 0
-    ? Math.round((healthyCount / totalEndpoints) * 100)
+  const healthRate = monitoredEndpoints > 0
+    ? Math.round((healthyCount / monitoredEndpoints) * 100)
     : 0;
 
   return (
@@ -56,7 +57,7 @@ export function StatsOverview({
             {totalEndpoints}
           </CardTitle>
           <p className="text-xs text-muted-foreground mt-1">
-            {healthyCount} healthy, {unhealthyCount} down
+            {monitoredEndpoints} monitored services
           </p>
         </CardHeader>
       </Card>

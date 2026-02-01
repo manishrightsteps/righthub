@@ -52,7 +52,7 @@ export function useHealthData(refreshInterval = 300000) {
 
       // Fetch status history for graphs
       try {
-        const statusResponse = await fetch(`${API_BASE_URL}/health/status?limit=20`);
+        const statusResponse = await fetch(`${API_BASE_URL}/health/status?limit=100`);
         const statusData = await statusResponse.json();
         if (statusData.success && statusData.data?.records) {
           setStatusHistory(statusData.data.records.reverse());

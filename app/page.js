@@ -1,7 +1,7 @@
 'use client';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Terminal, Cpu, TrendingUp, FileStack } from 'lucide-react';
+import { Terminal, Cpu, TrendingUp, FileStack, FileJson } from 'lucide-react';
 import {
   Header,
   StatsOverview,
@@ -9,9 +9,23 @@ import {
   ServicesOverview,
   SystemMetrics,
   StatusHistoryCharts,
+  ApiDetails,
 } from '@/components/dashboard';
 import { healthEndpoints } from '@/lib/endpoints';
 import { useHealthData } from '@/hooks/useHealthData';
+
+import apiData from '@/lib/api.json';
+
+// Calculate total endpoints recursively
+const countEndpoints = (modules) => {
+  let count = 0;
+  if (!modules) return 0;
+  modules.forEach(m => {
+    if (m.endpoints) count += m.endpoints.length;
+    if (m.subModules) count += countEndpoints(m.subModules);
+  });
+  return count;
+};
 
 export default function Home() {
   const {
@@ -23,6 +37,8 @@ export default function Home() {
     healthyCount,
     unhealthyCount,
   } = useHealthData();
+  
+  const totalApiEndpoints = countEndpoints(apiData.modules);
 
   const responseTime =
     detailedData?.responseTime ||
@@ -35,7 +51,8 @@ export default function Home() {
 
       <div className="container mx-auto px-6 py-8 space-y-8">
         <StatsOverview
-          totalEndpoints={healthEndpoints.length}
+          totalEndpoints={totalApiEndpoints}
+          monitoredEndpoints={healthEndpoints.length}
           healthyCount={healthyCount}
           unhealthyCount={unhealthyCount}
           responseTime={responseTime}
@@ -57,6 +74,13 @@ export default function Home() {
             >
               <FileStack className="w-4 h-4 mr-2" />
               SERVICES
+            </TabsTrigger>
+            <TabsTrigger
+              value="details"
+              className="data-[state=active]:bg-background data-[state=active]:shadow-sm font-semibold"
+            >
+              <FileJson className="w-4 h-4 mr-2" />
+              API_DETAILS
             </TabsTrigger>
             <TabsTrigger
               value="system"
@@ -84,6 +108,10 @@ export default function Home() {
 
           <TabsContent value="services" className="mt-6">
             <ServicesOverview healthData={healthData} />
+          </TabsContent>
+
+          <TabsContent value="details" className="mt-6">
+            <ApiDetails apiData={apiData} />
           </TabsContent>
 
           <TabsContent value="system" className="mt-6">
