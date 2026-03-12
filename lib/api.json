@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "8.5.0",
+    "version": "11.1.1",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-01-23"
+    "lastUpdated": "2026-03-12"
   },
   "modules": [
     {
@@ -17,18 +17,21 @@
         "Register",
         "Verify OTP",
         "Login",
-        "Get Me",
+        "Forgot Password",
+        "Reset Password",
+        "Send Verification Email",
         "Refresh Token",
         "Logout",
         "Logout All Devices",
         "Get Active Sessions",
         "Revoke Session",
-        "Forgot Password",
-        "Reset Password",
-        "Send Verification Email",
-        "Admin Register",
+        "Get Me",
         "Google OAuth",
-        "Facebook OAuth"
+        "Google OAuth Callback",
+        "Facebook OAuth",
+        "Facebook OAuth Callback",
+        "Delete User Data",
+        "Admin Register"
       ]
     },
     {
@@ -66,7 +69,20 @@
             "Validate PIN",
             "Verify Security Answer",
             "Verify OTP and Reset PIN",
-            "Validate Temp PIN and Change PIN"
+            "Validate Temp PIN and Change PIN",
+            "Confirm Unlock Account",
+            "Admin Unlock Parent Account"
+          ]
+        },
+        {
+          "name": "Learning Preferences",
+          "description": "Child learning style preferences with per-subject overrides",
+          "endpoints": [
+            "Set Subject Preference",
+            "Get Subject Preference",
+            "Get All Preferences",
+            "Delete Subject Preference",
+            "Get Effective Learning Style"
           ]
         },
         {
@@ -170,6 +186,91 @@
       ]
     },
     {
+      "name": "Messaging Module",
+      "path": "/messaging",
+      "description": "Real-time messaging system with WebSocket support, chat rooms, presence tracking, and message history",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Chat Rooms",
+          "description": "Chat room creation, management, and participant handling",
+          "endpoints": [
+            "Health Check",
+            "Create Chat Room",
+            "Get My Rooms",
+            "Get Room by ID",
+            "Get Room Participants",
+            "Leave Room",
+            "Block Room",
+            "Unblock Room"
+          ]
+        },
+        {
+          "name": "Messages",
+          "description": "Message sending, retrieval, and management",
+          "endpoints": [
+            "Send Message",
+            "Get Room Messages",
+            "Get Message by ID",
+            "Search Messages",
+            "Delete Message",
+            "Edit Message"
+          ]
+        },
+        {
+          "name": "Presence & Status",
+          "description": "User online status and typing indicators",
+          "endpoints": [
+            "Get User Presence",
+            "Update My Presence",
+            "Get Room Presence"
+          ]
+        },
+        {
+          "name": "Read Receipts",
+          "description": "Message read tracking and unread counts",
+          "endpoints": [
+            "Mark Room as Read",
+            "Get Unread Count",
+            "Get Read Receipts"
+          ]
+        },
+        {
+          "name": "Admin",
+          "description": "Admin moderation and management",
+          "endpoints": [
+            "Get All Rooms (Admin)",
+            "Delete Room (Admin)"
+          ]
+        }
+      ],
+      "websocketEvents": {
+        "clientToServer": [
+          "chat:join - Join a chat room",
+          "chat:leave - Leave a chat room",
+          "chat:message - Send a message",
+          "chat:typing - Send typing indicator",
+          "chat:read - Mark messages as read",
+          "chat:presence - Update presence status"
+        ],
+        "serverToClient": [
+          "connected - Connection established",
+          "chat:message - New message received",
+          "chat:message_ack - Message sent acknowledgment",
+          "chat:typing - User typing indicator",
+          "chat:read - Read receipt update",
+          "chat:presence - User presence change",
+          "chat:user_joined - User joined room",
+          "chat:user_left - User left room",
+          "chat:unread - Unread message notification",
+          "room:joined - Room join confirmation",
+          "room:left - Room leave confirmation",
+          "error - Error notification",
+          "pong - Heartbeat response"
+        ]
+      }
+    },
+    {
       "name": "Subscription Module",
       "path": "/subscription",
       "description": "Subscription plan management and payment processing with Stripe and PayPal integration",
@@ -184,7 +285,9 @@
             "Subscribe to Plan",
             "Get My Subscription",
             "Cancel My Subscription",
-            "Get My Payments"
+            "Get My Payments",
+            "Cancel Child Subscription",
+            "Add Child To Subscription"
           ]
         },
         {
@@ -194,14 +297,17 @@
             "Get Payment Config",
             "Create Payment Intent",
             "Create Checkout Session",
+            "Create Child Checkout Session",
             "Confirm Stripe Payment",
-            "Capture PayPal Payment"
+            "Capture PayPal Payment",
+            "Stripe Webhook"
           ]
         },
         {
           "name": "Plan Management",
           "description": "Admin endpoints for managing subscription plans",
           "endpoints": [
+            "Plan Health Check",
             "Get All Plans",
             "Get Plan by ID",
             "Create Plan",
@@ -227,10 +333,10 @@
         "Health Check",
         "Upload File",
         "Get My Uploads",
-        "Get Upload by ID",
         "Get Entity Uploads",
-        "Delete Upload (Soft Delete)",
-        "Delete Upload (Hard Delete)",
+        "Get Upload by ID",
+        "Get Upload Status",
+        "Delete Upload",
         "Replace Upload"
       ]
     },
@@ -255,7 +361,7 @@
           "endpoints": [
             "Analytics User Stats",
             "Analytics Subscription Stats",
-            "Analytics Professional Stats (includes all professional profiles)",
+            "Analytics Professional Stats",
             "Analytics Parent Stats",
             "Analytics Upload Stats",
             "Analytics Growth Stats"
@@ -285,9 +391,14 @@
         "Create Notification",
         "Get Notifications",
         "Get Unread Count",
+        "Get Notification Types",
+        "Get Notification Statuses",
+        "Get Notification Priorities",
+        "Get Notification by ID",
         "Mark as Read",
         "Mark All as Read",
-        "Get Notification Types",
+        "Archive Notification",
+        "Delete Notification",
         "Create Announcement (Admin)"
       ]
     },
@@ -300,7 +411,8 @@
         "Health Check",
         "Community Auth",
         "Sync User Data",
-        "Generate Magic Link"
+        "Generate Magic Link",
+        "Magic Link Auth"
       ]
     },
     {
@@ -314,7 +426,8 @@
         "Readiness Probe",
         "Liveness Probe",
         "Database Health",
-        "System Stats"
+        "System Stats",
+        "Full System Status"
       ]
     },
     {
@@ -323,6 +436,7 @@
       "description": "AI-powered tutoring system for student questions and answers",
       "status": "completed",
       "endpoints": [
+        "Health Check",
         "Ask Question",
         "Get Question Result"
       ]
@@ -330,7 +444,7 @@
     {
       "name": "Curriculum Module",
       "path": "/curriculum",
-      "description": "UK Curriculum management with 5-level hierarchy: Year Groups → Subjects → Topics → Sub-Topics → Learning Objectives. Auto-generates objective IDs in format SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)",
+      "description": "UK Curriculum management with 5-level hierarchy: Year Groups -> Subjects -> Topics -> Sub-Topics -> Learning Objectives. Auto-generates objective IDs in format SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)",
       "status": "completed",
       "subModules": [
         {
@@ -338,10 +452,10 @@
           "description": "Year group management (e.g., Year 10, Year 11) with key stages and age ranges",
           "endpoints": [
             "Health Check",
+            "Get All Year Groups",
+            "Get Year Group by ID",
+            "Get Year Group Hierarchy",
             "Create Year Group (Admin)",
-            "Get All Year Groups (Public)",
-            "Get Year Group by ID (Public)",
-            "Get Year Group Hierarchy (Public)",
             "Update Year Group (Admin)",
             "Delete Year Group (Admin)"
           ]
@@ -350,9 +464,9 @@
           "name": "Subjects",
           "description": "Subject management within year groups (e.g., Mathematics, English, Science)",
           "endpoints": [
+            "Get All Subjects",
+            "Get Subject by ID",
             "Create Subject (Admin)",
-            "Get All Subjects (Public)",
-            "Get Subject by ID (Public)",
             "Update Subject (Admin)",
             "Delete Subject (Admin)"
           ]
@@ -361,9 +475,9 @@
           "name": "Topics",
           "description": "Topic management within subjects (e.g., Algebra, Geometry, Statistics)",
           "endpoints": [
+            "Get All Topics",
+            "Get Topic by ID",
             "Create Topic (Admin)",
-            "Get All Topics (Public)",
-            "Get Topic by ID (Public)",
             "Update Topic (Admin)",
             "Delete Topic (Admin)"
           ]
@@ -372,9 +486,9 @@
           "name": "Sub-Topics",
           "description": "Sub-topic management within topics (e.g., Linear Equations, Quadratic Equations)",
           "endpoints": [
+            "Get All Sub-Topics",
+            "Get Sub-Topic by ID",
             "Create Sub-Topic (Admin)",
-            "Get All Sub-Topics (Public)",
-            "Get Sub-Topic by ID (Public)",
             "Update Sub-Topic (Admin)",
             "Delete Sub-Topic (Admin)"
           ]
@@ -383,12 +497,24 @@
           "name": "Learning Objectives",
           "description": "Learning objective management with auto-generated IDs and difficulty levels (Foundation, Intermediate, Higher)",
           "endpoints": [
+            "Get All Objectives",
+            "Get Objective by ID",
+            "Get Objective by ObjectiveId",
             "Create Objective (Admin)",
-            "Get All Objectives (Public)",
-            "Get Objective by ID (Public)",
-            "Get Objective by ObjectiveId (Public)",
             "Update Objective (Admin)",
             "Delete Objective (Admin)"
+          ]
+        },
+        {
+          "name": "Curriculum Assignment",
+          "description": "Assigning curriculum year groups to children",
+          "endpoints": [
+            "Get Children Without Year Group (Admin)",
+            "Assign Year Group to Child (Admin)",
+            "Auto Assign Year Group (Admin)",
+            "Bulk Assign Year Groups (Admin)",
+            "Update Child Year Group (Admin)",
+            "Remove Child Year Group (Admin)"
           ]
         }
       ]
@@ -396,7 +522,7 @@
     {
       "name": "Content Module",
       "path": "/content",
-      "description": "Educational content management, marketplace, creator monetization, and analytics. Supports RIGHTSTEPS official content and CREATOR marketplace content with moderation workflow (DRAFT → PENDING_REVIEW → APPROVED → PUBLISHED). Includes 70/30 revenue split, content promotion, badge system, and comprehensive analytics.",
+      "description": "Educational content management, marketplace, creator monetization, and analytics. Supports RIGHTSTEPS official content and CREATOR marketplace content with moderation workflow (DRAFT -> PENDING_REVIEW -> APPROVED -> PUBLISHED). Includes 70/30 revenue split, content promotion, badge system, content achievements (learning outcomes with icons), and comprehensive analytics.",
       "status": "completed",
       "subModules": [
         {
@@ -409,60 +535,11 @@
             "Get My Content",
             "Get Content by ID",
             "Update Content",
-            "Delete Content (soft delete/archive)"
-          ]
-        },
-        {
-          "name": "Content Lifecycle",
-          "description": "Content submission, publishing, promotion, and access",
-          "endpoints": [
+            "Delete Content",
             "Submit Content for Review",
             "Publish Content",
             "Promote Content (BASIC £10, PREMIUM £25)",
-            "Get Secure Content URL (Signed URL for video playback)"
-          ]
-        },
-        {
-          "name": "Marketplace - Reviews",
-          "description": "Content reviews, ratings, and creator replies",
-          "endpoints": [
-            "Create Review",
-            "Get Content Reviews",
-            "Reply to Review (Creator)"
-          ]
-        },
-        {
-          "name": "Marketplace - Purchases",
-          "description": "Content purchases, access control, and sharing",
-          "endpoints": [
-            "Purchase Content",
-            "Get My Purchases",
-            "Check Content Access",
-            "Generate Share Link",
-            "Access Shared Content"
-          ]
-        },
-        {
-          "name": "Marketplace - Earnings",
-          "description": "Creator earnings tracking and payout requests",
-          "endpoints": [
-            "Get My Earnings",
-            "Request Payout"
-          ]
-        },
-        {
-          "name": "Analytics",
-          "description": "Content analytics, tracking, and performance metrics",
-          "endpoints": [
-            "Track Content View",
-            "Track Content Completion",
-            "Get Content Analytics",
-            "Get User Engagement",
-            "Get Creator Dashboard",
-            "Get Content Performance",
-            "Get Revenue Analytics",
-            "Get Trending Content",
-            "Get Platform Analytics (Admin)"
+            "Get Secure Content URL (Signed URL)"
           ]
         },
         {
@@ -473,15 +550,23 @@
             "Feature Content",
             "Update Content Tags",
             "Update Badges (Batch)",
-            "Process Payout"
+            "Get Content Stats",
+            "Get Pending Reviews"
           ]
         },
         {
-          "name": "Admin - Analytics",
-          "description": "Platform statistics and insights (Admin only)",
+          "name": "Analytics",
+          "description": "Content analytics, tracking, and performance metrics",
           "endpoints": [
-            "Get Content Stats",
-            "Get Pending Reviews"
+            "Get Trending Content",
+            "Get Content Analytics",
+            "Get Creator Dashboard",
+            "Get Content Performance",
+            "Get User Engagement",
+            "Get Revenue Analytics",
+            "Track Content View",
+            "Track Content Completion",
+            "Get Platform Analytics (Admin)"
           ]
         }
       ]
@@ -496,6 +581,7 @@
           "name": "Discovery",
           "description": "Browse practitioners and marketplace content",
           "endpoints": [
+            "Health Check",
             "Get Practitioners",
             "Get Practitioner by ID",
             "Get Marketplace Content",
@@ -503,11 +589,10 @@
           ]
         },
         {
-          "name": "Purchases",
-          "description": "Content purchase flow with Stripe PaymentIntent",
+          "name": "Purchase & Access",
+          "description": "Content purchase flow and access control",
           "endpoints": [
-            "Health Check",
-            "Purchase Content (Stripe PaymentIntent)",
+            "Purchase Content",
             "Get My Purchases",
             "Check Content Access"
           ]
@@ -517,8 +602,8 @@
           "description": "Content reviews and ratings",
           "endpoints": [
             "Create Review",
-            "Get Content Reviews",
-            "Reply to Review (Creator)"
+            "Reply to Review",
+            "Get Reviews"
           ]
         },
         {
@@ -545,16 +630,15 @@
       "status": "completed",
       "endpoints": [
         "Health Check",
-        "Set Availability",
-        "Get My Availability",
-        "Get Tutor Availability (Public)",
-        "Update Availability",
-        "Delete Availability",
-        "Get Available Slots",
-        "Check Availability Set",
+        "Set Availability Schedule",
+        "Get Availability Schedule",
+        "Delete Availability Schedule Day",
         "Add Override",
         "Get Overrides",
-        "Delete Override"
+        "Delete Override",
+        "Get Available Slots",
+        "Check Availability Set",
+        "Get Public Summary"
       ]
     },
     {
@@ -562,137 +646,452 @@
       "path": "/wallet",
       "description": "Creator wallet system for managing earnings, transactions, and payouts from marketplace sales",
       "status": "completed",
-      "subModules": [
-        {
-          "name": "Wallet Management",
-          "description": "Wallet balance and transaction management",
-          "endpoints": [
-            "Health Check",
-            "Get My Wallet",
-            "Get Transaction History",
-            "Get Wallet Stats"
-          ]
-        },
-        {
-          "name": "Payouts",
-          "description": "Payout requests and processing",
-          "endpoints": [
-            "Request Payout",
-            "Get Payout History",
-            "Cancel Payout Request"
-          ]
-        },
-        {
-          "name": "Admin Operations",
-          "description": "Admin wallet management",
-          "endpoints": [
-            "Get All Wallets",
-            "Get Pending Payouts",
-            "Process Payout",
-            "Get Platform Revenue"
-          ]
-        }
+      "endpoints": [
+        "Health Check",
+        "Get My Wallet",
+        "Get Wallet Summary",
+        "Get Transactions",
+        "Request Payout",
+        "Get Payouts",
+        "Cancel Payout"
       ]
     },
     {
-      "name": "Booking Module",
-      "path": "/bookings",
-      "description": "Booking system for scheduling lessons, managing packages, credits, and trial sessions",
+      "name": "Enrollment Module",
+      "path": "/enrollment",
+      "description": "Child enrollment and curriculum configuration with AI-powered assessment for difficulty level determination. Multi-step enrollment flow with curriculum selection, beyond-book enrichment, language learning, faith studies, and learning style configuration.",
       "status": "completed",
       "subModules": [
         {
-          "name": "Bookings",
-          "description": "Lesson booking management",
+          "name": "Health",
+          "description": "Module health checks",
           "endpoints": [
-            "Health Check",
-            "Payment Config",
-            "Create Booking",
-            "Get My Bookings",
-            "Get Upcoming Bookings",
-            "Get Booking by ID",
-            "Reschedule Booking",
-            "Cancel Booking",
-            "Confirm Lesson Completed"
+            "Enrollment Health Check",
+            "Assessment Health Check"
           ]
         },
         {
-          "name": "Packages",
-          "description": "Lesson package management and purchasing",
+          "name": "Options",
+          "description": "Enrollment dropdown options (public)",
+          "endpoints": [
+            "Get Enrollment Options"
+          ]
+        },
+        {
+          "name": "Enrollment Flow",
+          "description": "6-step child enrollment process",
+          "endpoints": [
+            "Get Child Enrollment Status",
+            "Start Enrollment",
+            "Save Curriculum Step",
+            "Save Beyond Book Step",
+            "Save Language Step",
+            "Save Faith Step",
+            "Save Learning Style Step",
+            "Submit Enrollment",
+            "Update Enrollment",
+            "Get Enrollment Preview"
+          ]
+        },
+        {
+          "name": "Assessment",
+          "description": "AI-powered assessment for difficulty level determination with Steppy bot personality",
+          "endpoints": [
+            "Get Assessment Status",
+            "Start Assessment",
+            "Submit Answer",
+            "Complete Assessment",
+            "Get Assessment Result",
+            "Activate Child"
+          ]
+        }
+      ],
+      "enrollmentFlow": {
+        "steps": [
+          "Step 1: Start Enrollment - Initialize with region selection",
+          "Step 2: Curriculum - Select year group and subjects (exam boards for GCSE)",
+          "Step 3: Beyond Book - Optional enrichment modules (Skills, Wellbeing, etc.)",
+          "Step 4: Language - Optional language learning configuration",
+          "Step 5: Faith - Optional faith study configuration",
+          "Step 6: Learning Style - Configure learning styles (overall or per-subject)"
+        ],
+        "postEnrollment": [
+          "Submit Enrollment - Finalize configuration",
+          "Assessment - AI-powered questions to determine difficulty level",
+          "Activation - Parent activates child after assessment"
+        ]
+      },
+      "difficultyLevels": {
+        "Foundation": "0-39% assessment score - Basic content for confidence building",
+        "Intermediate": "40-69% assessment score - Balanced challenge and support",
+        "Higher": "70-100% assessment score - Advanced content for stretch learning"
+      },
+      "aiFeatures": {
+        "questionGeneration": "AI generates curriculum-aligned questions based on child's year group, subjects, and learning type",
+        "answerEvaluation": "AI evaluates short answers with partial credit support",
+        "resultAnalysis": "AI provides subject breakdown, strengths, areas for improvement, and recommendations",
+        "personality": "Steppy bot - friendly, encouraging, age-appropriate feedback"
+      }
+    },
+    {
+      "name": "Tickets Module",
+      "path": "/tickets",
+      "description": "Support ticket system for user inquiries and issue resolution",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "Create Ticket",
+        "Get My Tickets",
+        "Get Ticket by ID",
+        "Add Message to Ticket",
+        "Close Ticket",
+        "Reopen Ticket",
+        "Get All Tickets (Admin)",
+        "Update Ticket Status (Admin)",
+        "Assign Ticket (Admin)"
+      ]
+    },
+    {
+      "name": "Sessions Module",
+      "path": "/sessions",
+      "description": "Session management for tutor sessions, packages, credits, trial sessions, meeting links, notes, and ratings",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Tutor Sessions",
+          "description": "Tutor session scheduling, management, and video meeting",
+          "endpoints": [
+            "Health Check",
+            "Get Payment Config",
+            "Create Tutor Session",
+            "Get My Tutor Sessions",
+            "Get Upcoming Tutor Sessions",
+            "Get Tutor Session by ID",
+            "Join Session",
+            "Reschedule Tutor Session",
+            "Cancel Tutor Session",
+            "Confirm Lesson Completed",
+            "Add Tutor Notes",
+            "Add Parent Rating",
+            "Tutor Accept Session",
+            "Tutor Reject Session"
+          ]
+        },
+        {
+          "name": "Packages & Credits",
+          "description": "Tutor package management, purchasing and credit transfers",
           "endpoints": [
             "Create Package",
             "Get My Packages",
             "Get Expiring Packages",
             "Get Package by ID",
-            "Package Payment Success",
-            "Create Package Checkout",
-            "Create Package Payment Intent",
-            "Confirm Package Payment"
-          ]
-        },
-        {
-          "name": "Credits",
-          "description": "Credit management and transfers",
-          "endpoints": [
             "Get All My Credits",
             "Get Child All Credits",
             "Get Child Credits for Tutor",
             "Transfer Credits",
-            "Transfer Credits to Child"
+            "Transfer Credits to Child",
+            "Package Payment Success"
           ]
         },
         {
-          "name": "Trial Sessions",
-          "description": "Trial session purchasing",
+          "name": "Payments",
+          "description": "Payment processing for packages and trials",
           "endpoints": [
+            "Create Package Checkout",
+            "Create Package Payment Intent",
+            "Confirm Package Payment",
             "Create Trial Checkout",
             "Create Trial Payment Intent",
-            "Confirm Trial Payment"
+            "Confirm Trial Payment",
+            "Stripe Webhook"
           ]
         }
       ]
+    },
+    {
+      "name": "Success Roadmap Module",
+      "path": "/success-roadmap",
+      "description": "AI-powered career exploration and roadmap generation for children. Generates age-appropriate career pathways with UK education context, follow-up Q&A, and daily usage limits.",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Health",
+          "description": "Module health checks",
+          "endpoints": [
+            "Health Check"
+          ]
+        },
+        {
+          "name": "Roadmap",
+          "description": "Career roadmap generation and management",
+          "endpoints": [
+            "Create Roadmap",
+            "Ask Follow-up Question",
+            "Get Child Roadmaps",
+            "Get Roadmap by ID",
+            "Delete Roadmap"
+          ]
+        },
+        {
+          "name": "Usage",
+          "description": "Daily usage tracking and limits",
+          "endpoints": [
+            "Get Daily Usage"
+          ]
+        },
+        {
+          "name": "History",
+          "description": "Roadmap history for parent",
+          "endpoints": [
+            "Get Roadmap History"
+          ]
+        }
+      ],
+      "features": {
+        "careerQuery": {
+          "description": "AI validates career queries for appropriateness",
+          "validation": [
+            "Content filtering for inappropriate topics",
+            "Career-related query verification",
+            "Age-appropriate response generation"
+          ]
+        },
+        "roadmapGeneration": {
+          "description": "AI generates comprehensive career roadmaps",
+          "includes": [
+            "Career title and summary",
+            "Stage-by-stage pathway with age ranges",
+            "UK qualifications (GCSEs, A-Levels, degrees)",
+            "Key milestones and skills per stage",
+            "Salary ranges (entry, experienced, senior)",
+            "Related careers",
+            "Encouraging message and fun fact",
+            "Suggested follow-up questions"
+          ]
+        },
+        "followUp": {
+          "description": "Follow-up Q&A system",
+          "limits": {
+            "maxPerRoadmap": 5,
+            "tracking": "Per-roadmap count tracking"
+          }
+        },
+        "dailyLimits": {
+          "description": "Daily usage limits per child",
+          "limits": {
+            "roadmapsPerDay": 3,
+            "maxRoadmapsPerChild": 10
+          }
+        },
+        "aiPersonality": {
+          "name": "Steppy",
+          "description": "Friendly, encouraging AI guide for children"
+        }
+      },
+      "aiFeatures": {
+        "queryValidation": "AI validates career queries for appropriateness and relevance",
+        "roadmapGeneration": "AI generates stage-by-stage career pathways with UK education context",
+        "followUpHandling": "AI answers follow-up questions about the career roadmap",
+        "contentFiltering": "Blocks inappropriate topics (violence, drugs, adult content, etc.)"
+      }
     }
   ],
   "features": {
     "authentication": {
-      "methods": ["JWT", "OAuth (Google, Facebook)", "2FA with OTP"],
-      "security": ["Rate limiting", "Password hashing", "Token refresh"]
+      "methods": [
+        "JWT",
+        "OAuth (Google, Facebook)",
+        "2FA with OTP"
+      ],
+      "security": [
+        "Rate limiting",
+        "Password hashing",
+        "Token refresh"
+      ]
     },
     "payments": {
-      "gateways": ["Stripe", "PayPal"],
-      "methods": ["Payment Intent", "Checkout Session", "Webhooks"]
+      "gateways": [
+        "Stripe",
+        "PayPal"
+      ],
+      "methods": [
+        "Payment Intent",
+        "Checkout Session",
+        "Webhooks"
+      ]
     },
     "storage": {
-      "providers": ["ImageKit", "AWS S3", "Cloudflare R2"],
-      "fileTypes": ["Images", "Videos", "Documents", "PDFs"],
+      "providers": [
+        "ImageKit",
+        "AWS S3",
+        "Cloudflare R2"
+      ],
+      "fileTypes": [
+        "Images",
+        "Videos",
+        "Documents",
+        "PDFs"
+      ],
       "videoProcessing": "Inngest + ffmpeg for async video processing"
     },
     "userTypes": {
-      "roles": ["USER", "PARENT", "TUTOR", "SPEECH_THERAPIST", "CHILD_PSYCHOLOGIST", "CAREER_COUNSELOR", "OCCUPATIONAL_THERAPIST", "SOCIAL_SKILLS_COACH", "SEN_PRACTITIONER", "NUTRITION_ADVISOR", "DIGITAL_WELLBEING_PRACTITIONER", "ADMIN"],
-      "profiles": ["Parent Profile", "Tutor Profile", "Speech Therapist Profile", "Child Psychologist Profile", "Career Counselor Profile", "Occupational Therapist Profile", "Social Skills Coach Profile", "SEN Practitioner Profile", "Nutrition Advisor Profile", "Digital Wellbeing Practitioner Profile"],
-      "verification": ["Email verification", "Admin verification for professional profiles"]
+      "roles": [
+        "USER",
+        "PARENT",
+        "TUTOR",
+        "SPEECH_THERAPIST",
+        "CHILD_PSYCHOLOGIST",
+        "CAREER_COUNSELOR",
+        "OCCUPATIONAL_THERAPIST",
+        "SOCIAL_SKILLS_COACH",
+        "SEN_PRACTITIONER",
+        "NUTRITION_ADVISOR",
+        "DIGITAL_WELLBEING_PRACTITIONER",
+        "ADMIN"
+      ],
+      "profiles": [
+        "Parent Profile",
+        "Tutor Profile",
+        "Speech Therapist Profile",
+        "Child Psychologist Profile",
+        "Career Counselor Profile",
+        "Occupational Therapist Profile",
+        "Social Skills Coach Profile",
+        "SEN Practitioner Profile",
+        "Nutrition Advisor Profile",
+        "Digital Wellbeing Practitioner Profile"
+      ],
+      "verification": [
+        "Email verification",
+        "Admin verification for professional profiles"
+      ]
     },
     "analytics": {
-      "metrics": ["User stats", "Subscription stats", "Revenue stats", "Growth stats"],
-      "filtering": ["Date range", "User role", "Status"]
+      "metrics": [
+        "User stats",
+        "Subscription stats",
+        "Revenue stats",
+        "Growth stats"
+      ],
+      "filtering": [
+        "Date range",
+        "User role",
+        "Status"
+      ]
     },
     "curriculum": {
-      "hierarchy": ["Year Groups", "Subjects", "Topics", "Sub-Topics", "Learning Objectives"],
-      "keyStages": ["KS1", "KS2", "KS3", "KS4", "KS5"],
-      "difficultyLevels": ["Foundation", "Intermediate", "Higher"],
-      "features": ["Auto-generated objective IDs", "Full hierarchy endpoint", "Pagination and filtering", "Redis caching", "Cascade deletes"],
+      "hierarchy": [
+        "Year Groups",
+        "Subjects",
+        "Topics",
+        "Sub-Topics",
+        "Learning Objectives"
+      ],
+      "keyStages": [
+        "KS1",
+        "KS2",
+        "KS3",
+        "KS4",
+        "KS5"
+      ],
+      "difficultyLevels": [
+        "Foundation",
+        "Intermediate",
+        "Higher"
+      ],
+      "features": [
+        "Auto-generated objective IDs",
+        "Full hierarchy endpoint",
+        "Pagination and filtering",
+        "Redis caching",
+        "Cascade deletes"
+      ],
       "objectiveIdFormat": "SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)"
+    },
+    "learningPreferences": {
+      "description": "Child learning style preferences with global and per-subject overrides",
+      "learningStyles": [
+        "VISUAL_SPATIAL",
+        "AUDITORY_AURAL",
+        "READING_WRITING",
+        "KINESTHETIC",
+        "SOCIAL",
+        "SOLITARY"
+      ],
+      "prioritySystem": {
+        "description": "Learning style determined by priority: Subject Override > Child Default",
+        "levels": [
+          "Subject-specific preference (highest priority)",
+          "Child's global learning style (default)"
+        ]
+      },
+      "contentMapping": {
+        "VISUAL_SPATIAL": ["VIDEO", "INTERACTIVE"],
+        "AUDITORY_AURAL": ["AUDIO", "VIDEO"],
+        "READING_WRITING": ["PDF", "TEXT"],
+        "KINESTHETIC": ["INTERACTIVE", "VIDEO"],
+        "SOCIAL": ["INTERACTIVE", "VIDEO"],
+        "SOLITARY": ["PDF", "AUDIO"]
+      }
+    },
+    "websocket": {
+      "description": "Production-grade WebSocket system with Redis pub/sub for horizontal scaling",
+      "architecture": {
+        "server": "ws (WebSocket library)",
+        "scaling": "Redis pub/sub for cross-server messaging",
+        "compression": "perMessageDeflate enabled",
+        "maxPayload": "1MB"
+      },
+      "scalability": {
+        "singleServer": "~10,000 concurrent connections",
+        "withRedis": "100,000+ concurrent connections across multiple servers",
+        "features": [
+          "Automatic Redis detection and fallback",
+          "Cross-server room broadcasting",
+          "Cross-server user messaging",
+          "Distributed presence tracking",
+          "Connection state in Redis",
+          "Graceful degradation to single-server mode"
+        ]
+      },
+      "channels": {
+        "broadcast": "ws:broadcast",
+        "room": "ws:room:{roomName}",
+        "user": "ws:user:{userId}",
+        "presence": "ws:presence"
+      },
+      "heartbeat": {
+        "interval": "30 seconds",
+        "timeout": "Terminates unresponsive connections"
+      }
     },
     "emailSystem": {
       "description": "Component-based email template system with RightSteps branding",
       "location": "src/shared/services/email/",
-      "architecture": ["Reusable components (header, footer, button, info box)", "Base template wrapper", "Individual templates for each workflow"],
+      "architecture": [
+        "Reusable components (header, footer, button, info box)",
+        "Base template wrapper",
+        "Individual templates for each workflow"
+      ],
       "branding": {
         "colors": {
           "primary": "#1A2F6E (Navy Blue)",
-          "secondary": ["#60B8F8 (Light Blue)", "#1C2E58 (Dark Blue)"],
-          "accent": ["#60C3AA (Green)", "#FFC24A (Yellow)", "#ED545C (Red)"]
+          "secondary": [
+            "#60B8F8 (Light Blue)",
+            "#1C2E58 (Dark Blue)"
+          ],
+          "accent": [
+            "#60C3AA (Green)",
+            "#FFC24A (Yellow)",
+            "#ED545C (Red)"
+          ]
         },
-        "components": ["Header with gradient", "Footer with branding", "Styled buttons", "Info boxes"]
+        "components": [
+          "Header with gradient",
+          "Footer with branding",
+          "Styled buttons",
+          "Info boxes"
+        ]
       },
       "templates": {
         "auth": [
@@ -734,18 +1133,73 @@
         }
       },
       "integration": {
-        "authModule": ["sendOTPEmail", "sendPasswordResetEmail", "sendWelcomeEmail", "sendEmailVerifiedNotification"],
-        "parentProfile": ["sendProfileCompletionEmail", "sendEmailUpdatedNotification"],
-        "tutorProfile": ["sendTutorSubmittedEmail", "sendTutorApprovedEmail", "sendTutorChangesRequestedEmail", "sendTutorRejectedEmail"],
-        "speechTherapistProfile": ["sendSpeechTherapistSubmittedEmail", "sendSpeechTherapistApprovedEmail", "sendSpeechTherapistChangesRequestedEmail", "sendSpeechTherapistRejectedEmail"],
-        "childPsychologistProfile": ["sendChildPsychologistSubmittedEmail", "sendChildPsychologistApprovedEmail", "sendChildPsychologistChangesRequestedEmail", "sendChildPsychologistRejectedEmail"],
-        "careerCounselorProfile": ["sendCareerCounselorSubmittedEmail", "sendCareerCounselorApprovedEmail", "sendCareerCounselorChangesRequestedEmail", "sendCareerCounselorRejectedEmail"],
-        "occupationalTherapistProfile": ["sendOccupationalTherapistSubmittedEmail", "sendOccupationalTherapistApprovedEmail", "sendOccupationalTherapistChangesRequestedEmail", "sendOccupationalTherapistRejectedEmail"],
-        "socialSkillsCoachProfile": ["sendSocialSkillsCoachSubmittedEmail", "sendSocialSkillsCoachApprovedEmail", "sendSocialSkillsCoachChangesRequestedEmail", "sendSocialSkillsCoachRejectedEmail"],
-        "senPractitionerProfile": ["sendSenPractitionerSubmittedEmail", "sendSenPractitionerApprovedEmail", "sendSenPractitionerChangesRequestedEmail", "sendSenPractitionerRejectedEmail"],
-        "nutritionAdvisorProfile": ["sendNutritionAdvisorSubmittedEmail", "sendNutritionAdvisorApprovedEmail", "sendNutritionAdvisorChangesRequestedEmail", "sendNutritionAdvisorRejectedEmail"],
-        "digitalWellbeingPractitionerProfile": ["sendDigitalWellbeingPractitionerSubmittedEmail", "sendDigitalWellbeingPractitionerApprovedEmail", "sendDigitalWellbeingPractitionerChangesRequestedEmail", "sendDigitalWellbeingPractitionerRejectedEmail"],
-        "subscriptionPayment": ["sendPaymentSuccessEmail (Stripe, PayPal, Generic)"]
+        "authModule": [
+          "sendOTPEmail",
+          "sendPasswordResetEmail",
+          "sendWelcomeEmail",
+          "sendEmailVerifiedNotification"
+        ],
+        "parentProfile": [
+          "sendProfileCompletionEmail",
+          "sendEmailUpdatedNotification"
+        ],
+        "tutorProfile": [
+          "sendTutorSubmittedEmail",
+          "sendTutorApprovedEmail",
+          "sendTutorChangesRequestedEmail",
+          "sendTutorRejectedEmail"
+        ],
+        "speechTherapistProfile": [
+          "sendSpeechTherapistSubmittedEmail",
+          "sendSpeechTherapistApprovedEmail",
+          "sendSpeechTherapistChangesRequestedEmail",
+          "sendSpeechTherapistRejectedEmail"
+        ],
+        "childPsychologistProfile": [
+          "sendChildPsychologistSubmittedEmail",
+          "sendChildPsychologistApprovedEmail",
+          "sendChildPsychologistChangesRequestedEmail",
+          "sendChildPsychologistRejectedEmail"
+        ],
+        "careerCounselorProfile": [
+          "sendCareerCounselorSubmittedEmail",
+          "sendCareerCounselorApprovedEmail",
+          "sendCareerCounselorChangesRequestedEmail",
+          "sendCareerCounselorRejectedEmail"
+        ],
+        "occupationalTherapistProfile": [
+          "sendOccupationalTherapistSubmittedEmail",
+          "sendOccupationalTherapistApprovedEmail",
+          "sendOccupationalTherapistChangesRequestedEmail",
+          "sendOccupationalTherapistRejectedEmail"
+        ],
+        "socialSkillsCoachProfile": [
+          "sendSocialSkillsCoachSubmittedEmail",
+          "sendSocialSkillsCoachApprovedEmail",
+          "sendSocialSkillsCoachChangesRequestedEmail",
+          "sendSocialSkillsCoachRejectedEmail"
+        ],
+        "senPractitionerProfile": [
+          "sendSenPractitionerSubmittedEmail",
+          "sendSenPractitionerApprovedEmail",
+          "sendSenPractitionerChangesRequestedEmail",
+          "sendSenPractitionerRejectedEmail"
+        ],
+        "nutritionAdvisorProfile": [
+          "sendNutritionAdvisorSubmittedEmail",
+          "sendNutritionAdvisorApprovedEmail",
+          "sendNutritionAdvisorChangesRequestedEmail",
+          "sendNutritionAdvisorRejectedEmail"
+        ],
+        "digitalWellbeingPractitionerProfile": [
+          "sendDigitalWellbeingPractitionerSubmittedEmail",
+          "sendDigitalWellbeingPractitionerApprovedEmail",
+          "sendDigitalWellbeingPractitionerChangesRequestedEmail",
+          "sendDigitalWellbeingPractitionerRejectedEmail"
+        ],
+        "subscriptionPayment": [
+          "sendPaymentSuccessEmail (Stripe, PayPal, Generic)"
+        ]
       },
       "helperFunctions": "src/shared/services/email.helper.js - All email sending functions with logging and error handling"
     }
@@ -755,19 +1209,303 @@
     "database": "PostgreSQL with Prisma ORM and MonfgoDB for certain modules",
     "caching": "Redis",
     "queue": "BullMQ with Redis",
-    "socket": "Socket.io for real-time features",
+    "socket": "ws (WebSocket) with Redis pub/sub for horizontal scaling",
     "validation": "Zod schemas",
     "logging": "Winston logger",
     "errorHandling": "Centralized error handler with async wrapper"
   },
   "documentation": {
     "postman": "Rightsteps API.postman_collection.json",
-    "apiInventory": "api.json"
+    "apiInventory": "api.json",
+    "openapi": {
+      "auth": "docs/auth-openapi.yaml",
+      "profile": "docs/profile-openapi.yaml",
+      "messaging": "docs/messaging-openapi.yaml",
+      "sessions": "docs/sessions-openapi.yaml",
+      "content": "docs/content-openapi.yaml",
+      "marketplace": "docs/marketplace-openapi.yaml",
+      "enrollment": "docs/enrollment-openapi.yaml",
+      "successRoadmap": "docs/success-roadmap-openapi.yaml"
+    }
   },
   "changelog": {
-    "8.5.0": {
-      "date": "2026-01-22",
+    "8.10.0": {
+      "date": "2026-03-12",
       "changes": [
+        {
+          "category": "Success Roadmap Module",
+          "type": "feature",
+          "description": "AI-powered career exploration and roadmap generation for children",
+          "details": [
+            "Career query validation with content filtering for inappropriate topics",
+            "AI generates stage-by-stage career roadmaps with UK education context",
+            "Roadmap includes: career summary, stages with age ranges, UK qualifications, milestones, skills, salary ranges",
+            "Follow-up Q&A system (max 5 questions per roadmap)",
+            "Daily usage limits (3 roadmaps per child per day, 10 max per child)",
+            "Steppy AI personality for child-friendly interaction",
+            "Related careers and suggested follow-up questions",
+            "Save roadmaps and conversations to database",
+            "7 API endpoints across 3 sub-modules (Health, Roadmap, Usage)",
+            "Complete OpenAPI 3.0 documentation"
+          ],
+          "files": [
+            "src/modules/success-roadmap/ - Complete success roadmap module",
+            "src/shared/ai/prompts/success-roadmap.prompt.js - Steppy AI prompts",
+            "docs/success-roadmap-openapi.yaml - OpenAPI documentation",
+            "prisma/schema.prisma - CareerRoadmap model"
+          ]
+        }
+      ]
+    },
+    "8.9.0": {
+      "date": "2026-03-12",
+      "changes": [
+        {
+          "category": "Enrollment Module",
+          "type": "feature",
+          "description": "Complete child enrollment system with AI-powered assessment",
+          "details": [
+            "6-step enrollment flow: Region, Curriculum, Beyond Book, Language, Faith, Learning Style",
+            "AI-powered assessment with Steppy bot personality for child-friendly experience",
+            "AI question generation based on child's curriculum, year group, and learning type",
+            "AI answer evaluation with partial credit support for short answers",
+            "AI result analysis with subject breakdown, strengths, and recommendations",
+            "Difficulty level determination: Foundation (0-39%), Intermediate (40-69%), Higher (70-100%)",
+            "GCSE exam board selection for Year 10-11 students",
+            "Beyond Book enrichment modules: Skills, Wellbeing, Life Navigation, Civic Awareness, Physical Health",
+            "Language learning with CEFR proficiency levels and per-skill mastery tracking",
+            "Faith study configuration with multiple traditions and study focus areas",
+            "Learning style configuration with overall or per-subject settings",
+            "Redis caching with automatic cache invalidation on enrollment updates",
+            "Subscription validation - requires active child subscription before enrollment",
+            "16 API endpoints across 4 sub-modules (Health, Options, Enrollment Flow, Assessment)",
+            "Complete OpenAPI 3.0 documentation"
+          ],
+          "files": [
+            "src/modules/enrollment/ - Complete enrollment module",
+            "src/shared/ai/prompts/enrollment-assessment.prompt.js - Steppy AI prompts",
+            "docs/enrollment-openapi.yaml - OpenAPI documentation",
+            "prisma/schema.prisma - ChildEnrollment, ChildAssessment, and related models"
+          ]
+        },
+        {
+          "category": "Subscription Module",
+          "type": "enhancement",
+          "description": "Per-child checkout session for adding children to existing subscription",
+          "details": [
+            "New endpoint: POST /subscription/child-checkout-session",
+            "Allows parents to add children later without full subscription flow",
+            "Charges only for the new child based on plan pricing",
+            "Webhook handling for ADD_CHILD payment type",
+            "Automatic child subscription activation on successful payment"
+          ],
+          "files": [
+            "src/modules/subscription/controllers/payment.controller.js - createChildCheckoutSession",
+            "src/modules/subscription/services/payment.service.js - createChildStripeCheckoutSession, activateSingleChildSubscription",
+            "src/modules/subscription/routes/payment.route.js - New route"
+          ]
+        },
+        {
+          "category": "Database",
+          "type": "migration",
+          "description": "Consolidated Difficulty enum and enrollment models",
+          "details": [
+            "Removed duplicate DifficultyLevel enum, using Difficulty enum consistently",
+            "ChildEnrollment model for tracking enrollment status and configuration",
+            "ChildAssessment model for AI-powered assessment data",
+            "ChildCurriculum, ChildBeyondBook, ChildLanguageLearning, ChildFaithStudy models",
+            "ChildLearningStyleConfig and ChildSubjectLearningStyle models"
+          ],
+          "files": [
+            "prisma/schema.prisma - Updated models and enums"
+          ]
+        },
+        {
+          "category": "Auth Module",
+          "type": "enhancement",
+          "description": "Enhanced /auth/me response with enrollment status",
+          "details": [
+            "Children now include enrollmentStatus, enrollmentStep, assessmentComplete, isActive",
+            "Real-time enrollment status reflected via Redis cache invalidation"
+          ]
+        }
+      ]
+    },
+    "8.8.0": {
+      "date": "2026-02-09",
+      "changes": [
+        {
+          "category": "Infrastructure",
+          "type": "enhancement",
+          "description": "Production-grade rate limiting with Redis support",
+          "details": [
+            "Redis-backed rate limit storage for horizontal scaling",
+            "Centralized rate limit configuration in src/config/rate-limit.js",
+            "Global limiter: 1000 req/15min per IP",
+            "Auth limiter: 10 req/15min for login",
+            "Register limiter: 5 req/hour for registration",
+            "OTP limiter: 5 req/15min for OTP/PIN verification",
+            "Password reset limiter: 3 req/hour",
+            "Upload limiter: 100 req/hour per user",
+            "AI Tutor limiter: 50 req/hour per user",
+            "Messaging limiter: 60 req/min per user",
+            "Search limiter: 30 req/min",
+            "WebSocket connection limiter: 10 conn/min per IP",
+            "WebSocket message limiter: 10 msg/sec per user",
+            "Automatic fallback to memory store if Redis unavailable",
+            "Tiered rate limits structure for subscription plans",
+            "User-based limiting for authenticated routes",
+            "Security logging for all rate limit violations"
+          ],
+          "files": [
+            "src/config/rate-limit.js - New centralized rate limit config",
+            "src/config/socket.js - WebSocket rate limiting",
+            "src/app.js - Updated to use new limiters",
+            "docs/rate-limiting.md - Comprehensive documentation"
+          ]
+        }
+      ]
+    },
+    "8.7.0": {
+      "date": "2026-02-09",
+      "changes": [
+        {
+          "category": "Content Module",
+          "type": "feature",
+          "description": "Content achievements feature for learning outcomes",
+          "details": [
+            "ContentAchievement model for defining what learners will achieve",
+            "Each achievement has title, icon, description, isActive, and displayOrder",
+            "Achievements array on content create and update endpoints",
+            "Smart update logic: creates new, updates existing, removes deleted achievements",
+            "Achievements included in all content query responses",
+            "Active achievements filtered in public-facing endpoints"
+          ],
+          "schema": {
+            "achievement": {
+              "id": "string (cuid)",
+              "contentId": "string (cuid)",
+              "title": "string (1-200 chars)",
+              "icon": "string (1-100 chars)",
+              "description": "string (1-1000 chars)",
+              "isActive": "boolean (default: true)",
+              "displayOrder": "number (default: 0)"
+            }
+          },
+          "files": [
+            "prisma/schema.prisma - ContentAchievement model",
+            "prisma/migrations/20260209083043_add_content_achievements/",
+            "src/modules/content/validations/content.schema.js - achievements validation",
+            "src/modules/content/services/content.service.js - achievements CRUD logic"
+          ]
+        }
+      ]
+    },
+    "8.6.0": {
+      "date": "2026-02-08",
+      "changes": [
+        {
+          "category": "Messaging Module",
+          "type": "feature",
+          "description": "Complete real-time messaging system with WebSocket support",
+          "details": [
+            "22 REST API endpoints for chat rooms, messages, presence, and read receipts",
+            "WebSocket events for real-time messaging (join, leave, message, typing, read, presence)",
+            "Chat room creation and management with participant handling",
+            "Message sending with support for TEXT, IMAGE, FILE, AUDIO, VIDEO, LINK types",
+            "Reply-to functionality for threaded conversations",
+            "File attachments with metadata (size, dimensions, duration, thumbnails)",
+            "Typing indicators with real-time broadcast",
+            "Read receipts and unread count tracking",
+            "User presence tracking (ONLINE, OFFLINE, AWAY)",
+            "Message restrictions for non-booked practitioner conversations",
+            "Admin moderation endpoints",
+            "Complete OpenAPI 3.0 documentation with WebSocket events"
+          ],
+          "files": [
+            "src/modules/messaging/ - Complete messaging module",
+            "docs/messaging-openapi.yaml - OpenAPI documentation"
+          ]
+        },
+        {
+          "category": "WebSocket Infrastructure",
+          "type": "enhancement",
+          "description": "Production-grade WebSocket with Redis pub/sub for horizontal scaling",
+          "details": [
+            "Redis adapter for cross-server WebSocket messaging",
+            "Support for 100,000+ concurrent connections across multiple servers",
+            "Cross-server room broadcasting via Redis pub/sub",
+            "Cross-server user messaging",
+            "Distributed presence tracking in Redis",
+            "Connection state stored in Redis for clustering",
+            "Graceful fallback to single-server mode when Redis unavailable",
+            "perMessageDeflate compression enabled",
+            "30-second heartbeat with automatic stale connection cleanup"
+          ],
+          "files": [
+            "src/shared/services/websocket/redis.adapter.js - Redis pub/sub adapter",
+            "src/shared/services/websocket/connection.manager.js - Updated for Redis",
+            "src/shared/services/websocket/emitter.js - Async cross-server broadcasting",
+            "src/config/socket.js - Async initialization with Redis"
+          ]
+        },
+        {
+          "category": "Learning Preferences",
+          "type": "feature",
+          "description": "Child learning style preferences with per-subject overrides",
+          "details": [
+            "Global learning style on child profile (VISUAL_SPATIAL, AUDITORY_AURAL, etc.)",
+            "Per-subject learning style overrides (ChildSubjectPreference model)",
+            "Priority system: Subject Override > Child Default",
+            "Content format mapping based on learning style",
+            "5 new API endpoints for managing preferences",
+            "Get effective learning style for content recommendations"
+          ],
+          "endpoints": [
+            "PUT /v1/profile/child/:childId/subject-preference/:subjectId",
+            "GET /v1/profile/child/:childId/subject-preference/:subjectId",
+            "GET /v1/profile/child/:childId/subject-preferences",
+            "DELETE /v1/profile/child/:childId/subject-preference/:subjectId",
+            "GET /v1/profile/child/:childId/effective-style/:subjectId"
+          ],
+          "files": [
+            "src/modules/profile/services/learning-preference.service.js",
+            "src/modules/profile/controllers/learning-preference.controller.js",
+            "src/modules/profile/validations/learning-preference.schema.js",
+            "src/modules/profile/config/learning-style.config.js",
+            "prisma/schema.prisma - ChildSubjectPreference model"
+          ]
+        },
+        {
+          "category": "Database",
+          "type": "migration",
+          "description": "Migration for sessions, messaging, and learning preferences",
+          "details": [
+            "Added ChatRoom, ChatMessage, ChatParticipant, MessageAttachment models",
+            "Added MessageReadReceipt, UserPresenceStatus models",
+            "Added ChildSubjectPreference model for per-subject learning overrides",
+            "Added learningStyles array to Content model",
+            "Added tutor session enhancements (notes, ratings, accept/reject)"
+          ],
+          "files": [
+            "prisma/migrations/20260207124821_add_sessions_messaging_learning_preferences/"
+          ]
+        }
+      ]
+    },
+    "8.5.0": {
+      "date": "2026-02-02",
+      "changes": [
+        {
+          "category": "Documentation",
+          "type": "update",
+          "description": "Update API inventory to match codebase",
+          "details": [
+            "Sync all module endpoints",
+            "Add missing route definitions",
+            "Update timestamps"
+          ]
+        },
         {
           "category": "Marketplace Module",
           "type": "feature",
@@ -788,7 +1526,7 @@
             "Set weekly recurring availability patterns",
             "Time slot management with blocking/unblocking",
             "Public endpoint for viewing tutor availability",
-            "Integration ready for booking system"
+            "Integration ready for sessions module"
           ]
         },
         {
@@ -797,10 +1535,20 @@
           "description": "Creator wallet system for earnings and payouts",
           "details": [
             "Automatic wallet creation on profile approval",
-            "Transaction history with filtering",
-            "Payout request workflow (REQUESTED → PROCESSING → COMPLETED)",
-            "Admin payout processing and platform revenue tracking",
-            "Wallet stats and analytics"
+            "Track earnings from marketplace sales",
+            "Payout request system with admin dashboard",
+            "Transaction history"
+          ]
+        },
+        {
+          "category": "Sessions Module",
+          "type": "feature",
+          "description": "Tutor session management and packages",
+          "details": [
+            "Session scheduling for tutors",
+            "Package purchasing and credit management",
+            "Trial session support",
+            "Credit transfers between parents and children"
           ]
         },
         {
@@ -903,73 +1651,6 @@
             "Redis caching for performance optimization",
             "Production-grade validation using Zod schemas",
             "Comprehensive OpenAPI 3.0 documentation"
-          ],
-          "endpoints": {
-            "contentManagement": [
-              "GET /v1/content/health",
-              "POST /v1/content",
-              "GET /v1/content",
-              "GET /v1/content/my",
-              "GET /v1/content/:id",
-              "PUT /v1/content/:id",
-              "DELETE /v1/content/:id"
-            ],
-            "contentLifecycle": [
-              "POST /v1/content/:id/submit",
-              "POST /v1/content/:id/publish",
-              "POST /v1/content/:id/promote"
-            ],
-            "marketplaceReviews": [
-              "POST /v1/content/marketplace/:contentId/reviews",
-              "GET /v1/content/marketplace/:contentId/reviews",
-              "POST /v1/content/marketplace/reviews/:reviewId/reply"
-            ],
-            "marketplacePurchases": [
-              "POST /v1/content/marketplace/:contentId/purchase",
-              "GET /v1/content/marketplace/purchases/my",
-              "GET /v1/content/marketplace/:contentId/access",
-              "POST /v1/content/marketplace/:id/share/generate",
-              "GET /v1/content/marketplace/share/:shareToken"
-            ],
-            "marketplaceEarnings": [
-              "GET /v1/content/marketplace/earnings",
-              "POST /v1/content/marketplace/payouts/request"
-            ],
-            "analytics": [
-              "POST /v1/content/analytics/:id/track-view",
-              "POST /v1/content/analytics/:id/track-completion",
-              "GET /v1/content/analytics/:id/analytics",
-              "GET /v1/content/analytics/:id/engagement",
-              "GET /v1/content/analytics/creator/dashboard",
-              "GET /v1/content/analytics/creator/performance",
-              "GET /v1/content/analytics/creator/revenue",
-              "GET /v1/content/analytics/trending",
-              "GET /v1/content/analytics/platform"
-            ],
-            "adminModeration": [
-              "POST /v1/content/admin/content/:id/moderate",
-              "POST /v1/content/admin/content/:id/feature",
-              "PUT /v1/content/admin/content/:id/tags",
-              "POST /v1/content/admin/content/badges/update",
-              "POST /v1/content/admin/payouts/:payoutId/process"
-            ],
-            "adminAnalytics": [
-              "GET /v1/content/admin/content/stats",
-              "GET /v1/content/admin/content/pending-reviews"
-            ]
-          },
-          "files": [
-            "prisma/schema.prisma - Added Content, ContentReview, ContentPurchase, CreatorEarnings, CreatorPayout models",
-            "src/modules/content/controllers/*.controller.js - 4 controller files (content, marketplace, admin, analytics)",
-            "src/modules/content/services/*.service.js - 4 service files with business logic",
-            "src/modules/content/routes/*.route.js - 4 route files (content, marketplace, admin, analytics)",
-            "src/modules/content/validations/*.schema.js - 4 validation schema files",
-            "src/modules/content/index.js - Module exports and route mounting",
-            "src/routes/index.js - Registered content routes at /content",
-            "docs/content-openapi.yaml - Complete OpenAPI 3.0 specification with 39 endpoints",
-            "src/config/swagger.js - Added content docs to Swagger UI",
-            "src/app.js - Added content docs route handler",
-            "api.json - Updated with Content module documentation"
           ]
         }
       ]
@@ -992,63 +1673,7 @@
             "Three difficulty levels: Foundation, Intermediate, Higher",
             "UK Key Stages support: KS1, KS2, KS3, KS4, KS5",
             "Redis caching with graceful fallback on cache failures",
-            "Cascade deletes across hierarchy levels",
-            "Sequential numbering system for objectives within each sub-topic",
-            "Production-grade error handling with specific error messages",
-            "Comprehensive validation using Zod schemas",
-            "Follows existing code patterns (no comments, kebab-case filenames, CacheManager usage)"
-          ],
-          "endpoints": {
-            "yearGroups": [
-              "GET /v1/curriculum/health",
-              "POST /v1/curriculum/year-groups (Admin)",
-              "GET /v1/curriculum/year-groups (Public)",
-              "GET /v1/curriculum/year-groups/:id (Public)",
-              "GET /v1/curriculum/year-groups/:id/hierarchy (Public)",
-              "PATCH /v1/curriculum/year-groups/:id (Admin)",
-              "DELETE /v1/curriculum/year-groups/:id (Admin)"
-            ],
-            "subjects": [
-              "POST /v1/curriculum/subjects (Admin)",
-              "GET /v1/curriculum/subjects (Public)",
-              "GET /v1/curriculum/subjects/:id (Public)",
-              "PATCH /v1/curriculum/subjects/:id (Admin)",
-              "DELETE /v1/curriculum/subjects/:id (Admin)"
-            ],
-            "topics": [
-              "POST /v1/curriculum/topics (Admin)",
-              "GET /v1/curriculum/topics (Public)",
-              "GET /v1/curriculum/topics/:id (Public)",
-              "PATCH /v1/curriculum/topics/:id (Admin)",
-              "DELETE /v1/curriculum/topics/:id (Admin)"
-            ],
-            "subTopics": [
-              "POST /v1/curriculum/sub-topics (Admin)",
-              "GET /v1/curriculum/sub-topics (Public)",
-              "GET /v1/curriculum/sub-topics/:id (Public)",
-              "PATCH /v1/curriculum/sub-topics/:id (Admin)",
-              "DELETE /v1/curriculum/sub-topics/:id (Admin)"
-            ],
-            "objectives": [
-              "POST /v1/curriculum/objectives (Admin)",
-              "GET /v1/curriculum/objectives (Public)",
-              "GET /v1/curriculum/objectives/:id (Public)",
-              "GET /v1/curriculum/objectives/by-objective-id/:objectiveId (Public)",
-              "PATCH /v1/curriculum/objectives/:id (Admin)",
-              "DELETE /v1/curriculum/objectives/:id (Admin)"
-            ]
-          },
-          "files": [
-            "prisma/schema.prisma - Added 5 curriculum models with relationships and indexes",
-            "src/modules/curriculum/utils/objective-id-generator.js - Auto-generates unique objective IDs",
-            "src/modules/curriculum/services/*.service.js - 5 service files with CacheManager integration",
-            "src/modules/curriculum/controllers/*.controller.js - 5 controller files with error handling",
-            "src/modules/curriculum/validations/curriculum.schema.js - Comprehensive Zod validation schemas",
-            "src/modules/curriculum/routes/curriculum.route.js - All 31 routes with middleware",
-            "src/modules/curriculum/index.js - Module exports",
-            "src/routes/index.js - Registered curriculum routes",
-            "Rightsteps API.postman_collection.json - Added Curriculum Module with 31 endpoints",
-            "api.json - Updated with curriculum documentation"
+            "Cascade deletes across hierarchy levels"
           ]
         }
       ]
@@ -1061,58 +1686,10 @@
           "type": "feature",
           "description": "Implemented 5-step progressive registration for all 8 professional profiles matching tutor quality standard",
           "details": [
-            "All 8 professional profiles now have standardized 5-step registration structure:",
-            "Step 1: Personal Information (firstName, lastName, DOB, mobile, address, PIN, security Q&A)",
-            "Step 2: Background and Safety (ID verification, DBS certificate, Right to Work)",
-            "Step 3: Professional Qualifications (profile-specific credentials and certifications)",
-            "Step 4: Client Focus (age groups, service categories)",
-            "Step 5: Pricing (hourly rate, payment method, consent) - triggers PENDING_VERIFICATION",
-            "Added ChildPsychologistService enum with 10 service types",
-            "Added ageGroups and serviceCategories fields to ChildPsychologistProfile",
-            "Comprehensive validation coverage (100%) for all required fields at each step",
+            "All 8 professional profiles now have standardized 5-step registration structure",
             "Email notifications on profile submission (step 5 completion)",
             "Admin verification workflow (approve/reject/request changes)",
-            "Cache invalidation on profile updates",
-            "Production-grade code with proper error handling and logging"
-          ],
-          "affected_profiles": [
-            "Speech Therapist (HCPC, RCSLT membership, professional indemnity)",
-            "Child Psychologist (professional qualifications, indemnity insurance)",
-            "Career Counselor (professional qualifications, indemnity insurance)",
-            "Occupational Therapist (qualifications, experience history, references)",
-            "Social Skills Coach (professional qualifications)",
-            "SEN Practitioner (professional qualifications)",
-            "Nutrition Advisor (professional qualifications)",
-            "Digital Wellbeing Practitioner (professional qualifications)"
-          ],
-          "files": [
-            "prisma/schema.prisma - Added ChildPsychologistService enum, updated ChildPsychologistProfile model",
-            "src/modules/profile/constants/registration.step.js - Complete restructure to 7-step structure for all profiles",
-            "src/modules/profile/helpers/*.helper.js - Rewrote all 8 helper files with progressive validation",
-            "src/modules/profile/controllers/*.controller.js - Updated all 8 controllers with verification workflow",
-            "All files follow tutor quality standard with no comments and clean production code"
-          ]
-        },
-        {
-          "category": "Database Schema",
-          "type": "migration",
-          "description": "Applied Prisma migration for ChildPsychologist profile enhancements",
-          "details": [
-            "Migration: 20251219131012_add_child_psychologist_service_fields",
-            "Added ChildPsychologistService enum to database",
-            "Added ageGroups and serviceCategories columns to ChildPsychologistProfile table",
-            "Ensures consistency across all professional profile models"
-          ]
-        },
-        {
-          "category": "Code Quality",
-          "type": "improvement",
-          "description": "Fixed all ESLint issues and improved code formatting",
-          "details": [
-            "Fixed max-len violations in all 8 professional controller files",
-            "Fixed object-shorthand issues in payment and subscription services",
-            "All code now passes ESLint with 0 errors and 0 warnings",
-            "Improved code readability with proper line breaks"
+            "Cache invalidation on profile updates"
           ]
         }
       ]
@@ -1123,53 +1700,7 @@
         {
           "category": "Parent Profile Progressive Registration",
           "type": "feature",
-          "description": "Implemented progressive registration flow for parent profiles with multi-step tracking",
-          "details": [
-            "Added registrationStep (1-4) and isRegistrationComplete fields to all profile models",
-            "Step 1: Personal Information (children optional)",
-            "Step 2: Add Children (new endpoint: POST /v1/profile/parent/add-children)",
-            "Step 3: Subscription Plan",
-            "Step 4: Registration Complete",
-            "All APIs now return nextStep object with route, step number, and message",
-            "Users can logout and resume registration from where they left off",
-            "Added securityAnswer field to all 10 profile models for account recovery",
-            "Created registrationSteps.js constants for all 10 personas",
-            "Created determineNextStep() helper function for smart navigation",
-            "Enhanced /v1/auth/me and /v1/profile/me to exclude sensitive fields (pin, securityQuestion, securityAnswer)"
-          ],
-          "endpoints": [
-            "POST /v1/profile/parent - Now accepts optional children array",
-            "POST /v1/profile/parent/add-children - New endpoint for Step 2",
-            "GET /v1/auth/me - Returns nextStep for progressive navigation",
-            "GET /v1/profile/me - Returns nextStep and current progress",
-            "POST /v1/auth/login - Returns nextStep to redirect user"
-          ],
-          "files": [
-            "prisma/schema.prisma - Added registrationStep, isRegistrationComplete, securityAnswer to all profiles",
-            "src/shared/constants/registrationSteps.js - Created registration steps for all personas",
-            "src/shared/utils/helper/registrationHelper.js - Created determineNextStep() function",
-            "src/modules/profile/validations/parent.schema.js - Made children optional, added securityAnswer",
-            "src/modules/profile/controllers/parent.controller.js - Added addChildren endpoint, auto-detect step",
-            "src/modules/profile/controllers/profile.controller.js - Added nextStep to response",
-            "src/modules/auth/controllers/auth.controller.js - Added children relationship, excluded sensitive fields, added nextStep",
-            "src/modules/subscription/services/subscription.service.js - Update registrationStep on subscription",
-            "src/modules/profile/routes/profile.route.js - Added /parent/add-children route",
-            "docs/frontend-guide/profile-docs.md - Created comprehensive documentation",
-            "Rightsteps API.postman_collection.json - Added Add Children endpoint with examples"
-          ]
-        },
-        {
-          "category": "Documentation",
-          "type": "feature",
-          "description": "Created comprehensive profile API documentation for frontend developers",
-          "details": [
-            "Step-by-step API documentation with request/response examples",
-            "Progressive registration flow chart",
-            "nextStep usage guide with code examples",
-            "Field validations and error handling",
-            "Complete walkthrough from signup to dashboard"
-          ],
-          "files": ["docs/frontend-guide/profile-docs.md"]
+          "description": "Implemented progressive registration flow for parent profiles with multi-step tracking"
         }
       ]
     },
@@ -1179,62 +1710,7 @@
         {
           "category": "Email System Refactoring",
           "type": "improvement",
-          "description": "Refactored professional profile email templates from 36 individual files to 4 generic templates",
-          "details": [
-            "Reduced template files from 36 to 4 (professional-submitted, professional-approved, professional-changes-requested, professional-rejected)",
-            "Templates now accept professionalType as a parameter (e.g., 'tutor', 'speech therapist')",
-            "Easier to maintain - one change updates all profile types",
-            "Email helper functions remain the same (backward compatible)"
-          ],
-          "files": [
-            "src/shared/services/email/templates/profile/professional-*.template.js",
-            "src/shared/services/email.helper.js",
-            "src/shared/services/email/index.js"
-          ]
-        },
-        {
-          "category": "Auth API Enhancement",
-          "type": "feature",
-          "description": "Enhanced GET /v1/auth/me endpoint to include all professional profiles",
-          "details": [
-            "Now includes all 9 professional profile types (speechTherapist, childPsychologist, careerCounselor, occupationalTherapist, socialSkillsCoach, senPractitioner, nutritionAdvisor, digitalWellbeingPractitioner)",
-            "Added oauthProvider field to user response",
-            "Enhanced profile completion detection for all professional types",
-            "Returns all active profiles for users with multiple roles",
-            "Improved requiresProfileCreation logic to check all profile types"
-          ],
-          "endpoint": "GET /v1/auth/me",
-          "files": ["src/modules/auth/controllers/auth.controller.js"]
-        },
-        {
-          "category": "Google OAuth Testing",
-          "type": "feature",
-          "description": "Added Google OAuth login test page in client for testing purposes",
-          "details": [
-            "Created GoogleLoginTest page with Google sign-in button",
-            "Added AuthCallback handler for OAuth redirect",
-            "Displays user information and JWT token after login",
-            "Includes logout functionality",
-            "Added documentation in client/GOOGLE_LOGIN_TEST.md"
-          ],
-          "files": [
-            "client/src/pages/GoogleLoginTest.jsx",
-            "client/src/pages/AuthCallback.jsx",
-            "client/src/App.jsx",
-            "client/.env",
-            "client/GOOGLE_LOGIN_TEST.md"
-          ]
-        },
-        {
-          "category": "Postman Collection",
-          "type": "update",
-          "description": "Added missing Verify Email Update endpoint to Parent Profile Module",
-          "details": [
-            "Added POST /v1/profile/parent/verify-email endpoint",
-            "Endpoint verifies OTP for email address updates",
-            "Positioned after Update Parent Profile in collection"
-          ],
-          "files": ["Rightsteps API.postman_collection.json"]
+          "description": "Refactored professional profile email templates from 36 individual files to 4 generic templates"
         }
       ]
     },
@@ -1244,30 +1720,9 @@
         {
           "category": "Professional Profiles",
           "type": "feature",
-          "description": "Added 8 new professional profile types with admin verification workflows",
-          "details": [
-            "Speech Therapist Profile",
-            "Child Psychologist Profile",
-            "Career Counselor Profile",
-            "Occupational Therapist Profile",
-            "Social Skills Coach Profile",
-            "SEN Practitioner Profile",
-            "Nutrition Advisor Profile",
-            "Digital Wellbeing Practitioner Profile"
-          ]
-        },
-        {
-          "category": "Analytics",
-          "type": "feature",
-          "description": "Unified professional analytics endpoint",
-          "details": [
-            "Replaced getTutorStats with getProfessionalStats",
-            "Includes statistics for all 9 professional types (tutor + 8 new profiles)",
-            "Dashboard now shows totalProfessionals and pendingProfessionals"
-          ]
+          "description": "Added 8 new professional profile types with admin verification workflows"
         }
       ]
     }
   }
 }
-
