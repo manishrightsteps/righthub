@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "11.1.1",
+    "version": "11.4.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-03-12"
+    "lastUpdated": "2026-04-24"
   },
   "modules": [
     {
@@ -32,7 +32,173 @@
         "Facebook OAuth Callback",
         "Delete User Data",
         "Admin Register"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/auth-openapi.yaml",
+        "documentedEndpointCount": 20,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/auth/health",
+            "summary": "Check auth service health",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/register",
+            "summary": "Register a new user",
+            "tags": [
+              "Registration"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/admin/register",
+            "summary": "Register admin user",
+            "tags": [
+              "Registration"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/login",
+            "summary": "Login user",
+            "tags": [
+              "Authentication"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/verify-otp",
+            "summary": "Verify email with OTP",
+            "tags": [
+              "Email Verification"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/send-verification-email",
+            "summary": "Resend verification OTP",
+            "tags": [
+              "Email Verification"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/forgot-password",
+            "summary": "Request password reset",
+            "tags": [
+              "Password Reset"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/reset-password",
+            "summary": "Reset password with token",
+            "tags": [
+              "Password Reset"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/change-password",
+            "summary": "Change password for logged-in user",
+            "tags": [
+              "Password Reset"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/refresh-token",
+            "summary": "Refresh access token",
+            "tags": [
+              "Authentication"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/logout",
+            "summary": "Logout current session",
+            "tags": [
+              "Authentication"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/logout-all",
+            "summary": "Logout from all devices",
+            "tags": [
+              "Session Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/auth/sessions",
+            "summary": "Get active sessions",
+            "tags": [
+              "Session Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/auth/sessions/{sessionId}",
+            "summary": "Revoke specific session",
+            "tags": [
+              "Session Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/auth/me",
+            "summary": "Get current user profile",
+            "tags": [
+              "Profile"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/auth/google",
+            "summary": "Initiate Google OAuth",
+            "tags": [
+              "OAuth"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/auth/google/callback",
+            "summary": "Google OAuth callback",
+            "tags": [
+              "OAuth"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/auth/facebook",
+            "summary": "Initiate Facebook OAuth",
+            "tags": [
+              "OAuth"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/auth/facebook/callback",
+            "summary": "Facebook OAuth callback",
+            "tags": [
+              "OAuth"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/auth/delete-user-data",
+            "summary": "Delete user account and data",
+            "tags": [
+              "Data Management"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Profile Module",
@@ -165,6 +331,10 @@
             "Get Parent Profiles",
             "Get Pending Tutor Profiles",
             "Verify Tutor Profile",
+            "Create AI Tutor",
+            "List AI Tutors",
+            "Update AI Tutor",
+            "Toggle AI Tutor",
             "Get Pending Speech Therapist Profiles",
             "Verify Speech Therapist Profile",
             "Get Pending Child Psychologist Profiles",
@@ -183,7 +353,293 @@
             "Verify Digital Wellbeing Practitioner Profile"
           ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/profile-openapi.yaml",
+        "documentedEndpointCount": 35,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/profile/health",
+            "summary": "Health check for profile module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/select-role",
+            "summary": "Select user role",
+            "tags": [
+              "General"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/me",
+            "summary": "Get current user profile",
+            "tags": [
+              "General"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent",
+            "summary": "Create parent profile",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/add-children",
+            "summary": "Add children to profile",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/update",
+            "summary": "Update parent profile",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/verify-email",
+            "summary": "Verify email update with OTP",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/select-profile",
+            "summary": "Select profile access mode",
+            "tags": [
+              "Parent Security"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/validate-pin",
+            "summary": "Validate parent PIN",
+            "tags": [
+              "Parent Security"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/verify-security-answer",
+            "summary": "Verify security answer (unlock)",
+            "tags": [
+              "Parent Security"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/verify-otp-and-reset-pin",
+            "summary": "Verify OTP and reset PIN",
+            "tags": [
+              "Parent Security"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/validate-temp-pin-and-change-pin",
+            "summary": "Change PIN with temporary PIN",
+            "tags": [
+              "Parent Security"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/parent/unlock-account",
+            "summary": "Confirm account unlock (public endpoint)",
+            "tags": [
+              "Parent Security"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/admin/parent/unlock",
+            "summary": "Admin unlock parent account",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/child/update/{id}",
+            "summary": "Update child details",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/child/delete/{id}",
+            "summary": "Delete child",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/admin/child/{id}",
+            "summary": "Get child details (Admin only)",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/admin/parents",
+            "summary": "Search parent profiles (Admin only)",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/tutor",
+            "summary": "Create tutor profile",
+            "tags": [
+              "Tutor Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/tutor/update",
+            "summary": "Update tutor profile (all registration steps)",
+            "tags": [
+              "Tutor Profile"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/admin/tutors/pending",
+            "summary": "Get pending tutor verifications (Admin only)",
+            "tags": [
+              "Tutor Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/admin/tutor/{tutorProfileId}/verify",
+            "summary": "Verify tutor profile (Admin only)",
+            "tags": [
+              "Tutor Profile"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/admin/ai-tutor",
+            "summary": "Create AI tutor profile (Admin only)",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/admin/ai-tutors",
+            "summary": "List AI tutors (Admin only)",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/profile/admin/ai-tutor/{id}",
+            "summary": "Update AI tutor profile (Admin only)",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/profile/admin/ai-tutor/{id}/toggle",
+            "summary": "Toggle AI tutor active status (Admin only)",
+            "tags": [
+              "Admin Operations"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/{professionalType}",
+            "summary": "Create professional profile",
+            "tags": [
+              "Professional Profiles"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/{professionalType}/update",
+            "summary": "Update professional profile",
+            "tags": [
+              "Professional Profiles"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/admin/{professionalType}s/pending",
+            "summary": "Get pending professional verifications (Admin only)",
+            "tags": [
+              "Professional Profiles"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/profile/admin/{professionalType}/{professionalProfileId}/verify",
+            "summary": "Verify professional profile (Admin only)",
+            "tags": [
+              "Professional Profiles"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
+            "summary": "Get subject learning style preference",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
+            "summary": "Set subject learning style preference",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
+            "summary": "Delete subject learning style preference",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/child/{childId}/learning-preferences",
+            "summary": "Get all learning preferences",
+            "tags": [
+              "Parent Profile"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/profile/child/{childId}/subjects/{subjectId}/effective-style",
+            "summary": "Get effective learning style",
+            "tags": [
+              "Parent Profile"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Messaging Module",
@@ -268,6 +724,188 @@
           "error - Error notification",
           "pong - Heartbeat response"
         ]
+      },
+      "openapi": {
+        "docsFile": "docs/messaging-openapi.yaml",
+        "documentedEndpointCount": 22,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/messaging/health",
+            "summary": "Health check for messaging module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/rooms",
+            "summary": "Get all chat rooms",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/rooms",
+            "summary": "Create a chat room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/rooms/support",
+            "summary": "Create a live support room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/rooms/unread",
+            "summary": "Get total unread count",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/rooms/{roomId}",
+            "summary": "Get room by ID",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/rooms/{roomId}/messages",
+            "summary": "Get messages in a room",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/rooms/{roomId}/messages",
+            "summary": "Send a message",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/rooms/{roomId}/read",
+            "summary": "Mark room as read",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/rooms/{roomId}/search",
+            "summary": "Search messages in room",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/rooms/{roomId}/block",
+            "summary": "Block a room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/rooms/{roomId}/unblock",
+            "summary": "Unblock a room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/rooms/{roomId}/archive",
+            "summary": "Archive a room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/rooms/{roomId}/unarchive",
+            "summary": "Unarchive a room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/rooms/{roomId}/mute",
+            "summary": "Mute a room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/rooms/{roomId}/unmute",
+            "summary": "Unmute a room",
+            "tags": [
+              "Rooms"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/rooms/{roomId}/messages/{messageId}/pin",
+            "summary": "Pin/Unpin a message",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/messaging/messages/{messageId}",
+            "summary": "Edit a message",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/messaging/messages/{messageId}",
+            "summary": "Delete a message",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/messages/{messageId}/forward",
+            "summary": "Forward a message",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/messages/{messageId}/reaction",
+            "summary": "Add/Remove reaction",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/messaging/reports",
+            "summary": "Report a message or user",
+            "tags": [
+              "Reports"
+            ]
+          }
+        ]
       }
     },
     {
@@ -300,7 +938,7 @@
             "Create Child Checkout Session",
             "Confirm Stripe Payment",
             "Capture PayPal Payment",
-            "Stripe Webhook"
+            "PayPal Webhook"
           ]
         },
         {
@@ -322,7 +960,238 @@
             "Delete Multi-Student Discount"
           ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/subscription-openapi.yaml",
+        "documentedEndpointCount": 28,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/subscription/health",
+            "summary": "Check subscription service health",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/subscription/plans/health",
+            "summary": "Check plan service health",
+            "tags": [
+              "Health",
+              "Plans"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/subscription/plans",
+            "summary": "Get all subscription plans",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/plans",
+            "summary": "Create new plan (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/subscription/plans/{id}",
+            "summary": "Get plan by ID",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/subscription/plans/{id}",
+            "summary": "Update plan (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/subscription/plans/{id}",
+            "summary": "Delete plan (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/plans/{id}/price",
+            "summary": "Update plan pricing (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/plans/{id}/features",
+            "summary": "Add feature to plan (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/subscription/plans/features/{featureId}",
+            "summary": "Update plan feature (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/subscription/plans/features/{featureId}",
+            "summary": "Delete plan feature (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/plans/{id}/discounts",
+            "summary": "Add multi-student discount (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/subscription/plans/discounts/{discountId}",
+            "summary": "Update multi-student discount (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/subscription/plans/discounts/{discountId}",
+            "summary": "Delete multi-student discount (Admin only)",
+            "tags": [
+              "Plans"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/calculate",
+            "summary": "Calculate subscription pricing",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/subscribe",
+            "summary": "Create new subscription",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/subscription/me",
+            "summary": "Get my subscription",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/subscription/{id}/cancel",
+            "summary": "Cancel subscription",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/subscription/children/{childId}/cancel",
+            "summary": "Cancel child subscription",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/children/add",
+            "summary": "Add child to subscription",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/subscription/payments",
+            "summary": "Get payment history",
+            "tags": [
+              "Subscriptions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/subscription/payment/config",
+            "summary": "Get payment configuration",
+            "tags": [
+              "Payments"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/payment/create-intent",
+            "summary": "Create Stripe Payment Intent",
+            "tags": [
+              "Payments"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/payment/create-checkout-session",
+            "summary": "Create Stripe Checkout Session",
+            "tags": [
+              "Payments"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/payment/child-checkout-session",
+            "summary": "Create child checkout session",
+            "tags": [
+              "Payments"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/payment/stripe/confirm",
+            "summary": "Confirm Stripe payment",
+            "tags": [
+              "Payments"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/payment/paypal/capture",
+            "summary": "Capture PayPal payment",
+            "tags": [
+              "Payments"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/subscription/webhooks/paypal",
+            "summary": "Handle PayPal webhook",
+            "tags": [
+              "Webhooks"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Upload Module",
@@ -338,7 +1207,77 @@
         "Get Upload Status",
         "Delete Upload",
         "Replace Upload"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/upload-openapi.yaml",
+        "documentedEndpointCount": 8,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/upload/health",
+            "summary": "Health check for upload module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/upload",
+            "summary": "Upload file",
+            "tags": [
+              "Upload"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/upload/my",
+            "summary": "Get my uploads",
+            "tags": [
+              "Upload"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/upload/entity/{type}/{id}",
+            "summary": "Get entity uploads",
+            "tags": [
+              "Upload"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/upload/{id}",
+            "summary": "Get upload by ID",
+            "tags": [
+              "Upload"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/upload/{id}/status",
+            "summary": "Get upload processing status",
+            "tags": [
+              "Upload"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/upload/{id}/delete",
+            "summary": "Delete upload",
+            "tags": [
+              "Upload"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/upload/{id}/replace",
+            "summary": "Replace upload",
+            "tags": [
+              "Upload"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Admin Module",
@@ -378,8 +1317,194 @@
             "Delete User",
             "Send Temp PIN (Parent Recovery)"
           ]
+        },
+        {
+          "name": "Jobs",
+          "description": "Admin job monitoring and manual job execution",
+          "endpoints": [
+            "Get Jobs Status",
+            "Run Job",
+            "Get Expiring Packages",
+            "Get Missed Sessions",
+            "Get Pending Payments",
+            "Get Behavior Report"
+          ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/admin-openapi.yaml",
+        "documentedEndpointCount": 21,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/admin/health",
+            "summary": "Check admin service health",
+            "tags": [
+              "Admin Dashboard"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/dashboard/overview",
+            "summary": "Get dashboard overview stats",
+            "tags": [
+              "Admin Dashboard"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/dashboard/recent-activity",
+            "summary": "Get recent platform activity",
+            "tags": [
+              "Admin Dashboard"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/analytics/users",
+            "summary": "Get user statistics",
+            "tags": [
+              "Admin Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/analytics/subscriptions",
+            "summary": "Get subscription statistics",
+            "tags": [
+              "Admin Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/analytics/professionals",
+            "summary": "Get professional statistics",
+            "tags": [
+              "Admin Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/analytics/parents",
+            "summary": "Get parent statistics",
+            "tags": [
+              "Admin Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/analytics/uploads",
+            "summary": "Get upload statistics",
+            "tags": [
+              "Admin Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/analytics/growth",
+            "summary": "Get growth statistics",
+            "tags": [
+              "Admin Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/users",
+            "summary": "Get all users",
+            "tags": [
+              "Admin Users"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/users/{userId}",
+            "summary": "Get user details",
+            "tags": [
+              "Admin Users"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/admin/users/{userId}",
+            "summary": "Delete user",
+            "tags": [
+              "Admin Users"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/admin/users/{userId}/roles",
+            "summary": "Update user roles",
+            "tags": [
+              "Admin Users"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/admin/users/{userId}/verification",
+            "summary": "Toggle user verification status",
+            "tags": [
+              "Admin Users"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/admin/parent/send-temp-pin",
+            "summary": "Send temporary PIN to parent",
+            "tags": [
+              "Admin Users"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/jobs",
+            "summary": "Get admin job status overview",
+            "tags": [
+              "Admin Jobs"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/admin/jobs/{jobName}/run",
+            "summary": "Run an admin job on demand",
+            "tags": [
+              "Admin Jobs"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/jobs/expiring-packages",
+            "summary": "Get expiring package job results",
+            "tags": [
+              "Admin Jobs"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/jobs/missed-sessions",
+            "summary": "Get missed sessions job results",
+            "tags": [
+              "Admin Jobs"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/jobs/pending-payments",
+            "summary": "Get pending payments job results",
+            "tags": [
+              "Admin Jobs"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/admin/jobs/behavior-report",
+            "summary": "Get behavior report job results",
+            "tags": [
+              "Admin Jobs"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Notification Module",
@@ -400,7 +1525,117 @@
         "Archive Notification",
         "Delete Notification",
         "Create Announcement (Admin)"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/additional-apis-openapi.yaml",
+        "documentedEndpointCount": 13,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/notifications/health",
+            "summary": "Health check for notification module",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/create",
+            "summary": "Create notification",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/notifications/list",
+            "summary": "Get notifications",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/notifications/unread-count",
+            "summary": "Get unread notification count",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/notifications/types",
+            "summary": "Get notification types",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/notifications/statuses",
+            "summary": "Get notification statuses",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/notifications/priorities",
+            "summary": "Get notification priorities",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/notifications/{id}",
+            "summary": "Get notification by ID",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/{id}/read",
+            "summary": "Mark notification as read",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/mark-all-read",
+            "summary": "Mark all notifications as read",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/{id}/archive",
+            "summary": "Archive notification",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/notifications/{id}",
+            "summary": "Delete notification",
+            "tags": [
+              "Notifications"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/admin/announcement",
+            "summary": "Create admin announcement (Admin only)",
+            "tags": [
+              "Notifications"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Community Module",
@@ -413,7 +1648,53 @@
         "Sync User Data",
         "Generate Magic Link",
         "Magic Link Auth"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/additional-apis-openapi.yaml",
+        "documentedEndpointCount": 5,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/community/health",
+            "summary": "Check community service health",
+            "tags": [
+              "Community"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/community/auth",
+            "summary": "Authenticate for community app",
+            "tags": [
+              "Community"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/community/sync/{userId}",
+            "summary": "Sync user data to community app",
+            "tags": [
+              "Community"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/community/generate-magic-link",
+            "summary": "Generate magic link for community access",
+            "tags": [
+              "Community"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/community/magic-auth",
+            "summary": "Authenticate with magic link",
+            "tags": [
+              "Community"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Health Module",
@@ -428,7 +1709,69 @@
         "Database Health",
         "System Stats",
         "Full System Status"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/additional-apis-openapi.yaml",
+        "documentedEndpointCount": 7,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/health",
+            "summary": "Basic health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/health/detailed",
+            "summary": "Detailed health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/health/ready",
+            "summary": "Readiness check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/health/live",
+            "summary": "Liveness check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/health/database",
+            "summary": "Database health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/health/system",
+            "summary": "Full system status",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/health/status",
+            "summary": "Get system status",
+            "tags": [
+              "Health"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "AI Tutor Module",
@@ -439,7 +1782,37 @@
         "Health Check",
         "Ask Question",
         "Get Question Result"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/ai-tutor-openapi.yaml",
+        "documentedEndpointCount": 3,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/ai-tutor/health",
+            "summary": "Check AI tutor service health",
+            "tags": [
+              "AI Tutor"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/ai-tutor/ask",
+            "summary": "Ask AI tutor a question",
+            "tags": [
+              "AI Tutor"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/ai-tutor/result/{questionId}",
+            "summary": "Get question result",
+            "tags": [
+              "AI Tutor"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Curriculum Module",
@@ -517,7 +1890,728 @@
             "Remove Child Year Group (Admin)"
           ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/curriculum-openapi.yaml",
+        "documentedEndpointCount": 34,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/curriculum/health",
+            "summary": "Check curriculum module health",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/year-groups",
+            "summary": "Get all year groups",
+            "tags": [
+              "Year Groups"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/year-groups",
+            "summary": "Create a new year group",
+            "tags": [
+              "Year Groups"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/year-groups/{id}",
+            "summary": "Get year group by ID",
+            "tags": [
+              "Year Groups"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/curriculum/year-groups/{id}",
+            "summary": "Update a year group",
+            "tags": [
+              "Year Groups"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/curriculum/year-groups/{id}",
+            "summary": "Delete a year group",
+            "tags": [
+              "Year Groups"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/year-groups/{id}/hierarchy",
+            "summary": "Get full curriculum hierarchy",
+            "tags": [
+              "Year Groups"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/subjects",
+            "summary": "Get all subjects",
+            "tags": [
+              "Subjects"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/subjects",
+            "summary": "Create a new subject",
+            "tags": [
+              "Subjects"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/subjects/{id}",
+            "summary": "Get subject by ID",
+            "tags": [
+              "Subjects"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/curriculum/subjects/{id}",
+            "summary": "Update a subject",
+            "tags": [
+              "Subjects"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/curriculum/subjects/{id}",
+            "summary": "Delete a subject",
+            "tags": [
+              "Subjects"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/topics",
+            "summary": "Get all topics",
+            "tags": [
+              "Topics"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/topics",
+            "summary": "Create a new topic",
+            "tags": [
+              "Topics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/topics/{id}",
+            "summary": "Get topic by ID",
+            "tags": [
+              "Topics"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/curriculum/topics/{id}",
+            "summary": "Update a topic",
+            "tags": [
+              "Topics"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/curriculum/topics/{id}",
+            "summary": "Delete a topic",
+            "tags": [
+              "Topics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/sub-topics",
+            "summary": "Get all sub-topics",
+            "tags": [
+              "Sub-Topics"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/sub-topics",
+            "summary": "Create a new sub-topic",
+            "tags": [
+              "Sub-Topics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/sub-topics/{id}",
+            "summary": "Get sub-topic by ID",
+            "tags": [
+              "Sub-Topics"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/curriculum/sub-topics/{id}",
+            "summary": "Update a sub-topic",
+            "tags": [
+              "Sub-Topics"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/curriculum/sub-topics/{id}",
+            "summary": "Delete a sub-topic",
+            "tags": [
+              "Sub-Topics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/objectives",
+            "summary": "Get all learning objectives",
+            "tags": [
+              "Learning Objectives"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/objectives",
+            "summary": "Create a new learning objective",
+            "tags": [
+              "Learning Objectives"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/objectives/{id}",
+            "summary": "Get objective by internal ID",
+            "tags": [
+              "Learning Objectives"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/curriculum/objectives/{id}",
+            "summary": "Update a learning objective",
+            "tags": [
+              "Learning Objectives"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/curriculum/objectives/{id}",
+            "summary": "Delete a learning objective",
+            "tags": [
+              "Learning Objectives"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/objectives/by-objective-id/{objectiveId}",
+            "summary": "Get objective by objective ID",
+            "tags": [
+              "Learning Objectives"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/curriculum/admin/children/unassigned",
+            "summary": "Get children without year group assignment",
+            "tags": [
+              "Child Year Group Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/admin/children/assign-year-group",
+            "summary": "Manually assign year group to a child",
+            "tags": [
+              "Child Year Group Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/admin/children/auto-assign-year-group",
+            "summary": "Auto-assign year group based on child's age",
+            "tags": [
+              "Child Year Group Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/curriculum/admin/children/bulk-assign-year-groups",
+            "summary": "Bulk auto-assign year groups to all unassigned children",
+            "tags": [
+              "Child Year Group Management"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/curriculum/admin/children/{childId}/year-group",
+            "summary": "Update child's year group",
+            "tags": [
+              "Child Year Group Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/curriculum/admin/children/{childId}/year-group",
+            "summary": "Remove child's year group assignment",
+            "tags": [
+              "Child Year Group Management"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Course Module",
+      "path": "/courses",
+      "description": "Course creation, hierarchical course structure management, mastery tracking, enrollment, access checks, and admin moderation for online courses.",
+      "status": "completed",
+      "subModules": [
+        {
+          "name": "Course Management",
+          "description": "Creator course lifecycle from draft creation through review and publishing",
+          "endpoints": [
+            "Create Course",
+            "Get My Created Courses",
+            "Get Course by ID",
+            "Update Course",
+            "Delete Course",
+            "Submit Course for Review",
+            "Publish Course"
+          ]
+        },
+        {
+          "name": "Subject Management",
+          "description": "Manage the first level of the course hierarchy",
+          "endpoints": [
+            "Get Course Subjects",
+            "Add Subject to Course",
+            "Get Subject by ID",
+            "Update Subject",
+            "Delete Subject",
+            "Reorder Subjects"
+          ]
+        },
+        {
+          "name": "Topic Management",
+          "description": "Manage topics within course subjects",
+          "endpoints": [
+            "Get Topics for a Subject",
+            "Add Topic to Subject",
+            "Get Topic by ID",
+            "Update Topic",
+            "Delete Topic",
+            "Reorder Topics"
+          ]
+        },
+        {
+          "name": "SubTopic Management",
+          "description": "Manage sub-topics within course topics",
+          "endpoints": [
+            "Get Sub-Topics for a Topic",
+            "Add Sub-Topic to Topic",
+            "Get Sub-Topic by ID",
+            "Update Sub-Topic",
+            "Delete Sub-Topic",
+            "Reorder Sub-Topics"
+          ]
+        },
+        {
+          "name": "SubTopic Content",
+          "description": "Attach, remove, and reorder content within course sub-topics",
+          "endpoints": [
+            "Add Content to Sub-Topic",
+            "Remove Content from Sub-Topic",
+            "Reorder Content in Sub-Topic"
+          ]
+        },
+        {
+          "name": "Progress & Mastery",
+          "description": "Track course progress and calculate mastery across selected mastery dimensions",
+          "endpoints": [
+            "Get Course Progress with Mastery",
+            "Update Content Progress",
+            "Calculate Sub-Topic Mastery"
+          ]
+        },
+        {
+          "name": "Enrollment & Access",
+          "description": "Course purchase, free enrollment, progress, completion, and access checks",
+          "endpoints": [
+            "Purchase Course",
+            "Enroll in Free Course",
+            "Get My Purchased Courses",
+            "Get Course Progress (Legacy)",
+            "Mark Content as Complete (Legacy)",
+            "Check Course Access"
+          ]
+        },
+        {
+          "name": "Admin",
+          "description": "Admin moderation for pending courses",
+          "endpoints": [
+            "Get Pending Courses",
+            "Moderate Course"
+          ]
+        }
+      ],
+      "hierarchy": {
+        "structure": [
+          "Course",
+          "Course Subject",
+          "Course Topic",
+          "Course Sub-Topic",
+          "Content"
+        ],
+        "features": [
+          "Creator-defined hierarchy",
+          "Content linking at sub-topic level",
+          "Manual reorder support for hierarchy levels and content",
+          "Course moderation workflow: DRAFT -> PENDING_REVIEW -> APPROVED/REJECTED -> PUBLISHED"
+        ]
+      },
+      "masteryModel": {
+        "dimensions": [
+          "Understanding",
+          "Problem Solving",
+          "Retention",
+          "Application",
+          "Accuracy",
+          "Speed"
+        ],
+        "description": "Creators can select mastery dimensions per course; progress APIs calculate mastery at sub-topic and course level."
+      },
+      "pricing": {
+        "platformFee": "30%",
+        "creatorEarning": "70%"
+      },
+      "openapi": {
+        "docsFile": "docs/course-openapi.yaml",
+        "documentedEndpointCount": 39,
+        "documentedEndpoints": [
+          {
+            "method": "POST",
+            "path": "/courses",
+            "summary": "Create a course",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/my-courses",
+            "summary": "Get my created courses",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{id}",
+            "summary": "Get course by ID",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/{id}",
+            "summary": "Update course",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{id}",
+            "summary": "Delete course",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{id}/submit",
+            "summary": "Submit course for review",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{id}/publish",
+            "summary": "Publish course",
+            "tags": [
+              "Course Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects",
+            "summary": "Get course subjects",
+            "tags": [
+              "Subject Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects",
+            "summary": "Add subject to course",
+            "tags": [
+              "Subject Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}",
+            "summary": "Get subject by ID",
+            "tags": [
+              "Subject Management"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/{courseId}/subjects/{subjectId}",
+            "summary": "Update subject",
+            "tags": [
+              "Subject Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{courseId}/subjects/{subjectId}",
+            "summary": "Delete subject",
+            "tags": [
+              "Subject Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/reorder",
+            "summary": "Reorder subjects",
+            "tags": [
+              "Subject Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics",
+            "summary": "Get topics for a subject",
+            "tags": [
+              "Topic Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics",
+            "summary": "Add topic to subject",
+            "tags": [
+              "Topic Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}",
+            "summary": "Get topic by ID",
+            "tags": [
+              "Topic Management"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}",
+            "summary": "Update topic",
+            "tags": [
+              "Topic Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}",
+            "summary": "Delete topic",
+            "tags": [
+              "Topic Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/reorder",
+            "summary": "Reorder topics",
+            "tags": [
+              "Topic Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics",
+            "summary": "Get sub-topics for a topic",
+            "tags": [
+              "SubTopic Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics",
+            "summary": "Add sub-topic to topic",
+            "tags": [
+              "SubTopic Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
+            "summary": "Get sub-topic by ID",
+            "tags": [
+              "SubTopic Management"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
+            "summary": "Update sub-topic",
+            "tags": [
+              "SubTopic Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
+            "summary": "Delete sub-topic",
+            "tags": [
+              "SubTopic Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/reorder",
+            "summary": "Reorder sub-topics",
+            "tags": [
+              "SubTopic Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/content",
+            "summary": "Add content to sub-topic",
+            "tags": [
+              "SubTopic Content"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/content/{contentId}",
+            "summary": "Remove content from sub-topic",
+            "tags": [
+              "SubTopic Content"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/content/reorder",
+            "summary": "Reorder content in sub-topic",
+            "tags": [
+              "SubTopic Content"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/progress-mastery",
+            "summary": "Get course progress with mastery",
+            "tags": [
+              "Progress & Mastery"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subtopics/{subTopicId}/content/{contentId}/progress",
+            "summary": "Update content progress",
+            "tags": [
+              "Progress & Mastery"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subtopics/{subTopicId}/calculate-mastery",
+            "summary": "Calculate sub-topic mastery",
+            "tags": [
+              "Progress & Mastery"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{id}/purchase",
+            "summary": "Purchase course",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{id}/enroll",
+            "summary": "Enroll in free course",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/purchased",
+            "summary": "Get my purchased courses",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{id}/progress",
+            "summary": "Get course progress (legacy)",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{id}/content/{contentId}/complete",
+            "summary": "Mark content as complete (legacy)",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{id}/access",
+            "summary": "Check course access",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/courses/admin/pending-reviews",
+            "summary": "Get pending courses",
+            "tags": [
+              "Admin"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/courses/admin/{id}/moderate",
+            "summary": "Moderate course",
+            "tags": [
+              "Admin"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Content Module",
@@ -569,12 +2663,226 @@
             "Get Platform Analytics (Admin)"
           ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/content-openapi.yaml",
+        "documentedEndpointCount": 26,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/content/health",
+            "summary": "Check content module health",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content",
+            "summary": "Get all content",
+            "tags": [
+              "Content Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content",
+            "summary": "Create new content",
+            "tags": [
+              "Content Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/my",
+            "summary": "Get my content",
+            "tags": [
+              "Content Management"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/{id}",
+            "summary": "Get content by ID",
+            "tags": [
+              "Content Management"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/content/{id}",
+            "summary": "Update content",
+            "tags": [
+              "Content Management"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/content/{id}",
+            "summary": "Delete content",
+            "tags": [
+              "Content Management"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/{id}/submit",
+            "summary": "Submit content for review",
+            "tags": [
+              "Content Lifecycle"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/{id}/publish",
+            "summary": "Publish content",
+            "tags": [
+              "Content Lifecycle"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/{id}/promote",
+            "summary": "Promote content",
+            "tags": [
+              "Content Lifecycle"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/{id}/secure-url",
+            "summary": "Get secure content URL",
+            "tags": [
+              "Content Lifecycle"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/admin/content/{id}/moderate",
+            "summary": "Moderate content",
+            "tags": [
+              "Admin - Moderation"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/admin/content/{id}/feature",
+            "summary": "Feature content",
+            "tags": [
+              "Admin - Moderation"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/content/admin/content/{id}/tags",
+            "summary": "Update content tags",
+            "tags": [
+              "Admin - Moderation"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/admin/content/badges/update",
+            "summary": "Update all content badges",
+            "tags": [
+              "Admin - Moderation"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/admin/content/stats",
+            "summary": "Get content statistics",
+            "tags": [
+              "Admin - Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/admin/content/pending-reviews",
+            "summary": "Get pending reviews",
+            "tags": [
+              "Admin - Analytics"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/analytics/track/{id}/view",
+            "summary": "Track content view",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/content/analytics/track/{id}/completion",
+            "summary": "Track content completion",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/content/{id}",
+            "summary": "Get content analytics",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/engagement/{id}",
+            "summary": "Get user engagement metrics",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/dashboard",
+            "summary": "Get creator dashboard",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/performance",
+            "summary": "Get content performance comparison",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/revenue",
+            "summary": "Get revenue analytics",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/trending",
+            "summary": "Get trending content",
+            "tags": [
+              "Analytics"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/content/analytics/platform",
+            "summary": "Get platform analytics (Admin only)",
+            "tags": [
+              "Analytics"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Marketplace Module",
       "path": "/marketplace",
-      "description": "Content marketplace for buying and selling educational content with Stripe integration, creator payouts, and content access management",
+      "description": "Content marketplace for buying and selling educational content with Stripe integration, creator payouts, content access management, practitioner favorites, unified search, advanced filtering, and cart-based checkout",
       "status": "completed",
       "subModules": [
         {
@@ -589,10 +2897,42 @@
           ]
         },
         {
+          "name": "Search & Filter",
+          "description": "Unified marketplace search and advanced filtering for tutors, practitioners, content, and courses",
+          "endpoints": [
+            "Unified Search Across Tutors, Practitioners, Content, and Courses",
+            "Advanced Marketplace Filtering"
+          ]
+        },
+        {
+          "name": "Favorites",
+          "description": "Practitioner and marketplace item favorites",
+          "endpoints": [
+            "Add Practitioner Favorite",
+            "Remove Practitioner Favorite",
+            "Get Practitioner Favorites",
+            "Add Marketplace Favorite",
+            "Remove Marketplace Favorite",
+            "Get Marketplace Favorites"
+          ]
+        },
+        {
+          "name": "Cart & Checkout",
+          "description": "Cart management and checkout preparation for marketplace items",
+          "endpoints": [
+            "Get Cart",
+            "Add Item to Cart",
+            "Remove Item from Cart",
+            "Clear Cart",
+            "Checkout Cart"
+          ]
+        },
+        {
           "name": "Purchase & Access",
           "description": "Content purchase flow and access control",
           "endpoints": [
             "Purchase Content",
+            "Get Purchase Checkout Details",
             "Get My Purchases",
             "Check Content Access"
           ]
@@ -621,7 +2961,292 @@
             "Process Payout (Admin)"
           ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/marketplace-openapi.yaml",
+        "documentedEndpointCount": 28,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/marketplace/health",
+            "summary": "Health check for marketplace module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/search",
+            "summary": "Search across marketplace practitioners and items",
+            "tags": [
+              "Search"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/filter",
+            "summary": "Filter marketplace practitioners and items",
+            "tags": [
+              "Filter"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/practitioners",
+            "summary": "List practitioners",
+            "tags": [
+              "Practitioners"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/practitioners/{id}",
+            "summary": "Get practitioner by ID",
+            "tags": [
+              "Practitioners"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/practitioners/{id}/favorite",
+            "summary": "Add practitioner to favorites",
+            "tags": [
+              "Favorites"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/practitioners/{id}/favorite",
+            "summary": "Remove practitioner from favorites",
+            "tags": [
+              "Favorites"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/favorites",
+            "summary": "Get my favorites",
+            "tags": [
+              "Favorites"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/content-course/{entityType}/{entityId}/favorite",
+            "summary": "Add marketplace item to favorites",
+            "tags": [
+              "Favorites"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/content-course/{entityType}/{entityId}/favorite",
+            "summary": "Remove marketplace item from favorites",
+            "tags": [
+              "Favorites"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/content-course/favorites",
+            "summary": "Get marketplace item favorites",
+            "tags": [
+              "Favorites"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/content",
+            "summary": "List marketplace items (content + courses)",
+            "tags": [
+              "Content"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/content/{type}/{id}",
+            "summary": "Get item by type and ID",
+            "tags": [
+              "Content"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/{entityType}/{entityId}/reviews",
+            "summary": "Get reviews for an entity",
+            "tags": [
+              "Reviews"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/{entityType}/{entityId}/reviews",
+            "summary": "Create a review",
+            "tags": [
+              "Reviews"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/{entityType}/reviews/{reviewId}/reply",
+            "summary": "Reply to a review",
+            "tags": [
+              "Reviews"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/{entityType}/{entityId}/purchase",
+            "summary": "Purchase an entity",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/purchase/checkout-details",
+            "summary": "Get purchase checkout details",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/{entityType}/{entityId}/access",
+            "summary": "Check access",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/purchases",
+            "summary": "Get my purchases",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/cart",
+            "summary": "Get current cart",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/cart/items",
+            "summary": "Add item to cart",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/cart/items/{itemId}",
+            "summary": "Remove item from cart",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/cart",
+            "summary": "Clear cart",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/cart/checkout",
+            "summary": "Checkout cart",
+            "tags": [
+              "Purchases"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/earnings",
+            "summary": "Get my earnings",
+            "tags": [
+              "Earnings"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/earnings/summary",
+            "summary": "Get earnings summary",
+            "tags": [
+              "Earnings"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/admin/payouts/{payoutId}",
+            "summary": "Process payout (Admin)",
+            "tags": [
+              "Admin"
+            ]
+          }
+        ],
+        "tags": [
+          {
+            "name": "Health",
+            "description": "Module health check"
+          },
+          {
+            "name": "Search",
+            "description": "Unified search across tutors, practitioners, content, and courses"
+          },
+          {
+            "name": "Filter",
+            "description": "Advanced filtering for marketplace items"
+          },
+          {
+            "name": "Practitioners",
+            "description": "Browse and search tutors and practitioners"
+          },
+          {
+            "name": "Content",
+            "description": "Browse and search marketplace content"
+          },
+          {
+            "name": "Reviews",
+            "description": "Review and rating system for all entities"
+          },
+          {
+            "name": "Purchases",
+            "description": "Purchase and access management"
+          },
+          {
+            "name": "Earnings",
+            "description": "Creator/practitioner earnings"
+          },
+          {
+            "name": "Favorites",
+            "description": "Practitioner favorites management"
+          },
+          {
+            "name": "Admin",
+            "description": "Admin payout processing"
+          }
+        ],
+        "declaredTags": [
+          "Health",
+          "Search",
+          "Filter",
+          "Practitioners",
+          "Content",
+          "Reviews",
+          "Purchases",
+          "Earnings",
+          "Favorites",
+          "Admin"
+        ],
+        "note": "Search and Filter are declared in docs/marketplace-openapi.yaml as marketplace tags; no operation paths are currently tagged with them in the OpenAPI paths section."
+      }
     },
     {
       "name": "Availability Module",
@@ -639,7 +3264,93 @@
         "Get Available Slots",
         "Check Availability Set",
         "Get Public Summary"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/availability-openapi.yaml",
+        "documentedEndpointCount": 10,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/availability/health",
+            "summary": "Health check for availability module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/availability/schedule",
+            "summary": "Get availability schedule",
+            "tags": [
+              "Schedule"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/availability/schedule",
+            "summary": "Set weekly availability schedule",
+            "tags": [
+              "Schedule"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/availability/schedule/{dayOfWeek}",
+            "summary": "Delete a specific day from schedule",
+            "tags": [
+              "Schedule"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/availability/overrides",
+            "summary": "Get schedule overrides",
+            "tags": [
+              "Overrides"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/availability/overrides",
+            "summary": "Add a schedule override",
+            "tags": [
+              "Overrides"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/availability/overrides/{id}",
+            "summary": "Delete a specific override",
+            "tags": [
+              "Overrides"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/availability/slots/{id}",
+            "summary": "Get available booking slots for a practitioner",
+            "tags": [
+              "Slots"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/availability/check",
+            "summary": "Check if availability is set",
+            "tags": [
+              "Schedule"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/availability/public/{id}",
+            "summary": "Get public availability summary for marketplace",
+            "tags": [
+              "Slots"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Wallet Module",
@@ -654,7 +3365,69 @@
         "Request Payout",
         "Get Payouts",
         "Cancel Payout"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/wallet-openapi.yaml",
+        "documentedEndpointCount": 7,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/wallet/health",
+            "summary": "Health check for wallet module",
+            "tags": [
+              "Wallet"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/wallet",
+            "summary": "Get user wallet",
+            "tags": [
+              "Wallet"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/wallet/summary",
+            "summary": "Get wallet summary",
+            "tags": [
+              "Wallet"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/wallet/transactions",
+            "summary": "Get transaction history",
+            "tags": [
+              "Transactions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/wallet/payout/request",
+            "summary": "Request payout",
+            "tags": [
+              "Payouts"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/wallet/payouts",
+            "summary": "Get payout history",
+            "tags": [
+              "Payouts"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/wallet/payouts/{payoutId}",
+            "summary": "Cancel payout",
+            "tags": [
+              "Payouts"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Enrollment Module",
@@ -731,6 +3504,164 @@
         "answerEvaluation": "AI evaluates short answers with partial credit support",
         "resultAnalysis": "AI provides subject breakdown, strengths, areas for improvement, and recommendations",
         "personality": "Steppy bot - friendly, encouraging, age-appropriate feedback"
+      },
+      "openapi": {
+        "docsFile": "docs/enrollment-openapi.yaml",
+        "documentedEndpointCount": 19,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/enrollment/health",
+            "summary": "Enrollment module health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/enrollment/assessment/health",
+            "summary": "Assessment module health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/enrollment/options",
+            "summary": "Get enrollment options",
+            "tags": [
+              "Options"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/enrollment/child/{childId}",
+            "summary": "Get child enrollment status",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/enrollment/child/{childId}",
+            "summary": "Update enrollment",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/enrollment/child/{childId}/start",
+            "summary": "Start enrollment",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/enrollment/child/{childId}/step/curriculum",
+            "summary": "Save curriculum step",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/enrollment/child/{childId}/step/beyond-book",
+            "summary": "Save beyond book step",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/enrollment/child/{childId}/step/language",
+            "summary": "Save language step",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/enrollment/child/{childId}/step/faith",
+            "summary": "Save faith step",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/enrollment/child/{childId}/step/learning-style",
+            "summary": "Save learning style step",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/enrollment/child/{childId}/submit",
+            "summary": "Submit enrollment",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/enrollment/child/{childId}/preview",
+            "summary": "Get enrollment preview",
+            "tags": [
+              "Enrollment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/enrollment/assessment/child/{childId}",
+            "summary": "Get assessment status",
+            "tags": [
+              "Assessment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/enrollment/assessment/child/{childId}/start",
+            "summary": "Start assessment",
+            "tags": [
+              "Assessment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/enrollment/assessment/child/{childId}/answer",
+            "summary": "Submit answer",
+            "tags": [
+              "Assessment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/enrollment/assessment/child/{childId}/complete",
+            "summary": "Complete assessment",
+            "tags": [
+              "Assessment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/enrollment/assessment/child/{childId}/result",
+            "summary": "Get assessment result",
+            "tags": [
+              "Assessment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/enrollment/assessment/child/{childId}/activate",
+            "summary": "Activate child",
+            "tags": [
+              "Assessment"
+            ]
+          }
+        ]
       }
     },
     {
@@ -749,7 +3680,176 @@
         "Get All Tickets (Admin)",
         "Update Ticket Status (Admin)",
         "Assign Ticket (Admin)"
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/tickets-openapi.yaml",
+        "documentedEndpointCount": 20,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/tickets/health",
+            "summary": "Health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets",
+            "summary": "Get user's tickets",
+            "tags": [
+              "Tickets"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets",
+            "summary": "Create support ticket",
+            "tags": [
+              "Tickets"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets/stats",
+            "summary": "Get ticket statistics",
+            "tags": [
+              "Tickets"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets/admin",
+            "summary": "Get all tickets (Admin)",
+            "tags": [
+              "Admin"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets/{ticketId}",
+            "summary": "Get ticket details",
+            "tags": [
+              "Tickets"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/{ticketId}/messages",
+            "summary": "Add message to ticket",
+            "tags": [
+              "Messages"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/{ticketId}/confirm-resolution",
+            "summary": "Confirm AI resolution",
+            "tags": [
+              "User Actions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/{ticketId}/request-human",
+            "summary": "Request human support",
+            "tags": [
+              "User Actions"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/tickets/{ticketId}/status",
+            "summary": "Update ticket status (Admin)",
+            "tags": [
+              "Admin"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/init",
+            "summary": "Initialize live chat session",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/choice",
+            "summary": "Handle user choice",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/message",
+            "summary": "Send message in live chat",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/request-human",
+            "summary": "Request human agent",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets/live-chat/active",
+            "summary": "Get active session",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets/live-chat/{sessionId}",
+            "summary": "Get session details",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/end",
+            "summary": "End chat session",
+            "tags": [
+              "Live Chat"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/agent/reply",
+            "summary": "Agent reply to chat (Admin)",
+            "tags": [
+              "Live Chat",
+              "Admin"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/tickets/live-chat/admin/sessions",
+            "summary": "Get active live chat sessions (Admin)",
+            "tags": [
+              "Live Chat",
+              "Admin"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/tickets/live-chat/admin/assign",
+            "summary": "Assign live chat session to ticket (Admin)",
+            "tags": [
+              "Live Chat",
+              "Admin"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Sessions Module",
@@ -803,10 +3903,616 @@
             "Create Trial Checkout",
             "Create Trial Payment Intent",
             "Confirm Trial Payment",
-            "Stripe Webhook"
+            "Get Checkout Details"
           ]
         }
-      ]
+      ],
+      "openapi": {
+        "docsFile": "docs/sessions-openapi.yaml",
+        "documentedEndpointCount": 75,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/sessions/health",
+            "summary": "Health check for sessions module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor",
+            "summary": "Create a new session",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/me",
+            "summary": "Get my sessions",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/upcoming",
+            "summary": "Get upcoming sessions",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}",
+            "summary": "Get session by ID",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/sessions/tutor/{id}/reschedule",
+            "summary": "Reschedule a session",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/sessions/tutor/{id}/cancel",
+            "summary": "Cancel a session",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/confirm-completed",
+            "summary": "Confirm lesson completed",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages",
+            "summary": "Create a lesson package",
+            "tags": [
+              "Packages"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/packages/me",
+            "summary": "Get my packages",
+            "tags": [
+              "Packages"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/packages/expiring",
+            "summary": "Get expiring packages",
+            "tags": [
+              "Packages"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/packages/{id}",
+            "summary": "Get package by ID",
+            "tags": [
+              "Packages"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/my-tutors",
+            "summary": "Get all my tutors",
+            "tags": [
+              "My Tutors"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/my-tutors/{tutorId}",
+            "summary": "Get tutor detail",
+            "tags": [
+              "My Tutors"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/credits/all",
+            "summary": "Get all credits for parent",
+            "tags": [
+              "Credits"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/credits/child/{childId}",
+            "summary": "Get all credits for a child",
+            "tags": [
+              "Credits"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/credits/child/{childId}/tutor/{tutorId}",
+            "summary": "Get credits for child with specific tutor",
+            "tags": [
+              "Credits"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/credits/transfer",
+            "summary": "Transfer credits to another tutor",
+            "tags": [
+              "Credits"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/credits/transfer-to-child",
+            "summary": "Transfer credits to another child",
+            "tags": [
+              "Credits"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/my-tutors/{tutorId}/pause",
+            "summary": "Pause a tutor",
+            "tags": [
+              "My Tutors"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/my-tutors/{tutorId}/resume",
+            "summary": "Resume a paused tutor",
+            "tags": [
+              "My Tutors"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/payment/config",
+            "summary": "Get payment configuration",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages/create-checkout",
+            "summary": "Create Stripe checkout session for lesson package",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages/create-payment-intent",
+            "summary": "Create Stripe payment intent for lesson package",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages/confirm-payment",
+            "summary": "Confirm package payment intent",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages/payment-success",
+            "summary": "Confirm package payment success",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/trial/create-checkout",
+            "summary": "Create Stripe checkout session for trial lesson",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/trial/create-payment-intent",
+            "summary": "Create Stripe payment intent for trial lesson",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/trial/confirm-payment",
+            "summary": "Confirm trial payment",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/payment/checkout-details",
+            "summary": "Get checkout session details",
+            "tags": [
+              "Payment"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/calendar/all",
+            "summary": "Get all sessions for calendar view",
+            "tags": [
+              "Calendar"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/health",
+            "summary": "Health check for silo sessions module",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/silo",
+            "summary": "Create a new silo session",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/me",
+            "summary": "Get my silo sessions",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/upcoming",
+            "summary": "Get upcoming silo sessions",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/curriculum",
+            "summary": "Get child curriculum with progress",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/{id}",
+            "summary": "Get silo session by ID",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/{id}/content",
+            "summary": "Get session content with secure URLs",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/silo/{id}/start",
+            "summary": "Start a silo session",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/silo/{id}/complete",
+            "summary": "Complete a silo session",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/silo/{id}/skip",
+            "summary": "Skip a silo session",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/sessions/silo/{id}/cancel",
+            "summary": "Cancel a silo session",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/sessions/silo/{id}/reschedule",
+            "summary": "Reschedule a silo session",
+            "tags": [
+              "Silo Learning"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/progress/{childId}",
+            "summary": "Get child's overall progress",
+            "tags": [
+              "Silo Progress"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/silo/progress/{childId}/{subTopicId}",
+            "summary": "Get sub-topic progress",
+            "tags": [
+              "Silo Progress"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/silo/progress/{childId}/{subTopicId}",
+            "summary": "Update objective progress",
+            "tags": [
+              "Silo Progress"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/silo/progress/{childId}/{subTopicId}/mastery",
+            "summary": "Calculate mastery score",
+            "tags": [
+              "Silo Progress"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/join",
+            "summary": "Get session join details",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/notes",
+            "summary": "Add tutor notes",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/session-notes",
+            "summary": "Get session notes",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/session-notes",
+            "summary": "Add session note",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "PUT",
+            "path": "/sessions/tutor/{id}/session-notes/{noteId}",
+            "summary": "Update session note",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/sessions/tutor/{id}/session-notes/{noteId}",
+            "summary": "Delete session note",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/rating",
+            "summary": "Add parent rating",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/accept",
+            "summary": "Tutor accepts session",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/reject",
+            "summary": "Tutor rejects session",
+            "tags": [
+              "Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/live",
+            "summary": "Get session with meeting link",
+            "tags": [
+              "Live Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/live/token",
+            "summary": "Get join token for video call",
+            "tags": [
+              "Live Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/live/status",
+            "summary": "Get room status",
+            "tags": [
+              "Live Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/live/start",
+            "summary": "Start the live session",
+            "tags": [
+              "Live Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/live/end",
+            "summary": "End the live session",
+            "tags": [
+              "Live Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/missed",
+            "summary": "Get missed sessions",
+            "tags": [
+              "Missed Sessions"
+            ]
+          },
+          {
+            "method": "PATCH",
+            "path": "/sessions/tutor/{id}/reschedule-missed",
+            "summary": "Reschedule a missed session",
+            "tags": [
+              "Missed Sessions"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/process-missed",
+            "summary": "Process missed sessions (Admin/Cron)",
+            "tags": [
+              "Missed Sessions"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/child-feedback/questions",
+            "summary": "Get child feedback questions",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/child-feedback",
+            "summary": "Get child feedback for session",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/child-feedback",
+            "summary": "Submit child feedback",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/child-feedback/skip",
+            "summary": "Skip child feedback",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/parent-feedback/questions",
+            "summary": "Get parent feedback questions",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/parent-feedback",
+            "summary": "Get parent feedback for session",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/parent-feedback",
+            "summary": "Submit parent feedback",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/tutor-feedback/questions",
+            "summary": "Get tutor feedback questions",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/tutor-feedback",
+            "summary": "Get tutor feedback for session",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/tutor/{id}/tutor-feedback",
+            "summary": "Submit tutor feedback about child",
+            "tags": [
+              "Session Feedback"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/child/{childId}/feedback-stats",
+            "summary": "Get child's feedback stats and progress",
+            "tags": [
+              "Session Feedback"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Success Roadmap Module",
@@ -893,6 +4599,134 @@
         "roadmapGeneration": "AI generates stage-by-stage career pathways with UK education context",
         "followUpHandling": "AI answers follow-up questions about the career roadmap",
         "contentFiltering": "Blocks inappropriate topics (violence, drugs, adult content, etc.)"
+      },
+      "openapi": {
+        "docsFile": "docs/success-roadmap-openapi.yaml",
+        "documentedEndpointCount": 12,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/success-roadmap/health",
+            "summary": "Health check",
+            "tags": [
+              "Health"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/roadmap",
+            "summary": "Create a career roadmap",
+            "tags": [
+              "Roadmap"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/roadmap/followup",
+            "summary": "Ask a follow-up question",
+            "tags": [
+              "Roadmap"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/child/{childId}/roadmaps",
+            "summary": "Get child's roadmaps",
+            "tags": [
+              "Roadmap"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/child/{childId}/roadmap/{roadmapId}",
+            "summary": "Get roadmap details",
+            "tags": [
+              "Roadmap"
+            ]
+          },
+          {
+            "method": "DELETE",
+            "path": "/success-roadmap/child/{childId}/roadmap/{roadmapId}",
+            "summary": "Delete a roadmap",
+            "tags": [
+              "Roadmap"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/child/{childId}/usage",
+            "summary": "Get daily usage",
+            "tags": [
+              "Usage"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/history",
+            "summary": "Get roadmap history",
+            "tags": [
+              "History"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/quiz/start",
+            "summary": "Start career discovery quiz",
+            "tags": [
+              "Quiz"
+            ]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/quiz/submit",
+            "summary": "Submit quiz answers",
+            "tags": [
+              "Quiz"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/child/{childId}/quizzes",
+            "summary": "Get child's quiz history",
+            "tags": [
+              "Quiz"
+            ]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/quiz/{quizId}",
+            "summary": "Get quiz details",
+            "tags": [
+              "Quiz"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Payment Module",
+      "path": "/payment",
+      "description": "Standalone webhook handling for payment providers outside module-scoped payment flows",
+      "status": "completed",
+      "endpoints": [
+        "Stripe Webhook"
+      ],
+      "openapi": {
+        "docsFile": null,
+        "documentedEndpointCount": 1,
+        "documentedEndpoints": [
+          {
+            "method": "POST",
+            "path": "/payment/webhook",
+            "summary": "Handle Stripe webhook",
+            "tags": [
+              "Webhooks"
+            ]
+          }
+        ],
+        "notes": [
+          "Route is implemented in source but does not currently have a dedicated OpenAPI YAML file."
+        ]
       }
     }
   ],
@@ -1026,12 +4860,30 @@
         ]
       },
       "contentMapping": {
-        "VISUAL_SPATIAL": ["VIDEO", "INTERACTIVE"],
-        "AUDITORY_AURAL": ["AUDIO", "VIDEO"],
-        "READING_WRITING": ["PDF", "TEXT"],
-        "KINESTHETIC": ["INTERACTIVE", "VIDEO"],
-        "SOCIAL": ["INTERACTIVE", "VIDEO"],
-        "SOLITARY": ["PDF", "AUDIO"]
+        "VISUAL_SPATIAL": [
+          "VIDEO",
+          "INTERACTIVE"
+        ],
+        "AUDITORY_AURAL": [
+          "AUDIO",
+          "VIDEO"
+        ],
+        "READING_WRITING": [
+          "PDF",
+          "TEXT"
+        ],
+        "KINESTHETIC": [
+          "INTERACTIVE",
+          "VIDEO"
+        ],
+        "SOCIAL": [
+          "INTERACTIVE",
+          "VIDEO"
+        ],
+        "SOLITARY": [
+          "PDF",
+          "AUDIO"
+        ]
       }
     },
     "websocket": {
@@ -1202,6 +5054,61 @@
         ]
       },
       "helperFunctions": "src/shared/services/email.helper.js - All email sending functions with logging and error handling"
+    },
+    "course": {
+      "description": "Course creation and learning workflow with hierarchical structure, mastery tracking, enrollment, and moderation",
+      "hierarchy": [
+        "Course",
+        "Course Subject",
+        "Course Topic",
+        "Course Sub-Topic",
+        "Content"
+      ],
+      "masteryDimensions": [
+        "Understanding",
+        "Problem Solving",
+        "Retention",
+        "Application",
+        "Accuracy",
+        "Speed"
+      ],
+      "workflow": [
+        "Creator creates draft course",
+        "Creator adds subjects, topics, sub-topics, and content",
+        "Creator submits course for review",
+        "Admin approves or rejects course",
+        "Creator publishes approved course",
+        "Learners purchase or enroll and track progress"
+      ],
+      "revenueSplit": {
+        "platform": "30%",
+        "creator": "70%"
+      }
+    },
+    "marketplace": {
+      "description": "Marketplace discovery, purchasing, reviews, favorites, earnings, payouts, search, and filtering for practitioners, content, and courses",
+      "capabilities": [
+        "Practitioner discovery",
+        "Practitioner favorites",
+        "Content and course marketplace listings",
+        "Entity reviews and practitioner replies",
+        "Entity purchase and access checks",
+        "Creator earnings and admin payouts",
+        "Unified search across tutors, practitioners, content, and courses",
+        "Advanced filtering for marketplace items"
+      ],
+      "declaredOpenApiTags": [
+        "Health",
+        "Search",
+        "Filter",
+        "Practitioners",
+        "Content",
+        "Reviews",
+        "Purchases",
+        "Earnings",
+        "Favorites",
+        "Admin"
+      ]
     }
   },
   "architecture": {
@@ -1220,15 +5127,85 @@
     "openapi": {
       "auth": "docs/auth-openapi.yaml",
       "profile": "docs/profile-openapi.yaml",
-      "messaging": "docs/messaging-openapi.yaml",
-      "sessions": "docs/sessions-openapi.yaml",
+      "subscription": "docs/subscription-openapi.yaml",
+      "upload": "docs/upload-openapi.yaml",
+      "aiTutor": "docs/ai-tutor-openapi.yaml",
+      "admin": "docs/admin-openapi.yaml",
+      "curriculum": "docs/curriculum-openapi.yaml",
+      "course": "docs/course-openapi.yaml",
       "content": "docs/content-openapi.yaml",
       "marketplace": "docs/marketplace-openapi.yaml",
+      "availability": "docs/availability-openapi.yaml",
+      "wallet": "docs/wallet-openapi.yaml",
+      "sessions": "docs/sessions-openapi.yaml",
+      "messaging": "docs/messaging-openapi.yaml",
+      "tickets": "docs/tickets-openapi.yaml",
       "enrollment": "docs/enrollment-openapi.yaml",
-      "successRoadmap": "docs/success-roadmap-openapi.yaml"
+      "successRoadmap": "docs/success-roadmap-openapi.yaml",
+      "additional": "docs/additional-apis-openapi.yaml"
     }
   },
   "changelog": {
+    "11.4.0": {
+      "date": "2026-04-24",
+      "changes": [
+        {
+          "category": "API Inventory",
+          "type": "documentation",
+          "description": "Synced api.json with newer implemented routes in profile, admin, and marketplace modules",
+          "details": [
+            "Added profile admin AI tutor endpoints for create, list, update, and toggle actions",
+            "Added admin job monitoring and manual execution endpoints",
+            "Expanded marketplace inventory with search, filter, cart, checkout-details, and content-course favorites endpoints",
+            "Removed stale content share endpoint that is not mounted in the current content routes"
+          ],
+          "files": [
+            "api.json - Updated API inventory"
+          ]
+        }
+      ]
+    },
+    "11.3.0": {
+      "date": "2026-04-09",
+      "changes": [
+        {
+          "category": "API Inventory",
+          "type": "documentation",
+          "description": "Completed missing endpoint coverage in api.json against the mounted Express routes",
+          "details": [
+            "Added Payment Module inventory for POST /payment/webhook",
+            "Added missing notification delete endpoint",
+            "Added missing tickets live chat admin endpoints",
+            "Updated subscription inventory with plans health, discount update/delete, child checkout session, and PayPal webhook",
+            "Removed stale /sessions/webhook entry and aligned sessions payment metadata with implemented routes"
+          ],
+          "files": [
+            "api.json - Updated API inventory"
+          ]
+        }
+      ]
+    },
+    "11.2.0": {
+      "date": "2026-04-07",
+      "changes": [
+        {
+          "category": "API Inventory",
+          "type": "documentation",
+          "description": "Completed api.json inventory from available OpenAPI module documentation",
+          "details": [
+            "Added Course Module inventory covering 39 documented endpoints across 8 sub-modules",
+            "Added docs/course-openapi.yaml to documentation references",
+            "Expanded documentation.openapi to include all available module OpenAPI YAML files",
+            "Added course feature metadata for hierarchy, mastery model, workflow, and revenue split",
+            "Added per-module OpenAPI coverage metadata with method, path, summary, and tags for all documented operations",
+            "Added Marketplace Search and Filter tag coverage to api.json metadata"
+          ],
+          "files": [
+            "api.json - Updated API inventory"
+          ]
+        }
+      ]
+    },
     "8.10.0": {
       "date": "2026-03-12",
       "changes": [
