@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "11.4.0",
+    "version": "12.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-04-24"
+    "lastUpdated": "2026-05-15"
   },
   "modules": [
     {
@@ -41,161 +41,121 @@
             "method": "GET",
             "path": "/auth/health",
             "summary": "Check auth service health",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/register",
             "summary": "Register a new user",
-            "tags": [
-              "Registration"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/admin/register",
             "summary": "Register admin user",
-            "tags": [
-              "Registration"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/login",
             "summary": "Login user",
-            "tags": [
-              "Authentication"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/verify-otp",
             "summary": "Verify email with OTP",
-            "tags": [
-              "Email Verification"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/send-verification-email",
             "summary": "Resend verification OTP",
-            "tags": [
-              "Email Verification"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/forgot-password",
             "summary": "Request password reset",
-            "tags": [
-              "Password Reset"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/reset-password",
             "summary": "Reset password with token",
-            "tags": [
-              "Password Reset"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/change-password",
             "summary": "Change password for logged-in user",
-            "tags": [
-              "Password Reset"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/refresh-token",
             "summary": "Refresh access token",
-            "tags": [
-              "Authentication"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/logout",
             "summary": "Logout current session",
-            "tags": [
-              "Authentication"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/logout-all",
             "summary": "Logout from all devices",
-            "tags": [
-              "Session Management"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/auth/sessions",
             "summary": "Get active sessions",
-            "tags": [
-              "Session Management"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/auth/sessions/{sessionId}",
             "summary": "Revoke specific session",
-            "tags": [
-              "Session Management"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/auth/me",
             "summary": "Get current user profile",
-            "tags": [
-              "Profile"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/auth/google",
             "summary": "Initiate Google OAuth",
-            "tags": [
-              "OAuth"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/auth/google/callback",
             "summary": "Google OAuth callback",
-            "tags": [
-              "OAuth"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/auth/facebook",
             "summary": "Initiate Facebook OAuth",
-            "tags": [
-              "OAuth"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/auth/facebook/callback",
             "summary": "Facebook OAuth callback",
-            "tags": [
-              "OAuth"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/auth/delete-user-data",
             "summary": "Delete user account and data",
-            "tags": [
-              "Data Management"
-            ]
+            "tags": []
           }
         ]
       }
@@ -362,281 +322,211 @@
             "method": "GET",
             "path": "/profile/health",
             "summary": "Health check for profile module",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/select-role",
             "summary": "Select user role",
-            "tags": [
-              "General"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/me",
             "summary": "Get current user profile",
-            "tags": [
-              "General"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent",
             "summary": "Create parent profile",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/add-children",
             "summary": "Add children to profile",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/update",
             "summary": "Update parent profile",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/verify-email",
             "summary": "Verify email update with OTP",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/select-profile",
             "summary": "Select profile access mode",
-            "tags": [
-              "Parent Security"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/validate-pin",
             "summary": "Validate parent PIN",
-            "tags": [
-              "Parent Security"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/verify-security-answer",
             "summary": "Verify security answer (unlock)",
-            "tags": [
-              "Parent Security"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/verify-otp-and-reset-pin",
             "summary": "Verify OTP and reset PIN",
-            "tags": [
-              "Parent Security"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/validate-temp-pin-and-change-pin",
             "summary": "Change PIN with temporary PIN",
-            "tags": [
-              "Parent Security"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/parent/unlock-account",
             "summary": "Confirm account unlock (public endpoint)",
-            "tags": [
-              "Parent Security"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/admin/parent/unlock",
             "summary": "Admin unlock parent account",
-            "tags": [
-              "Admin Operations"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/child/update/{id}",
             "summary": "Update child details",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/child/delete/{id}",
             "summary": "Delete child",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/admin/child/{id}",
             "summary": "Get child details (Admin only)",
-            "tags": [
-              "Admin Operations"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/admin/parents",
             "summary": "Search parent profiles (Admin only)",
-            "tags": [
-              "Admin Operations"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/tutor",
             "summary": "Create tutor profile",
-            "tags": [
-              "Tutor Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/tutor/update",
             "summary": "Update tutor profile (all registration steps)",
-            "tags": [
-              "Tutor Profile"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/admin/tutors/pending",
             "summary": "Get pending tutor verifications (Admin only)",
-            "tags": [
-              "Tutor Profile"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/admin/tutor/{tutorProfileId}/verify",
             "summary": "Verify tutor profile (Admin only)",
-            "tags": [
-              "Tutor Profile"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/profile/admin/ai-tutor",
-            "summary": "Create AI tutor profile (Admin only)",
-            "tags": [
-              "Admin Operations"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/profile/admin/ai-tutors",
-            "summary": "List AI tutors (Admin only)",
-            "tags": [
-              "Admin Operations"
-            ]
-          },
-          {
-            "method": "PUT",
-            "path": "/profile/admin/ai-tutor/{id}",
-            "summary": "Update AI tutor profile (Admin only)",
-            "tags": [
-              "Admin Operations"
-            ]
-          },
-          {
-            "method": "PATCH",
-            "path": "/profile/admin/ai-tutor/{id}/toggle",
-            "summary": "Toggle AI tutor active status (Admin only)",
-            "tags": [
-              "Admin Operations"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/{professionalType}",
             "summary": "Create professional profile",
-            "tags": [
-              "Professional Profiles"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/{professionalType}/update",
             "summary": "Update professional profile",
-            "tags": [
-              "Professional Profiles"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/admin/{professionalType}s/pending",
             "summary": "Get pending professional verifications (Admin only)",
-            "tags": [
-              "Professional Profiles"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/profile/admin/{professionalType}/{professionalProfileId}/verify",
             "summary": "Verify professional profile (Admin only)",
-            "tags": [
-              "Professional Profiles"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
-            "summary": "Get subject learning style preference",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
             "summary": "Set subject learning style preference",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
+            "summary": "Get subject learning style preference",
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/profile/child/{childId}/subjects/{subjectId}/learning-style",
             "summary": "Delete subject learning style preference",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/child/{childId}/learning-preferences",
             "summary": "Get all learning preferences",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/profile/child/{childId}/subjects/{subjectId}/effective-style",
             "summary": "Get effective learning style",
-            "tags": [
-              "Parent Profile"
-            ]
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/profile/admin/ai-tutor",
+            "summary": "Create AI tutor account (Admin only)",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/profile/admin/ai-tutors",
+            "summary": "List AI tutors (Admin only)",
+            "tags": []
+          },
+          {
+            "method": "PUT",
+            "path": "/profile/admin/ai-tutor/{id}",
+            "summary": "Update AI tutor (Admin only)",
+            "tags": []
+          },
+          {
+            "method": "PATCH",
+            "path": "/profile/admin/ai-tutor/{id}/toggle",
+            "summary": "Toggle AI tutor active status (Admin only)",
+            "tags": []
           }
         ]
       }
@@ -733,177 +623,133 @@
             "method": "GET",
             "path": "/messaging/health",
             "summary": "Health check for messaging module",
-            "tags": [
-              "Health"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/messaging/rooms",
-            "summary": "Get all chat rooms",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/rooms",
             "summary": "Create a chat room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/rooms",
+            "summary": "Get all chat rooms",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/rooms/support",
             "summary": "Create a live support room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/messaging/rooms/unread",
             "summary": "Get total unread count",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/messaging/rooms/{roomId}",
             "summary": "Get room by ID",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/messaging/rooms/{roomId}/messages",
             "summary": "Get messages in a room",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/rooms/{roomId}/messages",
             "summary": "Send a message",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/rooms/{roomId}/read",
             "summary": "Mark room as read",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/messaging/rooms/{roomId}/search",
             "summary": "Search messages in room",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/rooms/{roomId}/block",
             "summary": "Block a room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/rooms/{roomId}/unblock",
             "summary": "Unblock a room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/rooms/{roomId}/archive",
             "summary": "Archive a room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/rooms/{roomId}/unarchive",
             "summary": "Unarchive a room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/rooms/{roomId}/mute",
             "summary": "Mute a room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/rooms/{roomId}/unmute",
             "summary": "Unmute a room",
-            "tags": [
-              "Rooms"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/rooms/{roomId}/messages/{messageId}/pin",
             "summary": "Pin/Unpin a message",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/messaging/messages/{messageId}",
             "summary": "Edit a message",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/messaging/messages/{messageId}",
             "summary": "Delete a message",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/messages/{messageId}/forward",
             "summary": "Forward a message",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/messages/{messageId}/reaction",
             "summary": "Add/Remove reaction",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/messaging/reports",
             "summary": "Report a message or user",
-            "tags": [
-              "Reports"
-            ]
+            "tags": []
           }
         ]
       }
@@ -963,232 +809,151 @@
       ],
       "openapi": {
         "docsFile": "docs/subscription-openapi.yaml",
-        "documentedEndpointCount": 28,
+        "documentedEndpointCount": 24,
         "documentedEndpoints": [
           {
             "method": "GET",
             "path": "/subscription/health",
             "summary": "Check subscription service health",
-            "tags": [
-              "Health"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/subscription/plans/health",
-            "summary": "Check plan service health",
-            "tags": [
-              "Health",
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/subscription/plans",
             "summary": "Get all subscription plans",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/plans",
             "summary": "Create new plan (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/subscription/plans/{id}",
             "summary": "Get plan by ID",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/subscription/plans/{id}",
             "summary": "Update plan (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/subscription/plans/{id}",
             "summary": "Delete plan (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/plans/{id}/price",
             "summary": "Update plan pricing (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/plans/{id}/features",
             "summary": "Add feature to plan (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/subscription/plans/features/{featureId}",
             "summary": "Update plan feature (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/subscription/plans/features/{featureId}",
             "summary": "Delete plan feature (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/plans/{id}/discounts",
             "summary": "Add multi-student discount (Admin only)",
-            "tags": [
-              "Plans"
-            ]
-          },
-          {
-            "method": "PATCH",
-            "path": "/subscription/plans/discounts/{discountId}",
-            "summary": "Update multi-student discount (Admin only)",
-            "tags": [
-              "Plans"
-            ]
-          },
-          {
-            "method": "DELETE",
-            "path": "/subscription/plans/discounts/{discountId}",
-            "summary": "Delete multi-student discount (Admin only)",
-            "tags": [
-              "Plans"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/calculate",
             "summary": "Calculate subscription pricing",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/subscribe",
             "summary": "Create new subscription",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/subscription/me",
             "summary": "Get my subscription",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/subscription/{id}/cancel",
             "summary": "Cancel subscription",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/subscription/children/{childId}/cancel",
             "summary": "Cancel child subscription",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/children/add",
             "summary": "Add child to subscription",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/subscription/payments",
             "summary": "Get payment history",
-            "tags": [
-              "Subscriptions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/subscription/payment/config",
             "summary": "Get payment configuration",
-            "tags": [
-              "Payments"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/payment/create-intent",
             "summary": "Create Stripe Payment Intent",
-            "tags": [
-              "Payments"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/payment/create-checkout-session",
             "summary": "Create Stripe Checkout Session",
-            "tags": [
-              "Payments"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/subscription/payment/child-checkout-session",
-            "summary": "Create child checkout session",
-            "tags": [
-              "Payments"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/payment/stripe/confirm",
             "summary": "Confirm Stripe payment",
-            "tags": [
-              "Payments"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/subscription/payment/paypal/capture",
             "summary": "Capture PayPal payment",
-            "tags": [
-              "Payments"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
-            "path": "/subscription/webhooks/paypal",
-            "summary": "Handle PayPal webhook",
-            "tags": [
-              "Webhooks"
-            ]
+            "path": "/subscription/payment/webhook",
+            "summary": "Stripe webhook handler",
+            "tags": []
           }
         ]
       }
@@ -1216,65 +981,49 @@
             "method": "GET",
             "path": "/upload/health",
             "summary": "Health check for upload module",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/upload",
             "summary": "Upload file",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/upload/my",
             "summary": "Get my uploads",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/upload/entity/{type}/{id}",
             "summary": "Get entity uploads",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/upload/{id}",
             "summary": "Get upload by ID",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/upload/{id}/status",
             "summary": "Get upload processing status",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/upload/{id}/delete",
             "summary": "Delete upload",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/upload/{id}/replace",
             "summary": "Replace upload",
-            "tags": [
-              "Upload"
-            ]
+            "tags": []
           }
         ]
       }
@@ -1333,175 +1082,97 @@
       ],
       "openapi": {
         "docsFile": "docs/admin-openapi.yaml",
-        "documentedEndpointCount": 21,
+        "documentedEndpointCount": 15,
         "documentedEndpoints": [
           {
             "method": "GET",
             "path": "/admin/health",
             "summary": "Check admin service health",
-            "tags": [
-              "Admin Dashboard"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/dashboard/overview",
             "summary": "Get dashboard overview stats",
-            "tags": [
-              "Admin Dashboard"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/dashboard/recent-activity",
             "summary": "Get recent platform activity",
-            "tags": [
-              "Admin Dashboard"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/analytics/users",
             "summary": "Get user statistics",
-            "tags": [
-              "Admin Analytics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/analytics/subscriptions",
             "summary": "Get subscription statistics",
-            "tags": [
-              "Admin Analytics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/analytics/professionals",
             "summary": "Get professional statistics",
-            "tags": [
-              "Admin Analytics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/analytics/parents",
             "summary": "Get parent statistics",
-            "tags": [
-              "Admin Analytics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/analytics/uploads",
             "summary": "Get upload statistics",
-            "tags": [
-              "Admin Analytics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/analytics/growth",
             "summary": "Get growth statistics",
-            "tags": [
-              "Admin Analytics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/users",
             "summary": "Get all users",
-            "tags": [
-              "Admin Users"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/admin/users/{userId}",
             "summary": "Get user details",
-            "tags": [
-              "Admin Users"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/admin/users/{userId}",
             "summary": "Delete user",
-            "tags": [
-              "Admin Users"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/admin/users/{userId}/roles",
             "summary": "Update user roles",
-            "tags": [
-              "Admin Users"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/admin/users/{userId}/verification",
             "summary": "Toggle user verification status",
-            "tags": [
-              "Admin Users"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/admin/parent/send-temp-pin",
             "summary": "Send temporary PIN to parent",
-            "tags": [
-              "Admin Users"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/admin/jobs",
-            "summary": "Get admin job status overview",
-            "tags": [
-              "Admin Jobs"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/admin/jobs/{jobName}/run",
-            "summary": "Run an admin job on demand",
-            "tags": [
-              "Admin Jobs"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/admin/jobs/expiring-packages",
-            "summary": "Get expiring package job results",
-            "tags": [
-              "Admin Jobs"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/admin/jobs/missed-sessions",
-            "summary": "Get missed sessions job results",
-            "tags": [
-              "Admin Jobs"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/admin/jobs/pending-payments",
-            "summary": "Get pending payments job results",
-            "tags": [
-              "Admin Jobs"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/admin/jobs/behavior-report",
-            "summary": "Get behavior report job results",
-            "tags": [
-              "Admin Jobs"
-            ]
+            "tags": []
           }
         ]
       }
@@ -1534,105 +1205,79 @@
             "method": "GET",
             "path": "/notifications/health",
             "summary": "Health check for notification module",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/notifications/create",
             "summary": "Create notification",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/notifications/list",
             "summary": "Get notifications",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/notifications/unread-count",
             "summary": "Get unread notification count",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/notifications/types",
             "summary": "Get notification types",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/notifications/statuses",
             "summary": "Get notification statuses",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/notifications/priorities",
             "summary": "Get notification priorities",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/notifications/{id}",
             "summary": "Get notification by ID",
-            "tags": [
-              "Notifications"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/notifications/{id}/read",
-            "summary": "Mark notification as read",
-            "tags": [
-              "Notifications"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/notifications/mark-all-read",
-            "summary": "Mark all notifications as read",
-            "tags": [
-              "Notifications"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/notifications/{id}/archive",
-            "summary": "Archive notification",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/notifications/{id}",
             "summary": "Delete notification",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/{id}/read",
+            "summary": "Mark notification as read",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/mark-all-read",
+            "summary": "Mark all notifications as read",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/notifications/{id}/archive",
+            "summary": "Archive notification",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/notifications/admin/announcement",
             "summary": "Create admin announcement (Admin only)",
-            "tags": [
-              "Notifications"
-            ]
+            "tags": []
           }
         ]
       }
@@ -1657,41 +1302,31 @@
             "method": "GET",
             "path": "/community/health",
             "summary": "Check community service health",
-            "tags": [
-              "Community"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/community/auth",
             "summary": "Authenticate for community app",
-            "tags": [
-              "Community"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/community/sync/{userId}",
             "summary": "Sync user data to community app",
-            "tags": [
-              "Community"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/community/generate-magic-link",
             "summary": "Generate magic link for community access",
-            "tags": [
-              "Community"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/community/magic-auth",
             "summary": "Authenticate with magic link",
-            "tags": [
-              "Community"
-            ]
+            "tags": []
           }
         ]
       }
@@ -1718,57 +1353,43 @@
             "method": "GET",
             "path": "/health",
             "summary": "Basic health check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/health/detailed",
             "summary": "Detailed health check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/health/ready",
             "summary": "Readiness check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/health/live",
             "summary": "Liveness check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/health/database",
             "summary": "Database health check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/health/system",
             "summary": "Full system status",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/health/status",
             "summary": "Get system status",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           }
         ]
       }
@@ -1791,25 +1412,19 @@
             "method": "GET",
             "path": "/ai-tutor/health",
             "summary": "Check AI tutor service health",
-            "tags": [
-              "AI Tutor"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/ai-tutor/ask",
             "summary": "Ask AI tutor a question",
-            "tags": [
-              "AI Tutor"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/ai-tutor/result/{questionId}",
             "summary": "Get question result",
-            "tags": [
-              "AI Tutor"
-            ]
+            "tags": []
           }
         ]
       }
@@ -1899,273 +1514,205 @@
             "method": "GET",
             "path": "/curriculum/health",
             "summary": "Check curriculum module health",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/year-groups",
             "summary": "Get all year groups",
-            "tags": [
-              "Year Groups"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/year-groups",
             "summary": "Create a new year group",
-            "tags": [
-              "Year Groups"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/year-groups/{id}",
             "summary": "Get year group by ID",
-            "tags": [
-              "Year Groups"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/curriculum/year-groups/{id}",
             "summary": "Update a year group",
-            "tags": [
-              "Year Groups"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/curriculum/year-groups/{id}",
             "summary": "Delete a year group",
-            "tags": [
-              "Year Groups"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/year-groups/{id}/hierarchy",
             "summary": "Get full curriculum hierarchy",
-            "tags": [
-              "Year Groups"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/subjects",
             "summary": "Get all subjects",
-            "tags": [
-              "Subjects"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/subjects",
             "summary": "Create a new subject",
-            "tags": [
-              "Subjects"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/subjects/{id}",
             "summary": "Get subject by ID",
-            "tags": [
-              "Subjects"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/curriculum/subjects/{id}",
             "summary": "Update a subject",
-            "tags": [
-              "Subjects"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/curriculum/subjects/{id}",
             "summary": "Delete a subject",
-            "tags": [
-              "Subjects"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/topics",
             "summary": "Get all topics",
-            "tags": [
-              "Topics"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/topics",
             "summary": "Create a new topic",
-            "tags": [
-              "Topics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/topics/{id}",
             "summary": "Get topic by ID",
-            "tags": [
-              "Topics"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/curriculum/topics/{id}",
             "summary": "Update a topic",
-            "tags": [
-              "Topics"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/curriculum/topics/{id}",
             "summary": "Delete a topic",
-            "tags": [
-              "Topics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/sub-topics",
             "summary": "Get all sub-topics",
-            "tags": [
-              "Sub-Topics"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/sub-topics",
             "summary": "Create a new sub-topic",
-            "tags": [
-              "Sub-Topics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/sub-topics/{id}",
             "summary": "Get sub-topic by ID",
-            "tags": [
-              "Sub-Topics"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/curriculum/sub-topics/{id}",
             "summary": "Update a sub-topic",
-            "tags": [
-              "Sub-Topics"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/curriculum/sub-topics/{id}",
             "summary": "Delete a sub-topic",
-            "tags": [
-              "Sub-Topics"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/objectives",
             "summary": "Get all learning objectives",
-            "tags": [
-              "Learning Objectives"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/objectives",
             "summary": "Create a new learning objective",
-            "tags": [
-              "Learning Objectives"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/objectives/{id}",
             "summary": "Get objective by internal ID",
-            "tags": [
-              "Learning Objectives"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/curriculum/objectives/{id}",
             "summary": "Update a learning objective",
-            "tags": [
-              "Learning Objectives"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/curriculum/objectives/{id}",
             "summary": "Delete a learning objective",
-            "tags": [
-              "Learning Objectives"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/objectives/by-objective-id/{objectiveId}",
             "summary": "Get objective by objective ID",
-            "tags": [
-              "Learning Objectives"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/curriculum/admin/children/unassigned",
             "summary": "Get children without year group assignment",
-            "tags": [
-              "Child Year Group Management"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/admin/children/assign-year-group",
             "summary": "Manually assign year group to a child",
-            "tags": [
-              "Child Year Group Management"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/admin/children/auto-assign-year-group",
             "summary": "Auto-assign year group based on child's age",
-            "tags": [
-              "Child Year Group Management"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/curriculum/admin/children/bulk-assign-year-groups",
             "summary": "Bulk auto-assign year groups to all unassigned children",
-            "tags": [
-              "Child Year Group Management"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/curriculum/admin/children/{childId}/year-group",
             "summary": "Update child's year group",
-            "tags": [
-              "Child Year Group Management"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/curriculum/admin/children/{childId}/year-group",
             "summary": "Remove child's year group assignment",
-            "tags": [
-              "Child Year Group Management"
-            ]
+            "tags": []
           }
         ]
       }
@@ -2296,319 +1843,271 @@
       },
       "openapi": {
         "docsFile": "docs/course-openapi.yaml",
-        "documentedEndpointCount": 39,
+        "documentedEndpointCount": 44,
         "documentedEndpoints": [
           {
             "method": "POST",
             "path": "/courses",
             "summary": "Create a course",
-            "tags": [
-              "Course Management"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/my-courses",
             "summary": "Get my created courses",
-            "tags": [
-              "Course Management"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/courses/purchased",
+            "summary": "Get courses I have enrolled in or purchased",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/{id}",
-            "summary": "Get course by ID",
-            "tags": [
-              "Course Management"
-            ]
+            "summary": "Get course by ID (creator/admin view)",
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/courses/{id}",
             "summary": "Update course",
-            "tags": [
-              "Course Management"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/courses/{id}",
-            "summary": "Delete course",
-            "tags": [
-              "Course Management"
-            ]
+            "summary": "Delete course (DRAFT only)",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{id}/submit",
             "summary": "Submit course for review",
-            "tags": [
-              "Course Management"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{id}/publish",
-            "summary": "Publish course",
-            "tags": [
-              "Course Management"
-            ]
+            "summary": "Publish course (after admin approval)",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{id}/enroll",
+            "summary": "Enroll in a free course",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{id}/progress",
+            "summary": "Get course progress for authenticated user",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{id}/access",
+            "summary": "Check if user has access to course",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/progress-mastery",
+            "summary": "Get full course progress with mastery breakdown",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subtopics/{subTopicId}/assets/{assetId}/progress",
+            "summary": "Update asset completion progress",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subtopics/{subTopicId}/calculate-mastery",
+            "summary": "Calculate mastery for a subtopic",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/{courseId}/subjects",
-            "summary": "Get course subjects",
-            "tags": [
-              "Subject Management"
-            ]
+            "summary": "Get all subjects in a course",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{courseId}/subjects",
-            "summary": "Add subject to course",
-            "tags": [
-              "Subject Management"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/courses/{courseId}/subjects/{subjectId}",
-            "summary": "Get subject by ID",
-            "tags": [
-              "Subject Management"
-            ]
-          },
-          {
-            "method": "PATCH",
-            "path": "/courses/{courseId}/subjects/{subjectId}",
-            "summary": "Update subject",
-            "tags": [
-              "Subject Management"
-            ]
-          },
-          {
-            "method": "DELETE",
-            "path": "/courses/{courseId}/subjects/{subjectId}",
-            "summary": "Delete subject",
-            "tags": [
-              "Subject Management"
-            ]
+            "summary": "Add a subject to course",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{courseId}/subjects/reorder",
             "summary": "Reorder subjects",
-            "tags": [
-              "Subject Management"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}",
+            "summary": "Get subject by ID",
+            "tags": []
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/{courseId}/subjects/{subjectId}",
+            "summary": "Update subject",
+            "tags": []
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{courseId}/subjects/{subjectId}",
+            "summary": "Delete subject (and all its topics/subtopics)",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics",
             "summary": "Get topics for a subject",
-            "tags": [
-              "Topic Management"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics",
-            "summary": "Add topic to subject",
-            "tags": [
-              "Topic Management"
-            ]
+            "summary": "Add a topic to subject",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/reorder",
+            "summary": "Reorder topics in a subject",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}",
             "summary": "Get topic by ID",
-            "tags": [
-              "Topic Management"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}",
             "summary": "Update topic",
-            "tags": [
-              "Topic Management"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}",
             "summary": "Delete topic",
-            "tags": [
-              "Topic Management"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/reorder",
-            "summary": "Reorder topics",
-            "tags": [
-              "Topic Management"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics",
-            "summary": "Get sub-topics for a topic",
-            "tags": [
-              "SubTopic Management"
-            ]
+            "summary": "Get subtopics for a topic",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics",
-            "summary": "Add sub-topic to topic",
-            "tags": [
-              "SubTopic Management"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
-            "summary": "Get sub-topic by ID",
-            "tags": [
-              "SubTopic Management"
-            ]
-          },
-          {
-            "method": "PATCH",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
-            "summary": "Update sub-topic",
-            "tags": [
-              "SubTopic Management"
-            ]
-          },
-          {
-            "method": "DELETE",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
-            "summary": "Delete sub-topic",
-            "tags": [
-              "SubTopic Management"
-            ]
+            "summary": "Add subtopic to topic",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/reorder",
-            "summary": "Reorder sub-topics",
-            "tags": [
-              "SubTopic Management"
-            ]
+            "summary": "Reorder subtopics in a topic",
+            "tags": []
           },
           {
-            "method": "POST",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/content",
-            "summary": "Add content to sub-topic",
-            "tags": [
-              "SubTopic Content"
-            ]
+            "method": "GET",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
+            "summary": "Get subtopic by ID",
+            "tags": []
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
+            "summary": "Update subtopic",
+            "tags": []
           },
           {
             "method": "DELETE",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/content/{contentId}",
-            "summary": "Remove content from sub-topic",
-            "tags": [
-              "SubTopic Content"
-            ]
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}",
+            "summary": "Delete subtopic",
+            "tags": []
           },
           {
             "method": "POST",
-            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/content/reorder",
-            "summary": "Reorder content in sub-topic",
-            "tags": [
-              "SubTopic Content"
-            ]
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/assets",
+            "summary": "Link an existing asset to a subtopic",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/assets/reorder",
+            "summary": "Reorder assets in a subtopic",
+            "tags": []
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/{courseId}/subjects/{subjectId}/topics/{topicId}/subtopics/{subTopicId}/assets/{assetId}",
+            "summary": "Remove asset from subtopic (unlinks, does not delete asset)",
+            "tags": []
           },
           {
             "method": "GET",
-            "path": "/courses/{courseId}/progress-mastery",
-            "summary": "Get course progress with mastery",
-            "tags": [
-              "Progress & Mastery"
-            ]
+            "path": "/courses/assets",
+            "summary": "Get my course assets",
+            "tags": []
           },
           {
             "method": "POST",
-            "path": "/courses/{courseId}/subtopics/{subTopicId}/content/{contentId}/progress",
-            "summary": "Update content progress",
-            "tags": [
-              "Progress & Mastery"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/courses/{courseId}/subtopics/{subTopicId}/calculate-mastery",
-            "summary": "Calculate sub-topic mastery",
-            "tags": [
-              "Progress & Mastery"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/courses/{id}/purchase",
-            "summary": "Purchase course",
-            "tags": [
-              "Enrollment"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/courses/{id}/enroll",
-            "summary": "Enroll in free course",
-            "tags": [
-              "Enrollment"
-            ]
+            "path": "/courses/assets",
+            "summary": "Create a new course asset",
+            "tags": []
           },
           {
             "method": "GET",
-            "path": "/courses/purchased",
-            "summary": "Get my purchased courses",
-            "tags": [
-              "Enrollment"
-            ]
+            "path": "/courses/assets/{assetId}",
+            "summary": "Get asset by ID",
+            "tags": []
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/assets/{assetId}",
+            "summary": "Update asset",
+            "tags": []
+          },
+          {
+            "method": "DELETE",
+            "path": "/courses/assets/{assetId}",
+            "summary": "Delete asset",
+            "tags": []
+          },
+          {
+            "method": "PATCH",
+            "path": "/courses/assets/{assetId}/status",
+            "summary": "Update asset status (admin/approval flow)",
+            "tags": []
           },
           {
             "method": "GET",
-            "path": "/courses/{id}/progress",
-            "summary": "Get course progress (legacy)",
-            "tags": [
-              "Enrollment"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/courses/{id}/content/{contentId}/complete",
-            "summary": "Mark content as complete (legacy)",
-            "tags": [
-              "Enrollment"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/courses/{id}/access",
-            "summary": "Check course access",
-            "tags": [
-              "Enrollment"
-            ]
+            "path": "/courses/{courseId}/available-assets",
+            "summary": "Get approved assets available to link to this course",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/courses/admin/pending-reviews",
-            "summary": "Get pending courses",
-            "tags": [
-              "Admin"
-            ]
+            "summary": "Get courses pending review (admin only)",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/courses/admin/{id}/moderate",
-            "summary": "Moderate course",
-            "tags": [
-              "Admin"
-            ]
+            "summary": "Approve or reject a course (admin only)",
+            "tags": []
           }
         ]
       }
@@ -2666,215 +2165,67 @@
       ],
       "openapi": {
         "docsFile": "docs/content-openapi.yaml",
-        "documentedEndpointCount": 26,
+        "documentedEndpointCount": 10,
         "documentedEndpoints": [
-          {
-            "method": "GET",
-            "path": "/content/health",
-            "summary": "Check content module health",
-            "tags": [
-              "Health"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content",
-            "summary": "Get all content",
-            "tags": [
-              "Content Management"
-            ]
-          },
           {
             "method": "POST",
             "path": "/content",
-            "summary": "Create new content",
-            "tags": [
-              "Content Management"
-            ]
+            "summary": "Create content",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/content",
+            "summary": "Get all content (admin/creator listing)",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/content/my",
-            "summary": "Get my content",
-            "tags": [
-              "Content Management"
-            ]
+            "summary": "Get my content (authenticated creator)",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/content/{id}",
             "summary": "Get content by ID",
-            "tags": [
-              "Content Management"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/content/{id}",
-            "summary": "Update content",
-            "tags": [
-              "Content Management"
-            ]
+            "summary": "Update content (DRAFT or REJECTED only)",
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/content/{id}",
             "summary": "Delete content",
-            "tags": [
-              "Content Management"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/content/{id}/submit",
             "summary": "Submit content for review",
-            "tags": [
-              "Content Lifecycle"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/content/{id}/publish",
-            "summary": "Publish content",
-            "tags": [
-              "Content Lifecycle"
-            ]
+            "summary": "Publish content (after admin approval)",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/content/{id}/promote",
-            "summary": "Promote content",
-            "tags": [
-              "Content Lifecycle"
-            ]
+            "summary": "Promote published content (featured/trending)",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/content/{id}/secure-url",
-            "summary": "Get secure content URL",
-            "tags": [
-              "Content Lifecycle"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/content/admin/content/{id}/moderate",
-            "summary": "Moderate content",
-            "tags": [
-              "Admin - Moderation"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/content/admin/content/{id}/feature",
-            "summary": "Feature content",
-            "tags": [
-              "Admin - Moderation"
-            ]
-          },
-          {
-            "method": "PUT",
-            "path": "/content/admin/content/{id}/tags",
-            "summary": "Update content tags",
-            "tags": [
-              "Admin - Moderation"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/content/admin/content/badges/update",
-            "summary": "Update all content badges",
-            "tags": [
-              "Admin - Moderation"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/admin/content/stats",
-            "summary": "Get content statistics",
-            "tags": [
-              "Admin - Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/admin/content/pending-reviews",
-            "summary": "Get pending reviews",
-            "tags": [
-              "Admin - Analytics"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/content/analytics/track/{id}/view",
-            "summary": "Track content view",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/content/analytics/track/{id}/completion",
-            "summary": "Track content completion",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/content/{id}",
-            "summary": "Get content analytics",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/engagement/{id}",
-            "summary": "Get user engagement metrics",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/dashboard",
-            "summary": "Get creator dashboard",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/performance",
-            "summary": "Get content performance comparison",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/revenue",
-            "summary": "Get revenue analytics",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/trending",
-            "summary": "Get trending content",
-            "tags": [
-              "Analytics"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/content/analytics/platform",
-            "summary": "Get platform analytics (Admin only)",
-            "tags": [
-              "Analytics"
-            ]
+            "summary": "Get a signed/secure URL for content playback",
+            "tags": []
           }
         ]
       }
@@ -2964,231 +2315,163 @@
       ],
       "openapi": {
         "docsFile": "docs/marketplace-openapi.yaml",
-        "documentedEndpointCount": 28,
+        "documentedEndpointCount": 26,
         "documentedEndpoints": [
           {
             "method": "GET",
-            "path": "/marketplace/health",
-            "summary": "Health check for marketplace module",
-            "tags": [
-              "Health"
-            ]
+            "path": "/marketplace/content",
+            "summary": "Get marketplace items (content + courses mixed)",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/content/{type}/{id}",
+            "summary": "Get item detail (CONTENT or COURSE)",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/search",
-            "summary": "Search across marketplace practitioners and items",
-            "tags": [
-              "Search"
-            ]
+            "summary": "Search tutors, content, and courses",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/filter",
-            "summary": "Filter marketplace practitioners and items",
-            "tags": [
-              "Filter"
-            ]
+            "summary": "Filter marketplace items and practitioners",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/practitioners",
-            "summary": "List practitioners",
-            "tags": [
-              "Practitioners"
-            ]
+            "summary": "List all approved practitioners",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/practitioners/{id}",
             "summary": "Get practitioner by ID",
-            "tags": [
-              "Practitioners"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/marketplace/practitioners/{id}/favorite",
-            "summary": "Add practitioner to favorites",
-            "tags": [
-              "Favorites"
-            ]
-          },
-          {
-            "method": "DELETE",
-            "path": "/marketplace/practitioners/{id}/favorite",
-            "summary": "Remove practitioner from favorites",
-            "tags": [
-              "Favorites"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/favorites",
-            "summary": "Get my favorites",
-            "tags": [
-              "Favorites"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/marketplace/content-course/{entityType}/{entityId}/favorite",
-            "summary": "Add marketplace item to favorites",
-            "tags": [
-              "Favorites"
-            ]
-          },
-          {
-            "method": "DELETE",
-            "path": "/marketplace/content-course/{entityType}/{entityId}/favorite",
-            "summary": "Remove marketplace item from favorites",
-            "tags": [
-              "Favorites"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/content-course/favorites",
-            "summary": "Get marketplace item favorites",
-            "tags": [
-              "Favorites"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/content",
-            "summary": "List marketplace items (content + courses)",
-            "tags": [
-              "Content"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/content/{type}/{id}",
-            "summary": "Get item by type and ID",
-            "tags": [
-              "Content"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/{entityType}/{entityId}/reviews",
-            "summary": "Get reviews for an entity",
-            "tags": [
-              "Reviews"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/marketplace/{entityType}/{entityId}/reviews",
-            "summary": "Create a review",
-            "tags": [
-              "Reviews"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/marketplace/{entityType}/reviews/{reviewId}/reply",
-            "summary": "Reply to a review",
-            "tags": [
-              "Reviews"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/marketplace/{entityType}/{entityId}/purchase",
-            "summary": "Purchase an entity",
-            "tags": [
-              "Purchases"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/purchase/checkout-details",
-            "summary": "Get purchase checkout details",
-            "tags": [
-              "Purchases"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/{entityType}/{entityId}/access",
-            "summary": "Check access",
-            "tags": [
-              "Purchases"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/marketplace/purchases",
-            "summary": "Get my purchases",
-            "tags": [
-              "Purchases"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/cart",
-            "summary": "Get current cart",
-            "tags": [
-              "Purchases"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/marketplace/cart/items",
-            "summary": "Add item to cart",
-            "tags": [
-              "Purchases"
-            ]
-          },
-          {
-            "method": "DELETE",
-            "path": "/marketplace/cart/items/{itemId}",
-            "summary": "Remove item from cart",
-            "tags": [
-              "Purchases"
-            ]
+            "summary": "Get my cart",
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/marketplace/cart",
             "summary": "Clear cart",
-            "tags": [
-              "Purchases"
-            ]
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/cart/items",
+            "summary": "Add item to cart",
+            "tags": []
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/cart/items/{itemId}",
+            "summary": "Remove item from cart",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/marketplace/cart/checkout",
             "summary": "Checkout cart",
-            "tags": [
-              "Purchases"
-            ]
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/practitioners/{id}/favorite",
+            "summary": "Add practitioner to favorites",
+            "tags": []
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/practitioners/{id}/favorite",
+            "summary": "Remove practitioner from favorites",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/favorites",
+            "summary": "Get my favorite practitioners",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/content-course/{entityType}/{entityId}/favorite",
+            "summary": "Add content or course to favorites",
+            "tags": []
+          },
+          {
+            "method": "DELETE",
+            "path": "/marketplace/content-course/{entityType}/{entityId}/favorite",
+            "summary": "Remove content or course from favorites",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/content-course/favorites",
+            "summary": "Get my favorite content and courses",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/{entityType}/{entityId}/reviews",
+            "summary": "Create a review",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/{entityType}/{entityId}/reviews",
+            "summary": "Get reviews for an entity",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/{entityType}/reviews/{reviewId}/reply",
+            "summary": "Reply to a review (creator only)",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/{entityType}/{entityId}/purchase",
+            "summary": "Purchase a single content or course",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/purchases",
+            "summary": "Get my purchases",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/marketplace/{entityType}/{entityId}/access",
+            "summary": "Check if user has access to an entity",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/earnings",
-            "summary": "Get my earnings",
-            "tags": [
-              "Earnings"
-            ]
+            "summary": "Get my earnings (creators only)",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/marketplace/earnings/summary",
-            "summary": "Get earnings summary",
-            "tags": [
-              "Earnings"
-            ]
+            "summary": "Get earnings summary totals",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/marketplace/admin/payouts/{payoutId}",
-            "summary": "Process payout (Admin)",
-            "tags": [
-              "Admin"
-            ]
+            "summary": "Process creator payout (admin only)",
+            "tags": []
           }
         ],
         "tags": [
@@ -3273,81 +2556,61 @@
             "method": "GET",
             "path": "/availability/health",
             "summary": "Health check for availability module",
-            "tags": [
-              "Health"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/availability/schedule",
-            "summary": "Get availability schedule",
-            "tags": [
-              "Schedule"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/availability/schedule",
             "summary": "Set weekly availability schedule",
-            "tags": [
-              "Schedule"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/availability/schedule",
+            "summary": "Get availability schedule",
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/availability/schedule/{dayOfWeek}",
             "summary": "Delete a specific day from schedule",
-            "tags": [
-              "Schedule"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/availability/overrides",
-            "summary": "Get schedule overrides",
-            "tags": [
-              "Overrides"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/availability/overrides",
             "summary": "Add a schedule override",
-            "tags": [
-              "Overrides"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/availability/overrides",
+            "summary": "Get schedule overrides",
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/availability/overrides/{id}",
             "summary": "Delete a specific override",
-            "tags": [
-              "Overrides"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/availability/slots/{id}",
             "summary": "Get available booking slots for a practitioner",
-            "tags": [
-              "Slots"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/availability/check",
             "summary": "Check if availability is set",
-            "tags": [
-              "Schedule"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/availability/public/{id}",
             "summary": "Get public availability summary for marketplace",
-            "tags": [
-              "Slots"
-            ]
+            "tags": []
           }
         ]
       }
@@ -3374,57 +2637,43 @@
             "method": "GET",
             "path": "/wallet/health",
             "summary": "Health check for wallet module",
-            "tags": [
-              "Wallet"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/wallet",
             "summary": "Get user wallet",
-            "tags": [
-              "Wallet"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/wallet/summary",
             "summary": "Get wallet summary",
-            "tags": [
-              "Wallet"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/wallet/transactions",
             "summary": "Get transaction history",
-            "tags": [
-              "Transactions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/wallet/payout/request",
             "summary": "Request payout",
-            "tags": [
-              "Payouts"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/wallet/payouts",
             "summary": "Get payout history",
-            "tags": [
-              "Payouts"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/wallet/payouts/{payoutId}",
             "summary": "Cancel payout",
-            "tags": [
-              "Payouts"
-            ]
+            "tags": []
           }
         ]
       }
@@ -3513,153 +2762,115 @@
             "method": "GET",
             "path": "/enrollment/health",
             "summary": "Enrollment module health check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/enrollment/assessment/health",
             "summary": "Assessment module health check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/enrollment/options",
             "summary": "Get enrollment options",
-            "tags": [
-              "Options"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/enrollment/child/{childId}",
             "summary": "Get child enrollment status",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/enrollment/child/{childId}",
             "summary": "Update enrollment",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/enrollment/child/{childId}/start",
             "summary": "Start enrollment",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/enrollment/child/{childId}/step/curriculum",
             "summary": "Save curriculum step",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/enrollment/child/{childId}/step/beyond-book",
             "summary": "Save beyond book step",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/enrollment/child/{childId}/step/language",
             "summary": "Save language step",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/enrollment/child/{childId}/step/faith",
             "summary": "Save faith step",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/enrollment/child/{childId}/step/learning-style",
             "summary": "Save learning style step",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/enrollment/child/{childId}/submit",
             "summary": "Submit enrollment",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/enrollment/child/{childId}/preview",
             "summary": "Get enrollment preview",
-            "tags": [
-              "Enrollment"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/enrollment/assessment/child/{childId}",
             "summary": "Get assessment status",
-            "tags": [
-              "Assessment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/enrollment/assessment/child/{childId}/start",
             "summary": "Start assessment",
-            "tags": [
-              "Assessment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/enrollment/assessment/child/{childId}/answer",
             "summary": "Submit answer",
-            "tags": [
-              "Assessment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/enrollment/assessment/child/{childId}/complete",
             "summary": "Complete assessment",
-            "tags": [
-              "Assessment"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/enrollment/assessment/child/{childId}/result",
             "summary": "Get assessment result",
-            "tags": [
-              "Assessment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/enrollment/assessment/child/{childId}/activate",
             "summary": "Activate child",
-            "tags": [
-              "Assessment"
-            ]
+            "tags": []
           }
         ]
       }
@@ -3683,170 +2894,115 @@
       ],
       "openapi": {
         "docsFile": "docs/tickets-openapi.yaml",
-        "documentedEndpointCount": 20,
+        "documentedEndpointCount": 18,
         "documentedEndpoints": [
           {
             "method": "GET",
             "path": "/tickets/health",
             "summary": "Health check",
-            "tags": [
-              "Health"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/tickets",
-            "summary": "Get user's tickets",
-            "tags": [
-              "Tickets"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets",
             "summary": "Create support ticket",
-            "tags": [
-              "Tickets"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/tickets",
+            "summary": "Get user's tickets",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/tickets/stats",
             "summary": "Get ticket statistics",
-            "tags": [
-              "Tickets"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/tickets/admin",
             "summary": "Get all tickets (Admin)",
-            "tags": [
-              "Admin"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/tickets/{ticketId}",
             "summary": "Get ticket details",
-            "tags": [
-              "Tickets"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/{ticketId}/messages",
             "summary": "Add message to ticket",
-            "tags": [
-              "Messages"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/{ticketId}/confirm-resolution",
             "summary": "Confirm AI resolution",
-            "tags": [
-              "User Actions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/{ticketId}/request-human",
             "summary": "Request human support",
-            "tags": [
-              "User Actions"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/tickets/{ticketId}/status",
             "summary": "Update ticket status (Admin)",
-            "tags": [
-              "Admin"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/live-chat/init",
             "summary": "Initialize live chat session",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/live-chat/choice",
             "summary": "Handle user choice",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/live-chat/message",
             "summary": "Send message in live chat",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/live-chat/request-human",
             "summary": "Request human agent",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/tickets/live-chat/active",
             "summary": "Get active session",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/tickets/live-chat/{sessionId}",
             "summary": "Get session details",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/live-chat/end",
             "summary": "End chat session",
-            "tags": [
-              "Live Chat"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/tickets/live-chat/agent/reply",
             "summary": "Agent reply to chat (Admin)",
-            "tags": [
-              "Live Chat",
-              "Admin"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/tickets/live-chat/admin/sessions",
-            "summary": "Get active live chat sessions (Admin)",
-            "tags": [
-              "Live Chat",
-              "Admin"
-            ]
-          },
-          {
-            "method": "POST",
-            "path": "/tickets/live-chat/admin/assign",
-            "summary": "Assign live chat session to ticket (Admin)",
-            "tags": [
-              "Live Chat",
-              "Admin"
-            ]
+            "tags": []
           }
         ]
       }
@@ -3909,607 +3065,529 @@
       ],
       "openapi": {
         "docsFile": "docs/sessions-openapi.yaml",
-        "documentedEndpointCount": 75,
+        "documentedEndpointCount": 87,
         "documentedEndpoints": [
           {
             "method": "GET",
             "path": "/sessions/health",
             "summary": "Health check for sessions module",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor",
             "summary": "Create a new session",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/me",
             "summary": "Get my sessions",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/upcoming",
             "summary": "Get upcoming sessions",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}",
             "summary": "Get session by ID",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/sessions/tutor/{id}/reschedule",
             "summary": "Reschedule a session",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/sessions/tutor/{id}/cancel",
             "summary": "Cancel a session",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/confirm-completed",
             "summary": "Confirm lesson completed",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/packages",
             "summary": "Create a lesson package",
-            "tags": [
-              "Packages"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/packages/me",
             "summary": "Get my packages",
-            "tags": [
-              "Packages"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/packages/expiring",
             "summary": "Get expiring packages",
-            "tags": [
-              "Packages"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/packages/{id}",
             "summary": "Get package by ID",
-            "tags": [
-              "Packages"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/my-tutors",
             "summary": "Get all my tutors",
-            "tags": [
-              "My Tutors"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/my-tutors/{tutorId}",
             "summary": "Get tutor detail",
-            "tags": [
-              "My Tutors"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/credits/all",
             "summary": "Get all credits for parent",
-            "tags": [
-              "Credits"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/credits/child/{childId}",
             "summary": "Get all credits for a child",
-            "tags": [
-              "Credits"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/credits/child/{childId}/tutor/{tutorId}",
             "summary": "Get credits for child with specific tutor",
-            "tags": [
-              "Credits"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/credits/transfer",
             "summary": "Transfer credits to another tutor",
-            "tags": [
-              "Credits"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/credits/transfer-to-child",
             "summary": "Transfer credits to another child",
-            "tags": [
-              "Credits"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/my-tutors/{tutorId}/pause",
             "summary": "Pause a tutor",
-            "tags": [
-              "My Tutors"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/my-tutors/{tutorId}/resume",
             "summary": "Resume a paused tutor",
-            "tags": [
-              "My Tutors"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/my-tutors/{tutorId}/remove-preview",
+            "summary": "Preview removing a tutor",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/my-tutors/{tutorId}/remove",
+            "summary": "Remove a tutor",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/packages/transfer-preview",
+            "summary": "Preview a value-based package transfer",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages/transfer",
+            "summary": "Execute a value-based package transfer",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/packages/transfer/checkout",
+            "summary": "Create Stripe checkout to top up and complete a transfer",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/payment/config",
             "summary": "Get payment configuration",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/packages/create-checkout",
             "summary": "Create Stripe checkout session for lesson package",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/packages/create-payment-intent",
             "summary": "Create Stripe payment intent for lesson package",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/packages/confirm-payment",
             "summary": "Confirm package payment intent",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/packages/payment-success",
             "summary": "Confirm package payment success",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/trial/create-checkout",
             "summary": "Create Stripe checkout session for trial lesson",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/trial/create-payment-intent",
             "summary": "Create Stripe payment intent for trial lesson",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/trial/confirm-payment",
             "summary": "Confirm trial payment",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/payment/checkout-details",
             "summary": "Get checkout session details",
-            "tags": [
-              "Payment"
-            ]
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/webhook",
+            "summary": "Stripe webhook endpoint",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/calendar/all",
             "summary": "Get all sessions for calendar view",
-            "tags": [
-              "Calendar"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/health",
             "summary": "Health check for silo sessions module",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/silo",
             "summary": "Create a new silo session",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/me",
             "summary": "Get my silo sessions",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/upcoming",
             "summary": "Get upcoming silo sessions",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/curriculum",
             "summary": "Get child curriculum with progress",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/{id}",
             "summary": "Get silo session by ID",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/{id}/content",
             "summary": "Get session content with secure URLs",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/silo/{id}/start",
             "summary": "Start a silo session",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/silo/{id}/complete",
             "summary": "Complete a silo session",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/silo/{id}/skip",
             "summary": "Skip a silo session",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/sessions/silo/{id}/cancel",
             "summary": "Cancel a silo session",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/sessions/silo/{id}/reschedule",
             "summary": "Reschedule a silo session",
-            "tags": [
-              "Silo Learning"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/progress/{childId}",
             "summary": "Get child's overall progress",
-            "tags": [
-              "Silo Progress"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/silo/progress/{childId}/{subTopicId}",
             "summary": "Get sub-topic progress",
-            "tags": [
-              "Silo Progress"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/silo/progress/{childId}/{subTopicId}",
             "summary": "Update objective progress",
-            "tags": [
-              "Silo Progress"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/silo/progress/{childId}/{subTopicId}/mastery",
             "summary": "Calculate mastery score",
-            "tags": [
-              "Silo Progress"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/join",
             "summary": "Get session join details",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/notes",
             "summary": "Add tutor notes",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/session-notes",
             "summary": "Get session notes",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/session-notes",
             "summary": "Add session note",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "PUT",
             "path": "/sessions/tutor/{id}/session-notes/{noteId}",
             "summary": "Update session note",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/sessions/tutor/{id}/session-notes/{noteId}",
             "summary": "Delete session note",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/rating",
             "summary": "Add parent rating",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/accept",
             "summary": "Tutor accepts session",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/reject",
             "summary": "Tutor rejects session",
-            "tags": [
-              "Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/live",
             "summary": "Get session with meeting link",
-            "tags": [
-              "Live Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/live/token",
             "summary": "Get join token for video call",
-            "tags": [
-              "Live Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/live/status",
             "summary": "Get room status",
-            "tags": [
-              "Live Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/live/start",
             "summary": "Start the live session",
-            "tags": [
-              "Live Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/live/end",
             "summary": "End the live session",
-            "tags": [
-              "Live Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/missed",
             "summary": "Get missed sessions",
-            "tags": [
-              "Missed Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "PATCH",
             "path": "/sessions/tutor/{id}/reschedule-missed",
             "summary": "Reschedule a missed session",
-            "tags": [
-              "Missed Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/process-missed",
             "summary": "Process missed sessions (Admin/Cron)",
-            "tags": [
-              "Missed Sessions"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/child-feedback/questions",
             "summary": "Get child feedback questions",
-            "tags": [
-              "Session Feedback"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/child-feedback",
-            "summary": "Get child feedback for session",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/child-feedback",
             "summary": "Submit child feedback",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/child-feedback",
+            "summary": "Get child feedback for session",
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/child-feedback/skip",
             "summary": "Skip child feedback",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/parent-feedback/questions",
             "summary": "Get parent feedback questions",
-            "tags": [
-              "Session Feedback"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/parent-feedback",
-            "summary": "Get parent feedback for session",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/parent-feedback",
             "summary": "Submit parent feedback",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/parent-feedback",
+            "summary": "Get parent feedback for session",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/tutor/{id}/tutor-feedback/questions",
             "summary": "Get tutor feedback questions",
-            "tags": [
-              "Session Feedback"
-            ]
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/tutor-feedback",
-            "summary": "Get tutor feedback for session",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/sessions/tutor/{id}/tutor-feedback",
             "summary": "Submit tutor feedback about child",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/tutor/{id}/tutor-feedback",
+            "summary": "Get tutor feedback for session",
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/sessions/child/{childId}/feedback-stats",
             "summary": "Get child's feedback stats and progress",
-            "tags": [
-              "Session Feedback"
-            ]
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/child/{childId}/study-plan",
+            "summary": "Get latest AI study plan",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/child/{childId}/study-plan/generate",
+            "summary": "Generate a new AI study plan",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/child/{childId}/study-plan/history",
+            "summary": "Get study plan history",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/ai/start",
+            "summary": "Start an AI tutor session",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/sessions/ai/{sessionId}/token",
+            "summary": "Get a fresh LiveKit token for an AI session",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/sessions/ai/{sessionId}/end",
+            "summary": "End an AI tutor session",
+            "tags": []
           }
         ]
       }
@@ -4608,97 +3686,73 @@
             "method": "GET",
             "path": "/success-roadmap/health",
             "summary": "Health check",
-            "tags": [
-              "Health"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/success-roadmap/roadmap",
             "summary": "Create a career roadmap",
-            "tags": [
-              "Roadmap"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/success-roadmap/roadmap/followup",
             "summary": "Ask a follow-up question",
-            "tags": [
-              "Roadmap"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/success-roadmap/child/{childId}/roadmaps",
             "summary": "Get child's roadmaps",
-            "tags": [
-              "Roadmap"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/success-roadmap/child/{childId}/roadmap/{roadmapId}",
             "summary": "Get roadmap details",
-            "tags": [
-              "Roadmap"
-            ]
+            "tags": []
           },
           {
             "method": "DELETE",
             "path": "/success-roadmap/child/{childId}/roadmap/{roadmapId}",
             "summary": "Delete a roadmap",
-            "tags": [
-              "Roadmap"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/success-roadmap/child/{childId}/usage",
             "summary": "Get daily usage",
-            "tags": [
-              "Usage"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/success-roadmap/history",
             "summary": "Get roadmap history",
-            "tags": [
-              "History"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/success-roadmap/quiz/start",
             "summary": "Start career discovery quiz",
-            "tags": [
-              "Quiz"
-            ]
+            "tags": []
           },
           {
             "method": "POST",
             "path": "/success-roadmap/quiz/submit",
             "summary": "Submit quiz answers",
-            "tags": [
-              "Quiz"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/success-roadmap/child/{childId}/quizzes",
             "summary": "Get child's quiz history",
-            "tags": [
-              "Quiz"
-            ]
+            "tags": []
           },
           {
             "method": "GET",
             "path": "/success-roadmap/quiz/{quizId}",
             "summary": "Get quiz details",
-            "tags": [
-              "Quiz"
-            ]
+            "tags": []
           }
         ]
       }
@@ -4713,19 +3767,69 @@
       ],
       "openapi": {
         "docsFile": null,
-        "documentedEndpointCount": 1,
+        "documentedEndpointCount": 5,
         "documentedEndpoints": [
           {
             "method": "POST",
+            "path": "/payment/cards/setup",
+            "summary": "Create setup intent for saving a card",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/payment/cards",
+            "summary": "List saved cards (paginated)",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/payment/cards/remove",
+            "summary": "Remove a saved card",
+            "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/payment/cards/charge",
+            "summary": "Charge a saved card for a package",
+            "tags": []
+          },
+          {
+            "method": "POST",
             "path": "/payment/webhook",
-            "summary": "Handle Stripe webhook",
-            "tags": [
-              "Webhooks"
-            ]
+            "summary": "Stripe webhook handler",
+            "tags": []
           }
         ],
         "notes": [
           "Route is implemented in source but does not currently have a dedicated OpenAPI YAML file."
+        ]
+      }
+    },
+    {
+      "name": "Billing Module",
+      "path": "/billing",
+      "description": "Transaction history across packages, wallet, marketplace, and subscriptions",
+      "status": "completed",
+      "endpoints": [
+        "Health check for billing module",
+        "Get billing history"
+      ],
+      "openapi": {
+        "docsFile": "docs/billing-openapi.yaml",
+        "documentedEndpointCount": 2,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/billing/health",
+            "summary": "Health check for billing module",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/billing/history",
+            "summary": "Get billing history",
+            "tags": []
+          }
         ]
       }
     }
