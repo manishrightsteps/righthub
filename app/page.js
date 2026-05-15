@@ -16,17 +16,6 @@ import { useHealthData } from '@/hooks/useHealthData';
 
 import apiData from '@/lib/api.json';
 
-// Calculate total endpoints recursively
-const countEndpoints = (modules) => {
-  let count = 0;
-  if (!modules) return 0;
-  modules.forEach(m => {
-    if (m.endpoints) count += m.endpoints.length;
-    if (m.subModules) count += countEndpoints(m.subModules);
-  });
-  return count;
-};
-
 export default function Home() {
   const {
     healthData,
@@ -37,8 +26,8 @@ export default function Home() {
     healthyCount,
     unhealthyCount,
   } = useHealthData();
-  
-  const totalApiEndpoints = countEndpoints(apiData.modules);
+
+  const totalApiEndpoints = apiData.project.totalEndpoints;
 
   const responseTime =
     detailedData?.responseTime ||
