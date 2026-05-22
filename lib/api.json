@@ -1,11 +1,11 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "13.0.0",
+    "version": "14.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-05-15",
-    "totalEndpoints": 509
+    "lastUpdated": "2026-05-22",
+    "totalEndpoints": 521
   },
   "modules": [
     {
@@ -890,6 +890,7 @@
             "Health Check",
             "Create Chat Room",
             "Get My Rooms",
+            "Get Contacts",
             "Get Room by ID",
             "Get Room Participants",
             "Leave Room",
@@ -992,7 +993,7 @@
       ],
       "openapi": {
         "docsFile": "docs/messaging-openapi.yaml",
-        "documentedEndpointCount": 27,
+        "documentedEndpointCount": 28,
         "documentedEndpoints": [
           {
             "method": "GET",
@@ -1016,6 +1017,12 @@
             "method": "GET",
             "path": "/messaging/rooms",
             "summary": "Get all chat rooms",
+            "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/messaging/contacts",
+            "summary": "Get contacts for new message (suggested, recent, all)",
             "tags": []
           },
           {
@@ -4635,6 +4642,97 @@
             "path": "/billing/history",
             "summary": "Get billing history",
             "tags": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "Guides Module",
+      "path": "/guides",
+      "description": "Help guides system with structured JSON content, admin management, and user helpful/not-helpful ratings with automatic NEEDS_REVIEW threshold",
+      "status": "completed",
+      "endpoints": [
+        "Health Check",
+        "List Published Guides",
+        "Get Guide by Slug",
+        "Rate Guide",
+        "Create Guide",
+        "Update Guide",
+        "Publish Guide",
+        "Archive Guide",
+        "Admin List Guides",
+        "Get Needs Review Guides",
+        "Get Guide Feedback"
+      ],
+      "openapi": {
+        "docsFile": "docs/guides-openapi.yaml",
+        "documentedEndpointCount": 11,
+        "documentedEndpoints": [
+          {
+            "method": "GET",
+            "path": "/guides/health",
+            "summary": "Check guides module health",
+            "tags": ["Health"]
+          },
+          {
+            "method": "GET",
+            "path": "/guides",
+            "summary": "List published guides",
+            "tags": ["Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/guides/:slug",
+            "summary": "Get a guide by slug",
+            "tags": ["Guides"]
+          },
+          {
+            "method": "POST",
+            "path": "/guides/:guideId/rate",
+            "summary": "Rate a guide (helpful / not helpful)",
+            "tags": ["Guides"]
+          },
+          {
+            "method": "POST",
+            "path": "/guides",
+            "summary": "Create a guide",
+            "tags": ["Admin Guides"]
+          },
+          {
+            "method": "POST",
+            "path": "/guides/:guideId/update",
+            "summary": "Update a guide",
+            "tags": ["Admin Guides"]
+          },
+          {
+            "method": "POST",
+            "path": "/guides/:guideId/publish",
+            "summary": "Publish a guide",
+            "tags": ["Admin Guides"]
+          },
+          {
+            "method": "POST",
+            "path": "/guides/:guideId/archive",
+            "summary": "Archive a guide",
+            "tags": ["Admin Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/guides/admin",
+            "summary": "Admin list all guides",
+            "tags": ["Admin Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/guides/admin/needs-review",
+            "summary": "Get guides needing review",
+            "tags": ["Admin Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/guides/admin/:guideId/feedback",
+            "summary": "Get feedback for a guide",
+            "tags": ["Admin Guides"]
           }
         ]
       }
