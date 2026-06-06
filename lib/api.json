@@ -1,11 +1,11 @@
 {
   "project": {
     "name": "Rightsteps API Inventory",
-    "version": "14.0.0",
+    "version": "16.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-05-22",
-    "totalEndpoints": 521
+    "lastUpdated": "2026-06-07",
+    "totalEndpoints": 554
   },
   "modules": [
     {
@@ -2747,7 +2747,7 @@
             "Delete Content",
             "Submit Content for Review",
             "Publish Content",
-            "Promote Content (BASIC £10, PREMIUM £25)",
+            "Promote Content (BASIC \u00a310, PREMIUM \u00a325)",
             "Get Secure Content URL (Signed URL)"
           ]
         },
@@ -3757,72 +3757,6 @@
             "tags": []
           },
           {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/child-feedback/questions",
-            "summary": "Get child feedback questions",
-            "tags": []
-          },
-          {
-            "method": "POST",
-            "path": "/sessions/tutor/{id}/child-feedback",
-            "summary": "Submit child feedback",
-            "tags": []
-          },
-          {
-            "method": "POST",
-            "path": "/sessions/tutor/{id}/child-feedback/skip",
-            "summary": "Skip child feedback",
-            "tags": []
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/child-feedback",
-            "summary": "Get child feedback for session",
-            "tags": []
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/parent-feedback/questions",
-            "summary": "Get parent feedback questions",
-            "tags": []
-          },
-          {
-            "method": "POST",
-            "path": "/sessions/tutor/{id}/parent-feedback",
-            "summary": "Submit parent feedback",
-            "tags": []
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/parent-feedback",
-            "summary": "Get parent feedback for session",
-            "tags": []
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/tutor-feedback/questions",
-            "summary": "Get tutor feedback questions",
-            "tags": []
-          },
-          {
-            "method": "POST",
-            "path": "/sessions/tutor/{id}/tutor-feedback",
-            "summary": "Submit tutor feedback about child",
-            "tags": []
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/tutor/{id}/tutor-feedback",
-            "summary": "Get tutor feedback for session",
-            "tags": []
-          },
-          {
-            "method": "GET",
-            "path": "/sessions/child/{childId}/feedback-stats",
-            "summary": "Get child's feedback stats and progress",
-            "tags": []
-          },
-          {
             "method": "POST",
             "path": "/sessions/packages",
             "summary": "Create a lesson package",
@@ -4672,70 +4606,261 @@
             "method": "GET",
             "path": "/guides/health",
             "summary": "Check guides module health",
-            "tags": ["Health"]
+            "tags": [
+              "Health"
+            ]
           },
           {
             "method": "GET",
             "path": "/guides",
             "summary": "List published guides",
-            "tags": ["Guides"]
+            "tags": [
+              "Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/guides/:slug",
             "summary": "Get a guide by slug",
-            "tags": ["Guides"]
+            "tags": [
+              "Guides"
+            ]
           },
           {
             "method": "POST",
             "path": "/guides/:guideId/rate",
             "summary": "Rate a guide (helpful / not helpful)",
-            "tags": ["Guides"]
+            "tags": [
+              "Guides"
+            ]
           },
           {
             "method": "POST",
             "path": "/guides",
             "summary": "Create a guide",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           },
           {
             "method": "POST",
             "path": "/guides/:guideId/update",
             "summary": "Update a guide",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           },
           {
             "method": "POST",
             "path": "/guides/:guideId/publish",
             "summary": "Publish a guide",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           },
           {
             "method": "POST",
             "path": "/guides/:guideId/archive",
             "summary": "Archive a guide",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/guides/admin",
             "summary": "Admin list all guides",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/guides/admin/needs-review",
             "summary": "Get guides needing review",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/guides/admin/:guideId/feedback",
             "summary": "Get feedback for a guide",
-            "tags": ["Admin Guides"]
+            "tags": [
+              "Admin Guides"
+            ]
           }
         ]
       }
+    },
+    {
+      "name": "Learning Triangle",
+      "path": "/learning-triangle",
+      "description": "Post-session intelligence layer \u2014 child check-ins, tutor debriefs, parent input, AI-synthesised daily pulse, weekly report, and tutor readiness brief",
+      "status": "completed",
+      "docsFile": "docs/learning-triangle-openapi.yaml",
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/learning-triangle/questions/child",
+          "summary": "Get child check-in questions",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/questions/tutor",
+          "summary": "Get tutor debrief questions",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/questions/parent",
+          "summary": "Get parent input questions",
+          "tags": []
+        },
+        {
+          "method": "POST",
+          "path": "/learning-triangle/sessions/:sessionId/checkin",
+          "summary": "Submit child check-in",
+          "tags": []
+        },
+        {
+          "method": "POST",
+          "path": "/learning-triangle/sessions/:sessionId/checkin/skip",
+          "summary": "Skip check-in",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/sessions/:sessionId/checkin",
+          "summary": "Get check-in for session",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/children/:childId/checkins",
+          "summary": "Get child check-in history",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/children/:childId/stats",
+          "summary": "Get child check-in stats",
+          "tags": []
+        },
+        {
+          "method": "POST",
+          "path": "/learning-triangle/sessions/:sessionId/debrief",
+          "summary": "Submit tutor debrief",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/sessions/:sessionId/debrief",
+          "summary": "Get debrief for session",
+          "tags": []
+        },
+        {
+          "method": "POST",
+          "path": "/learning-triangle/sessions/:sessionId/parent-input",
+          "summary": "Submit parent input",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/sessions/:sessionId/parent-input",
+          "summary": "Get parent input for session",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/children/:childId/reports",
+          "summary": "Get child reports",
+          "tags": []
+        },
+        {
+          "method": "POST",
+          "path": "/learning-triangle/sessions/:sessionId/pulse",
+          "summary": "Generate daily pulse",
+          "tags": []
+        },
+        {
+          "method": "POST",
+          "path": "/learning-triangle/children/:childId/weekly-report",
+          "summary": "Generate weekly report",
+          "tags": []
+        },
+        {
+          "method": "GET",
+          "path": "/learning-triangle/sessions/:sessionId/readiness-brief",
+          "summary": "Get tutor readiness brief",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "name": "Parent Dashboard Module",
+      "path": "/parent/dashboard",
+      "description": "Tab-wise parent dashboard — overview, subject progress, attendance, wellbeing, and achievements. Each tab has a single aggregate endpoint plus granular endpoints for pagination and partial refresh.",
+      "status": "completed",
+      "docsFile": "docs/dashboard-openapi.yaml",
+      "auth": "Bearer JWT — role PARENT",
+      "caching": "Redis per-endpoint (60s–600s TTL)",
+      "endpoints": [
+        { "method": "GET", "path": "/parent/dashboard/children", "summary": "List all children for the authenticated parent", "tags": ["Overview"] },
+        { "method": "GET", "path": "/parent/dashboard/overview", "summary": "Full overview — on-track %, streak, attention items", "tags": ["Overview"] },
+        { "method": "GET", "path": "/parent/dashboard/subject-progress", "summary": "All subjects progress summary", "tags": ["Subject Progress"] },
+        { "method": "GET", "path": "/parent/dashboard/subject-progress/:subjectId", "summary": "Subject detail — mastery, topics, radar chart", "tags": ["Subject Progress"] },
+        { "method": "GET", "path": "/parent/dashboard/subject-progress/:subjectId/topic/:topicId", "summary": "Topic detail — subtopics, forecast, streak", "tags": ["Subject Progress"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance", "summary": "Full attendance tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
+        { "method": "GET", "path": "/parent/dashboard/wellbeing", "summary": "Full wellbeing tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
+        { "method": "GET", "path": "/parent/dashboard/achievements", "summary": "Full achievements tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/overview", "summary": "Attendance stats for a period", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/sessions-today", "summary": "Today's session feed with live status", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/alerts", "summary": "Missed session and late arrival alerts (last 7 days)", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/discipline", "summary": "Daily attendance and punctuality chart", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/learning-mode", "summary": "Learning hours split by mode (tutor / self-study)", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/peak-hours", "summary": "Peak learning hours effectiveness by time slot", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/by-subject", "summary": "Per-subject attendance and progress stats (paginated)", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/attendance/trend", "summary": "Attendance rate trend over a period", "tags": ["Attendance"] },
+        { "method": "GET", "path": "/parent/dashboard/wellbeing/overview", "summary": "Wellbeing overview — engagement, mood, stress, streak", "tags": ["Wellbeing"] },
+        { "method": "GET", "path": "/parent/dashboard/wellbeing/engagement-trend", "summary": "Daily engagement score trend", "tags": ["Wellbeing"] },
+        { "method": "GET", "path": "/parent/dashboard/wellbeing/mood-trend", "summary": "Daily mood score trend", "tags": ["Wellbeing"] },
+        { "method": "GET", "path": "/parent/dashboard/wellbeing/lessons", "summary": "Per-lesson wellbeing records (paginated, filterable)", "tags": ["Wellbeing"] },
+        { "method": "GET", "path": "/parent/dashboard/achievements/weekly-summary", "summary": "Current week lesson completion and study time", "tags": ["Achievements"] },
+        { "method": "GET", "path": "/parent/dashboard/achievements/skills", "summary": "Six-dimension skills radar (UCI/DWO/CRE/WCO/CRL/SOL)", "tags": ["Achievements"] },
+        { "method": "GET", "path": "/parent/dashboard/achievements/streak", "summary": "Learning streak and 7-day activity view", "tags": ["Achievements"] }
+      ]
+    },
+    {
+      "name": "Forum Module",
+      "path": "/forum",
+      "description": "Peer Q&A forum for children — Stack Overflow-style questions, answers, comments, and votes. AI processes every submission in the background via Inngest: generates tags and explanations for questions, rates answers and marks the best as recommended, and provides guided replies to comments.",
+      "status": "completed",
+      "docsFile": "docs/forum-openapi.yaml",
+      "auth": "Bearer JWT — role PARENT (childId sent in body/query on behalf of child)",
+      "caching": "Redis per-endpoint (30s–120s TTL)",
+      "ai": {
+        "provider": "Groq (llama-3.3-70b-versatile)",
+        "jobs": [
+          "forum.question.created — generates AI explanation + up to 5 curriculum tags",
+          "forum.answer.created — rates answer quality (1–10), marks isRecommended if score >= 7",
+          "forum.comment.created — generates Socratic guided reply without giving the answer away"
+        ],
+        "approach": "AI guides thinking, never gives direct answers. UK English, age 5–18 appropriate."
+      },
+      "endpoints": [
+        { "method": "GET",  "path": "/forum/health",                        "summary": "Forum service health check (no auth)", "tags": ["Health"] },
+        { "method": "GET",  "path": "/forum",                               "summary": "List questions (paginated, filterable by tag or search)", "tags": ["Questions"] },
+        { "method": "POST", "path": "/forum",                               "summary": "Post a question — fires Inngest job for AI tagging and explanation", "tags": ["Questions"] },
+        { "method": "GET",  "path": "/forum/:slug",                         "summary": "Get question detail including body, AI explanation, and tags", "tags": ["Questions"] },
+        { "method": "GET",  "path": "/forum/:questionId/stats",             "summary": "Get question stats — views, upvotes, downvotes, answer count", "tags": ["Questions"] },
+        { "method": "POST", "path": "/forum/:questionId/vote",              "summary": "Vote UP or DOWN on a question (toggle removes vote)", "tags": ["Votes"] },
+        { "method": "GET",  "path": "/forum/:questionId/answers",           "summary": "List answers — recommended first, includes inline comments and AI feedback", "tags": ["Answers"] },
+        { "method": "POST", "path": "/forum/:questionId/answers",           "summary": "Post an answer — fires Inngest job for AI rating", "tags": ["Answers"] },
+        { "method": "POST", "path": "/forum/answers/:answerId/vote",        "summary": "Vote UP or DOWN on an answer (toggle removes vote)", "tags": ["Votes"] },
+        { "method": "POST", "path": "/forum/answers/:answerId/comments",    "summary": "Post a comment — fires Inngest job for AI guided reply", "tags": ["Comments"] }
+      ]
     }
   ],
   "features": {
@@ -5592,7 +5717,7 @@
             "Fixed contentFormat filter - now correctly filters by VIDEO, PDF, AUDIO, INTERACTIVE",
             "Added duration sorting capability to content queries",
             "Implemented Redis query result caching (5 minute TTL) for 15-20x performance improvement",
-            "Auto-set isMarketplace flag: CREATOR content → true, RIGHTSTEPS content → false",
+            "Auto-set isMarketplace flag: CREATOR content \u2192 true, RIGHTSTEPS content \u2192 false",
             "Clear separation between library (RIGHTSTEPS) and marketplace (CREATOR) content",
             "Same objective can have both free RIGHTSTEPS and paid CREATOR content",
             "Hierarchy endpoint caching (10 minute TTL) for 30-40x performance improvement",
@@ -5618,11 +5743,11 @@
           "details": [
             "39 endpoints across 8 sub-modules (Content Management, Lifecycle, Reviews, Purchases, Earnings, Analytics, Admin Moderation, Admin Analytics)",
             "Content creation and management for RIGHTSTEPS official and CREATOR marketplace content",
-            "Moderation workflow: DRAFT → PENDING_REVIEW → APPROVED → PUBLISHED → REJECTED/ARCHIVED",
+            "Moderation workflow: DRAFT \u2192 PENDING_REVIEW \u2192 APPROVED \u2192 PUBLISHED \u2192 REJECTED/ARCHIVED",
             "Marketplace with reviews, ratings, and creator replies",
             "Content purchase system with 70/30 revenue split (creator/platform)",
             "Creator earnings tracking and payout request system",
-            "Content promotion tiers: BASIC (£10), PREMIUM (£25)",
+            "Content promotion tiers: BASIC (\u00a310), PREMIUM (\u00a325)",
             "Badge system: Popular (50+ enrollments), Trending (10+ views/day), Recommended",
             "Comprehensive analytics: view tracking, completion tracking, engagement metrics",
             "Creator dashboard with earnings, performance, and revenue analytics",
@@ -5648,7 +5773,7 @@
           "type": "feature",
           "description": "Implemented comprehensive UK Curriculum management system with 5-level hierarchy",
           "details": [
-            "5-level hierarchy: Year Groups → Subjects → Topics → Sub-Topics → Learning Objectives",
+            "5-level hierarchy: Year Groups \u2192 Subjects \u2192 Topics \u2192 Sub-Topics \u2192 Learning Objectives",
             "Auto-generated objective IDs in format SUBJECT-YEAR-TOPIC-SUBTOPIC-SEQUENCE (e.g., MATH-Y10-ALG-LIN-01)",
             "31 endpoints across 5 entity types (Year Groups, Subjects, Topics, Sub-Topics, Objectives)",
             "Full hierarchy endpoint to retrieve complete curriculum tree structure",
