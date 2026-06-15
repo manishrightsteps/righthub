@@ -4,8 +4,8 @@
     "version": "16.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-06-07",
-    "totalEndpoints": 554
+    "lastUpdated": "2026-06-15",
+    "totalEndpoints": 592
   },
   "modules": [
     {
@@ -4423,7 +4423,7 @@
     {
       "name": "Success Roadmap Module",
       "path": "/success-roadmap",
-      "description": "AI-powered career exploration and roadmap generation for children. Generates age-appropriate career pathways with UK education context, follow-up Q&A, and daily usage limits.",
+      "description": "AI-powered career exploration and roadmap generation for children. Includes career guide library (CAREER/SUBJECT types), admin content management with AI generation, duplicate detection, search with gap-fill, and quiz-based discovery.",
       "status": "completed",
       "subModules": [
         {
@@ -4457,6 +4457,29 @@
           "endpoints": [
             "Get Roadmap History"
           ]
+        },
+        {
+          "name": "Career Guides (Parent)",
+          "description": "Browse and search career/subject guides",
+          "endpoints": [
+            "Browse Career Guides",
+            "Search Career Guides",
+            "Get Guide by Slug"
+          ]
+        },
+        {
+          "name": "Career Guides (Admin)",
+          "description": "Admin CRUD and lifecycle management for career and subject guides",
+          "endpoints": [
+            "Admin List Guides",
+            "Admin Create Guide",
+            "Admin Generate Guide Content",
+            "Admin Publish Guide",
+            "Admin Archive Guide",
+            "Admin Update Guide Metadata",
+            "Admin Update Guide Content",
+            "Admin Delete Draft Guide"
+          ]
         }
       ],
       "endpoints": [
@@ -4471,11 +4494,22 @@
         "Create Quiz Start",
         "Create Quiz Submit",
         "Get Child Quizzes",
-        "Get Quiz"
+        "Get Quiz",
+        "Browse Career Guides",
+        "Search Career Guides",
+        "Get Guide by Slug",
+        "Admin List Guides",
+        "Admin Create Guide",
+        "Admin Generate Guide Content",
+        "Admin Publish Guide",
+        "Admin Archive Guide",
+        "Admin Update Guide Metadata",
+        "Admin Update Guide Content",
+        "Admin Delete Draft Guide"
       ],
       "openapi": {
         "docsFile": "docs/success-roadmap-openapi.yaml",
-        "documentedEndpointCount": 12,
+        "documentedEndpointCount": 23,
         "documentedEndpoints": [
           {
             "method": "GET",
@@ -4548,6 +4582,72 @@
             "path": "/success-roadmap/quiz/{quizId}",
             "summary": "Get quiz details",
             "tags": []
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/guides",
+            "summary": "Browse career/subject guides with type filter (?type=all|career|subject)",
+            "tags": ["Career Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/guides/search",
+            "summary": "Search career guides by keyword (trigram similarity)",
+            "tags": ["Career Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/guides/{slug}",
+            "summary": "Get guide detail by slug",
+            "tags": ["Career Guides"]
+          },
+          {
+            "method": "GET",
+            "path": "/success-roadmap/admin/guides",
+            "summary": "Admin list all guides by status and type",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides",
+            "summary": "Admin create career or subject guide (409 on duplicate title)",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides/{id}/generate",
+            "summary": "AI-generate full guide content",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides/{id}/publish",
+            "summary": "Publish guide (DRAFT with content or REVIEW)",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides/{id}/archive",
+            "summary": "Archive published guide",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides/{id}/update",
+            "summary": "Update guide metadata",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides/{id}/content",
+            "summary": "Manually update guide content",
+            "tags": ["Career Guides Admin"]
+          },
+          {
+            "method": "POST",
+            "path": "/success-roadmap/admin/guides/{id}/delete",
+            "summary": "Soft-delete a DRAFT guide",
+            "tags": ["Career Guides Admin"]
           }
         ]
       }
@@ -4808,7 +4908,7 @@
       "caching": "Redis per-endpoint (60s–600s TTL)",
       "endpoints": [
         { "method": "GET", "path": "/parent/dashboard/children", "summary": "List all children for the authenticated parent", "tags": ["Overview"] },
-        { "method": "GET", "path": "/parent/dashboard/overview", "summary": "Full overview — on-track %, streak, attention items", "tags": ["Overview"] },
+        { "method": "GET", "path": "/parent/dashboard/overall-performance", "summary": "Full overview — on-track %, streak, attention items", "tags": ["Overview"] },
         { "method": "GET", "path": "/parent/dashboard/subject-progress", "summary": "All subjects progress summary", "tags": ["Subject Progress"] },
         { "method": "GET", "path": "/parent/dashboard/subject-progress/:subjectId", "summary": "Subject detail — mastery, topics, radar chart", "tags": ["Subject Progress"] },
         { "method": "GET", "path": "/parent/dashboard/subject-progress/:subjectId/topic/:topicId", "summary": "Topic detail — subtopics, forecast, streak", "tags": ["Subject Progress"] },
@@ -4829,7 +4929,24 @@
         { "method": "GET", "path": "/parent/dashboard/wellbeing/lessons", "summary": "Per-lesson wellbeing records (paginated, filterable)", "tags": ["Wellbeing"] },
         { "method": "GET", "path": "/parent/dashboard/achievements/weekly-summary", "summary": "Current week lesson completion and study time", "tags": ["Achievements"] },
         { "method": "GET", "path": "/parent/dashboard/achievements/skills", "summary": "Six-dimension skills radar (UCI/DWO/CRE/WCO/CRL/SOL)", "tags": ["Achievements"] },
-        { "method": "GET", "path": "/parent/dashboard/achievements/streak", "summary": "Learning streak and 7-day activity view", "tags": ["Achievements"] }
+        { "method": "GET", "path": "/parent/dashboard/achievements/streak", "summary": "Learning streak and 7-day activity view", "tags": ["Achievements"] },
+        { "method": "GET", "path": "/parent/dashboard/overview", "summary": "Full overview tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/upcoming-lessons", "summary": "Next 7 days of scheduled lessons", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/performance-mastery", "summary": "Subject mastery snapshot (badge, grade, trend)", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/wellbeing", "summary": "Wellbeing snapshot — engagement, mood, streak, stress", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/homework", "summary": "Homework counts — stub, all zeros (no homework model yet)", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/attendance", "summary": "Attendance trend chart + silo/tutor/classroom summary bars", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/tutor-insights", "summary": "Recent tutor insights from session debriefs", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/achievements", "summary": "Achievement tiles + banner — dummy stub", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/overview/news-feed", "summary": "News feed items — dummy stub", "tags": ["Overview Tab"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance", "summary": "Full tutor performance tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/tutors", "summary": "List all tutors for a child with summary metrics", "tags": ["Tutor Performance"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/overview", "summary": "Learning impact overview for a specific tutor and period", "tags": ["Tutor Performance"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/reliability", "summary": "Sessions booked, attendance rate, punctuality, and reliability score", "tags": ["Tutor Performance"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/feedback", "summary": "Parent feedback, breakthrough scores, and satisfaction for a tutor", "tags": ["Tutor Performance"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/notes", "summary": "Paginated notes timeline from tutor debriefs", "tags": ["Tutor Performance"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/ai-insights", "summary": "AI-generated insight bullets about the tutor's impact on the child", "tags": ["Tutor Performance"] },
+        { "method": "GET", "path": "/parent/dashboard/tutor-performance/compare", "summary": "Side-by-side comparison of 2 or 3 tutors (radar + table)", "tags": ["Tutor Performance"] }
       ]
     },
     {
@@ -4860,6 +4977,47 @@
         { "method": "POST", "path": "/forum/:questionId/answers",           "summary": "Post an answer — fires Inngest job for AI rating", "tags": ["Answers"] },
         { "method": "POST", "path": "/forum/answers/:answerId/vote",        "summary": "Vote UP or DOWN on an answer (toggle removes vote)", "tags": ["Votes"] },
         { "method": "POST", "path": "/forum/answers/:answerId/comments",    "summary": "Post a comment — fires Inngest job for AI guided reply", "tags": ["Comments"] }
+      ]
+    },
+    {
+      "name": "PTM Module",
+      "path": "/ptm",
+      "description": "Parent-Teacher Meeting — AI-powered voice sessions via LiveKit for parents to discuss their child's learning progress, attendance, and wellbeing. Supports instant and scheduled booking with wallet payment.",
+      "status": "completed",
+      "docsFile": "docs/ptm-openapi.yaml",
+      "auth": "Bearer JWT — role PARENT. Transcript callback endpoint is public (x-agent-secret header).",
+      "payment": "Wallet debit at booking time (GBP). Instant: £0.12/min. Scheduled: £0.08/min.",
+      "ai": {
+        "agent": "rightsteps-ptm (LiveKit Agents)",
+        "tools": [
+          "get_attendance_overview — fetches attendance summary from dashboard service",
+          "get_subject_attendance — per-subject attendance breakdown",
+          "get_attendance_alerts — flags children below 80% attendance",
+          "get_wellbeing — wellbeing overview + mood trend",
+          "get_recent_sessions — recent tutoring sessions with status filter",
+          "get_subject_progress — subject progress data",
+          "get_learning_report — latest AI learning triangle report"
+        ],
+        "approach": "Natural conversation following parent's lead. UK PTM context with Key Stage guidance. Never goes silent while fetching data."
+      },
+      "sessionLifecycle": [
+        "POST /ptm/book — deducts cost from wallet, creates session (SCHEDULED)",
+        "POST /ptm/sessions/:id/start — opens LiveKit room, dispatches AI agent (IN_PROGRESS)",
+        "Parent joins LiveKit room with returned token",
+        "POST /ptm/sessions/:id/end — closes room, marks COMPLETED",
+        "POST /ptm/sessions/:id/transcript — AI agent saves transcript (no JWT, agent secret)"
+      ],
+      "endpoints": [
+        { "method": "GET",    "path": "/ptm/health",                       "summary": "PTM module health check (no auth)", "tags": ["Health"] },
+        { "method": "GET",    "path": "/ptm/options",                      "summary": "Get PTM pricing and duration options", "tags": ["PTM Options"] },
+        { "method": "POST",   "path": "/ptm/book",                         "summary": "Book a PTM session — deducts cost from wallet", "tags": ["PTM Booking"] },
+        { "method": "GET",    "path": "/ptm/sessions",                     "summary": "Get PTM session history (paginated)", "tags": ["PTM Booking"] },
+        { "method": "GET",    "path": "/ptm/sessions/:id",                 "summary": "Get session detail", "tags": ["PTM Booking"] },
+        { "method": "DELETE", "path": "/ptm/sessions/:id",                 "summary": "Cancel a PTM session (refund if 24h+ before)", "tags": ["PTM Booking"] },
+        { "method": "POST",   "path": "/ptm/sessions/:id/start",           "summary": "Start session — create LiveKit room and dispatch AI agent", "tags": ["PTM Session"] },
+        { "method": "GET",    "path": "/ptm/sessions/:id/token",           "summary": "Get a fresh LiveKit token for an active session", "tags": ["PTM Session"] },
+        { "method": "POST",   "path": "/ptm/sessions/:id/end",             "summary": "End session — close LiveKit room, mark COMPLETED", "tags": ["PTM Session"] },
+        { "method": "POST",   "path": "/ptm/sessions/:id/transcript",      "summary": "Save transcript (AI agent callback — no JWT auth)", "tags": ["PTM Session"] }
       ]
     }
   ],
