@@ -4,8 +4,8 @@
     "version": "16.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-06-15",
-    "totalEndpoints": 592
+    "lastUpdated": "2026-06-17",
+    "totalEndpoints": 594
   },
   "modules": [
     {
@@ -2992,7 +2992,9 @@
           "description": "Unified marketplace search and advanced filtering for tutors, practitioners, content, and courses",
           "endpoints": [
             "Unified Search Across Tutors, Practitioners, Content, and Courses",
-            "Advanced Marketplace Filtering"
+            "Advanced Marketplace Filtering",
+            "AI-Powered Tutor Search",
+            "AI-Powered Content Search"
           ]
         },
         {
@@ -3089,7 +3091,7 @@
       ],
       "openapi": {
         "docsFile": "docs/marketplace-openapi.yaml",
-        "documentedEndpointCount": 32,
+        "documentedEndpointCount": 33,
         "documentedEndpoints": [
           {
             "method": "GET",
@@ -3282,6 +3284,18 @@
             "path": "/marketplace/admin/payouts/{payoutId}",
             "summary": "Process creator payout (admin only)",
             "tags": []
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/tutors/ai-search",
+            "summary": "AI-powered tutor search using child profile and natural language query",
+            "tags": ["Search & Filter"]
+          },
+          {
+            "method": "POST",
+            "path": "/marketplace/content/ai-search",
+            "summary": "AI-powered content and course search using child profile and natural language query",
+            "tags": ["Search & Filter"]
           }
         ]
       }
