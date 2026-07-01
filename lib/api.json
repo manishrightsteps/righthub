@@ -4,8 +4,8 @@
     "version": "16.0.0",
     "description": "Backend API for Rightsteps",
     "baseUrl": "http://localhost:5000/v1",
-    "lastUpdated": "2026-06-17",
-    "totalEndpoints": 594
+    "lastUpdated": "2026-07-01",
+    "totalEndpoints": 634
   },
   "modules": [
     {
@@ -3289,13 +3289,17 @@
             "method": "POST",
             "path": "/marketplace/tutors/ai-search",
             "summary": "AI-powered tutor search using child profile and natural language query",
-            "tags": ["Search & Filter"]
+            "tags": [
+              "Search & Filter"
+            ]
           },
           {
             "method": "POST",
             "path": "/marketplace/content/ai-search",
             "summary": "AI-powered content and course search using child profile and natural language query",
-            "tags": ["Search & Filter"]
+            "tags": [
+              "Search & Filter"
+            ]
           }
         ]
       }
@@ -4601,67 +4605,89 @@
             "method": "GET",
             "path": "/success-roadmap/guides",
             "summary": "Browse career/subject guides with type filter (?type=all|career|subject)",
-            "tags": ["Career Guides"]
+            "tags": [
+              "Career Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/success-roadmap/guides/search",
             "summary": "Search career guides by keyword (trigram similarity)",
-            "tags": ["Career Guides"]
+            "tags": [
+              "Career Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/success-roadmap/guides/{slug}",
             "summary": "Get guide detail by slug",
-            "tags": ["Career Guides"]
+            "tags": [
+              "Career Guides"
+            ]
           },
           {
             "method": "GET",
             "path": "/success-roadmap/admin/guides",
             "summary": "Admin list all guides by status and type",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides",
             "summary": "Admin create career or subject guide (409 on duplicate title)",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides/{id}/generate",
             "summary": "AI-generate full guide content",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides/{id}/publish",
             "summary": "Publish guide (DRAFT with content or REVIEW)",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides/{id}/archive",
             "summary": "Archive published guide",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides/{id}/update",
             "summary": "Update guide metadata",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides/{id}/content",
             "summary": "Manually update guide content",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           },
           {
             "method": "POST",
             "path": "/success-roadmap/admin/guides/{id}/delete",
             "summary": "Soft-delete a DRAFT guide",
-            "tags": ["Career Guides Admin"]
+            "tags": [
+              "Career Guides Admin"
+            ]
           }
         ]
       }
@@ -4915,123 +4941,890 @@
     {
       "name": "Parent Dashboard Module",
       "path": "/parent/dashboard",
-      "description": "Tab-wise parent dashboard — overview, subject progress, attendance, wellbeing, and achievements. Each tab has a single aggregate endpoint plus granular endpoints for pagination and partial refresh.",
+      "description": "Tab-wise parent dashboard \u2014 overview, subject progress, attendance, wellbeing, and achievements. Each tab has a single aggregate endpoint plus granular endpoints for pagination and partial refresh.",
       "status": "completed",
       "docsFile": "docs/dashboard-openapi.yaml",
-      "auth": "Bearer JWT — role PARENT",
-      "caching": "Redis per-endpoint (60s–600s TTL)",
+      "auth": "Bearer JWT \u2014 role PARENT",
+      "caching": "Redis per-endpoint (60s\u2013600s TTL)",
       "endpoints": [
-        { "method": "GET", "path": "/parent/dashboard/children", "summary": "List all children for the authenticated parent", "tags": ["Overview"] },
-        { "method": "GET", "path": "/parent/dashboard/overall-performance", "summary": "Full overview — on-track %, streak, attention items", "tags": ["Overview"] },
-        { "method": "GET", "path": "/parent/dashboard/subject-progress", "summary": "All subjects progress summary", "tags": ["Subject Progress"] },
-        { "method": "GET", "path": "/parent/dashboard/subject-progress/:subjectId", "summary": "Subject detail — mastery, topics, radar chart", "tags": ["Subject Progress"] },
-        { "method": "GET", "path": "/parent/dashboard/subject-progress/:subjectId/topic/:topicId", "summary": "Topic detail — subtopics, forecast, streak", "tags": ["Subject Progress"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance", "summary": "Full attendance tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
-        { "method": "GET", "path": "/parent/dashboard/wellbeing", "summary": "Full wellbeing tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
-        { "method": "GET", "path": "/parent/dashboard/achievements", "summary": "Full achievements tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/overview", "summary": "Attendance stats for a period", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/sessions-today", "summary": "Today's session feed with live status", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/alerts", "summary": "Missed session and late arrival alerts (last 7 days)", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/discipline", "summary": "Daily attendance and punctuality chart", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/learning-mode", "summary": "Learning hours split by mode (tutor / self-study)", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/peak-hours", "summary": "Peak learning hours effectiveness by time slot", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/by-subject", "summary": "Per-subject attendance and progress stats (paginated)", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/attendance/trend", "summary": "Attendance rate trend over a period", "tags": ["Attendance"] },
-        { "method": "GET", "path": "/parent/dashboard/wellbeing/overview", "summary": "Wellbeing overview — engagement, mood, stress, streak", "tags": ["Wellbeing"] },
-        { "method": "GET", "path": "/parent/dashboard/wellbeing/engagement-trend", "summary": "Daily engagement score trend", "tags": ["Wellbeing"] },
-        { "method": "GET", "path": "/parent/dashboard/wellbeing/mood-trend", "summary": "Daily mood score trend", "tags": ["Wellbeing"] },
-        { "method": "GET", "path": "/parent/dashboard/wellbeing/lessons", "summary": "Per-lesson wellbeing records (paginated, filterable)", "tags": ["Wellbeing"] },
-        { "method": "GET", "path": "/parent/dashboard/achievements/weekly-summary", "summary": "Current week lesson completion and study time", "tags": ["Achievements"] },
-        { "method": "GET", "path": "/parent/dashboard/achievements/skills", "summary": "Six-dimension skills radar (UCI/DWO/CRE/WCO/CRL/SOL)", "tags": ["Achievements"] },
-        { "method": "GET", "path": "/parent/dashboard/achievements/streak", "summary": "Learning streak and 7-day activity view", "tags": ["Achievements"] },
-        { "method": "GET", "path": "/parent/dashboard/overview", "summary": "Full overview tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/upcoming-lessons", "summary": "Next 7 days of scheduled lessons", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/performance-mastery", "summary": "Subject mastery snapshot (badge, grade, trend)", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/wellbeing", "summary": "Wellbeing snapshot — engagement, mood, streak, stress", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/homework", "summary": "Homework counts — stub, all zeros (no homework model yet)", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/attendance", "summary": "Attendance trend chart + silo/tutor/classroom summary bars", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/tutor-insights", "summary": "Recent tutor insights from session debriefs", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/achievements", "summary": "Achievement tiles + banner — dummy stub", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/overview/news-feed", "summary": "News feed items — dummy stub", "tags": ["Overview Tab"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance", "summary": "Full tutor performance tab aggregate (1 call)", "tags": ["Tab Aggregates"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/tutors", "summary": "List all tutors for a child with summary metrics", "tags": ["Tutor Performance"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/overview", "summary": "Learning impact overview for a specific tutor and period", "tags": ["Tutor Performance"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/reliability", "summary": "Sessions booked, attendance rate, punctuality, and reliability score", "tags": ["Tutor Performance"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/feedback", "summary": "Parent feedback, breakthrough scores, and satisfaction for a tutor", "tags": ["Tutor Performance"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/notes", "summary": "Paginated notes timeline from tutor debriefs", "tags": ["Tutor Performance"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/ai-insights", "summary": "AI-generated insight bullets about the tutor's impact on the child", "tags": ["Tutor Performance"] },
-        { "method": "GET", "path": "/parent/dashboard/tutor-performance/compare", "summary": "Side-by-side comparison of 2 or 3 tutors (radar + table)", "tags": ["Tutor Performance"] }
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/children",
+          "summary": "List all children for the authenticated parent",
+          "tags": [
+            "Overview"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overall-performance",
+          "summary": "Full overview \u2014 on-track %, streak, attention items",
+          "tags": [
+            "Overview"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/subject-progress",
+          "summary": "All subjects progress summary",
+          "tags": [
+            "Subject Progress"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/subject-progress/:subjectId",
+          "summary": "Subject detail \u2014 mastery, topics, radar chart",
+          "tags": [
+            "Subject Progress"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/subject-progress/:subjectId/topic/:topicId",
+          "summary": "Topic detail \u2014 subtopics, forecast, streak",
+          "tags": [
+            "Subject Progress"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance",
+          "summary": "Full attendance tab aggregate (1 call)",
+          "tags": [
+            "Tab Aggregates"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/wellbeing",
+          "summary": "Full wellbeing tab aggregate (1 call)",
+          "tags": [
+            "Tab Aggregates"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/achievements",
+          "summary": "Full achievements tab aggregate (1 call)",
+          "tags": [
+            "Tab Aggregates"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/overview",
+          "summary": "Attendance stats for a period",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/sessions-today",
+          "summary": "Today's session feed with live status",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/alerts",
+          "summary": "Missed session and late arrival alerts (last 7 days)",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/discipline",
+          "summary": "Daily attendance and punctuality chart",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/learning-mode",
+          "summary": "Learning hours split by mode (tutor / self-study)",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/peak-hours",
+          "summary": "Peak learning hours effectiveness by time slot",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/by-subject",
+          "summary": "Per-subject attendance and progress stats (paginated)",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/attendance/trend",
+          "summary": "Attendance rate trend over a period",
+          "tags": [
+            "Attendance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/wellbeing/overview",
+          "summary": "Wellbeing overview \u2014 engagement, mood, stress, streak",
+          "tags": [
+            "Wellbeing"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/wellbeing/engagement-trend",
+          "summary": "Daily engagement score trend",
+          "tags": [
+            "Wellbeing"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/wellbeing/mood-trend",
+          "summary": "Daily mood score trend",
+          "tags": [
+            "Wellbeing"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/wellbeing/lessons",
+          "summary": "Per-lesson wellbeing records (paginated, filterable)",
+          "tags": [
+            "Wellbeing"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/achievements/weekly-summary",
+          "summary": "Current week lesson completion and study time",
+          "tags": [
+            "Achievements"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/achievements/skills",
+          "summary": "Six-dimension skills radar (UCI/DWO/CRE/WCO/CRL/SOL)",
+          "tags": [
+            "Achievements"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/achievements/streak",
+          "summary": "Learning streak and 7-day activity view",
+          "tags": [
+            "Achievements"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview",
+          "summary": "Full overview tab aggregate (1 call)",
+          "tags": [
+            "Tab Aggregates"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/upcoming-lessons",
+          "summary": "Next 7 days of scheduled lessons",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/performance-mastery",
+          "summary": "Subject mastery snapshot (badge, grade, trend)",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/wellbeing",
+          "summary": "Wellbeing snapshot \u2014 engagement, mood, streak, stress",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/homework",
+          "summary": "Homework counts \u2014 stub, all zeros (no homework model yet)",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/attendance",
+          "summary": "Attendance trend chart + silo/tutor/classroom summary bars",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/tutor-insights",
+          "summary": "Recent tutor insights from session debriefs",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/achievements",
+          "summary": "Achievement tiles + banner \u2014 dummy stub",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/overview/news-feed",
+          "summary": "News feed items \u2014 dummy stub",
+          "tags": [
+            "Overview Tab"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance",
+          "summary": "Full tutor performance tab aggregate (1 call)",
+          "tags": [
+            "Tab Aggregates"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/tutors",
+          "summary": "List all tutors for a child with summary metrics",
+          "tags": [
+            "Tutor Performance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/overview",
+          "summary": "Learning impact overview for a specific tutor and period",
+          "tags": [
+            "Tutor Performance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/reliability",
+          "summary": "Sessions booked, attendance rate, punctuality, and reliability score",
+          "tags": [
+            "Tutor Performance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/feedback",
+          "summary": "Parent feedback, breakthrough scores, and satisfaction for a tutor",
+          "tags": [
+            "Tutor Performance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/notes",
+          "summary": "Paginated notes timeline from tutor debriefs",
+          "tags": [
+            "Tutor Performance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/ai-insights",
+          "summary": "AI-generated insight bullets about the tutor's impact on the child",
+          "tags": [
+            "Tutor Performance"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/parent/dashboard/tutor-performance/compare",
+          "summary": "Side-by-side comparison of 2 or 3 tutors (radar + table)",
+          "tags": [
+            "Tutor Performance"
+          ]
+        }
       ]
     },
     {
       "name": "Forum Module",
       "path": "/forum",
-      "description": "Peer Q&A forum for children — Stack Overflow-style questions, answers, comments, and votes. AI processes every submission in the background via Inngest: generates tags and explanations for questions, rates answers and marks the best as recommended, and provides guided replies to comments.",
+      "description": "Peer Q&A forum for children \u2014 Stack Overflow-style questions, answers, comments, and votes. AI processes every submission in the background via Inngest: generates tags and explanations for questions, rates answers and marks the best as recommended, and provides guided replies to comments.",
       "status": "completed",
       "docsFile": "docs/forum-openapi.yaml",
-      "auth": "Bearer JWT — role PARENT (childId sent in body/query on behalf of child)",
-      "caching": "Redis per-endpoint (30s–120s TTL)",
+      "auth": "Bearer JWT \u2014 role PARENT (childId sent in body/query on behalf of child)",
+      "caching": "Redis per-endpoint (30s\u2013120s TTL)",
       "ai": {
         "provider": "Groq (llama-3.3-70b-versatile)",
         "jobs": [
-          "forum.question.created — generates AI explanation + up to 5 curriculum tags",
-          "forum.answer.created — rates answer quality (1–10), marks isRecommended if score >= 7",
-          "forum.comment.created — generates Socratic guided reply without giving the answer away"
+          "forum.question.created \u2014 generates AI explanation + up to 5 curriculum tags",
+          "forum.answer.created \u2014 rates answer quality (1\u201310), marks isRecommended if score >= 7",
+          "forum.comment.created \u2014 generates Socratic guided reply without giving the answer away"
         ],
-        "approach": "AI guides thinking, never gives direct answers. UK English, age 5–18 appropriate."
+        "approach": "AI guides thinking, never gives direct answers. UK English, age 5\u201318 appropriate."
       },
       "endpoints": [
-        { "method": "GET",  "path": "/forum/health",                        "summary": "Forum service health check (no auth)", "tags": ["Health"] },
-        { "method": "GET",  "path": "/forum",                               "summary": "List questions (paginated, filterable by tag or search)", "tags": ["Questions"] },
-        { "method": "POST", "path": "/forum",                               "summary": "Post a question — fires Inngest job for AI tagging and explanation", "tags": ["Questions"] },
-        { "method": "GET",  "path": "/forum/:slug",                         "summary": "Get question detail including body, AI explanation, and tags", "tags": ["Questions"] },
-        { "method": "GET",  "path": "/forum/:questionId/stats",             "summary": "Get question stats — views, upvotes, downvotes, answer count", "tags": ["Questions"] },
-        { "method": "POST", "path": "/forum/:questionId/vote",              "summary": "Vote UP or DOWN on a question (toggle removes vote)", "tags": ["Votes"] },
-        { "method": "GET",  "path": "/forum/:questionId/answers",           "summary": "List answers — recommended first, includes inline comments and AI feedback", "tags": ["Answers"] },
-        { "method": "POST", "path": "/forum/:questionId/answers",           "summary": "Post an answer — fires Inngest job for AI rating", "tags": ["Answers"] },
-        { "method": "POST", "path": "/forum/answers/:answerId/vote",        "summary": "Vote UP or DOWN on an answer (toggle removes vote)", "tags": ["Votes"] },
-        { "method": "POST", "path": "/forum/answers/:answerId/comments",    "summary": "Post a comment — fires Inngest job for AI guided reply", "tags": ["Comments"] }
+        {
+          "method": "GET",
+          "path": "/forum/health",
+          "summary": "Forum service health check (no auth)",
+          "tags": [
+            "Health"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/forum",
+          "summary": "List questions (paginated, filterable by tag or search)",
+          "tags": [
+            "Questions"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/forum",
+          "summary": "Post a question \u2014 fires Inngest job for AI tagging and explanation",
+          "tags": [
+            "Questions"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/forum/:slug",
+          "summary": "Get question detail including body, AI explanation, and tags",
+          "tags": [
+            "Questions"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/forum/:questionId/stats",
+          "summary": "Get question stats \u2014 views, upvotes, downvotes, answer count",
+          "tags": [
+            "Questions"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/forum/:questionId/vote",
+          "summary": "Vote UP or DOWN on a question (toggle removes vote)",
+          "tags": [
+            "Votes"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/forum/:questionId/answers",
+          "summary": "List answers \u2014 recommended first, includes inline comments and AI feedback",
+          "tags": [
+            "Answers"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/forum/:questionId/answers",
+          "summary": "Post an answer \u2014 fires Inngest job for AI rating",
+          "tags": [
+            "Answers"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/forum/answers/:answerId/vote",
+          "summary": "Vote UP or DOWN on an answer (toggle removes vote)",
+          "tags": [
+            "Votes"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/forum/answers/:answerId/comments",
+          "summary": "Post a comment \u2014 fires Inngest job for AI guided reply",
+          "tags": [
+            "Comments"
+          ]
+        }
       ]
     },
     {
       "name": "PTM Module",
       "path": "/ptm",
-      "description": "Parent-Teacher Meeting — AI-powered voice sessions via LiveKit for parents to discuss their child's learning progress, attendance, and wellbeing. Supports instant and scheduled booking with wallet payment.",
+      "description": "Parent-Teacher Meeting \u2014 AI-powered voice sessions via LiveKit for parents to discuss their child's learning progress, attendance, and wellbeing. Supports instant and scheduled booking with wallet payment.",
       "status": "completed",
       "docsFile": "docs/ptm-openapi.yaml",
-      "auth": "Bearer JWT — role PARENT. Transcript callback endpoint is public (x-agent-secret header).",
-      "payment": "Wallet debit at booking time (GBP). Instant: £0.12/min. Scheduled: £0.08/min.",
+      "auth": "Bearer JWT \u2014 role PARENT. Transcript callback endpoint is public (x-agent-secret header).",
+      "payment": "Wallet debit at booking time (GBP). Instant: \u00a30.12/min. Scheduled: \u00a30.08/min.",
       "ai": {
         "agent": "rightsteps-ptm (LiveKit Agents)",
         "tools": [
-          "get_attendance_overview — fetches attendance summary from dashboard service",
-          "get_subject_attendance — per-subject attendance breakdown",
-          "get_attendance_alerts — flags children below 80% attendance",
-          "get_wellbeing — wellbeing overview + mood trend",
-          "get_recent_sessions — recent tutoring sessions with status filter",
-          "get_subject_progress — subject progress data",
-          "get_learning_report — latest AI learning triangle report"
+          "get_attendance_overview \u2014 fetches attendance summary from dashboard service",
+          "get_subject_attendance \u2014 per-subject attendance breakdown",
+          "get_attendance_alerts \u2014 flags children below 80% attendance",
+          "get_wellbeing \u2014 wellbeing overview + mood trend",
+          "get_recent_sessions \u2014 recent tutoring sessions with status filter",
+          "get_subject_progress \u2014 subject progress data",
+          "get_learning_report \u2014 latest AI learning triangle report"
         ],
         "approach": "Natural conversation following parent's lead. UK PTM context with Key Stage guidance. Never goes silent while fetching data."
       },
       "sessionLifecycle": [
-        "POST /ptm/book — deducts cost from wallet, creates session (SCHEDULED)",
-        "POST /ptm/sessions/:id/start — opens LiveKit room, dispatches AI agent (IN_PROGRESS)",
+        "POST /ptm/book \u2014 deducts cost from wallet, creates session (SCHEDULED)",
+        "POST /ptm/sessions/:id/start \u2014 opens LiveKit room, dispatches AI agent (IN_PROGRESS)",
         "Parent joins LiveKit room with returned token",
-        "POST /ptm/sessions/:id/end — closes room, marks COMPLETED",
-        "POST /ptm/sessions/:id/transcript — AI agent saves transcript (no JWT, agent secret)"
+        "POST /ptm/sessions/:id/end \u2014 closes room, marks COMPLETED",
+        "POST /ptm/sessions/:id/transcript \u2014 AI agent saves transcript (no JWT, agent secret)"
       ],
       "endpoints": [
-        { "method": "GET",    "path": "/ptm/health",                       "summary": "PTM module health check (no auth)", "tags": ["Health"] },
-        { "method": "GET",    "path": "/ptm/options",                      "summary": "Get PTM pricing and duration options", "tags": ["PTM Options"] },
-        { "method": "POST",   "path": "/ptm/book",                         "summary": "Book a PTM session — deducts cost from wallet", "tags": ["PTM Booking"] },
-        { "method": "GET",    "path": "/ptm/sessions",                     "summary": "Get PTM session history (paginated)", "tags": ["PTM Booking"] },
-        { "method": "GET",    "path": "/ptm/sessions/:id",                 "summary": "Get session detail", "tags": ["PTM Booking"] },
-        { "method": "DELETE", "path": "/ptm/sessions/:id",                 "summary": "Cancel a PTM session (refund if 24h+ before)", "tags": ["PTM Booking"] },
-        { "method": "POST",   "path": "/ptm/sessions/:id/start",           "summary": "Start session — create LiveKit room and dispatch AI agent", "tags": ["PTM Session"] },
-        { "method": "GET",    "path": "/ptm/sessions/:id/token",           "summary": "Get a fresh LiveKit token for an active session", "tags": ["PTM Session"] },
-        { "method": "POST",   "path": "/ptm/sessions/:id/end",             "summary": "End session — close LiveKit room, mark COMPLETED", "tags": ["PTM Session"] },
-        { "method": "POST",   "path": "/ptm/sessions/:id/transcript",      "summary": "Save transcript (AI agent callback — no JWT auth)", "tags": ["PTM Session"] }
+        {
+          "method": "GET",
+          "path": "/ptm/health",
+          "summary": "PTM module health check (no auth)",
+          "tags": [
+            "Health"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/ptm/options",
+          "summary": "Get PTM pricing and duration options",
+          "tags": [
+            "PTM Options"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/ptm/book",
+          "summary": "Book a PTM session \u2014 deducts cost from wallet",
+          "tags": [
+            "PTM Booking"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/ptm/sessions",
+          "summary": "Get PTM session history (paginated)",
+          "tags": [
+            "PTM Booking"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/ptm/sessions/:id",
+          "summary": "Get session detail",
+          "tags": [
+            "PTM Booking"
+          ]
+        },
+        {
+          "method": "DELETE",
+          "path": "/ptm/sessions/:id",
+          "summary": "Cancel a PTM session (refund if 24h+ before)",
+          "tags": [
+            "PTM Booking"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/ptm/sessions/:id/start",
+          "summary": "Start session \u2014 create LiveKit room and dispatch AI agent",
+          "tags": [
+            "PTM Session"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/ptm/sessions/:id/token",
+          "summary": "Get a fresh LiveKit token for an active session",
+          "tags": [
+            "PTM Session"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/ptm/sessions/:id/end",
+          "summary": "End session \u2014 close LiveKit room, mark COMPLETED",
+          "tags": [
+            "PTM Session"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/ptm/sessions/:id/transcript",
+          "summary": "Save transcript (AI agent callback \u2014 no JWT auth)",
+          "tags": [
+            "PTM Session"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Homework Module",
+      "path": "/homework",
+      "description": "End-to-end homework management for tutors, parents, and children. Tutors create drafts, add questions (custom or from the question bank), and assign to children. Parents save and submit answers on behalf of their child. MCQ/TRUE_FALSE questions are auto-scored on submission; written answers are AI-graded asynchronously via Inngest. Tutors grade overall and can revert specific questions for the child to redo.",
+      "status": "completed",
+      "docsFile": "docs/homework-openapi.yaml",
+      "auth": "Bearer JWT \u2014 role TUTOR (create/assign/grade/revert), PARENT (child answers, price check), ADMIN (question bank management).",
+      "subscription": "Tutors require an active TutorHomeworkSubscription to use the question bank (browse, add bank questions to drafts, grade, revert).",
+      "homeworkLifecycle": [
+        "GET /homework/tutor/sessions/:sessionId/can-assign \u2014 pre-flight eligibility check",
+        "POST /homework \u2014 tutor creates DRAFT",
+        "POST /homework/:id/questions \u2014 tutor adds questions (custom or from bank)",
+        "POST /homework/:id/assign \u2014 tutor assigns to child \u2192 ASSIGNED",
+        "POST /homework/child/:childId/:id/draft \u2014 parent saves answers \u2192 IN_PROGRESS",
+        "POST /homework/child/:childId/:id/submit \u2014 parent submits \u2192 SUBMITTED; MCQ auto-scored, written answers AI-graded via homework.submitted event",
+        "POST /homework/:id/grade \u2014 tutor grades overall \u2192 COMPLETED",
+        "POST /homework/:id/revert \u2014 tutor reverts questions \u2192 REVERTED",
+        "POST /homework/child/:childId/:id/resubmit \u2014 parent resubmits reverted questions \u2192 SUBMITTED"
+      ],
+      "ai": {
+        "trigger": "Inngest event: homework.submitted",
+        "function": "grade-homework (retries: 3)",
+        "scope": "Grades written answers only (SHORT_ANSWER, LONG_ANSWER, FILL_BLANK, READING_COMPREHENSION). MCQ/TRUE_FALSE are auto-scored synchronously."
+      },
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/homework/tutor/sessions/:sessionId/can-assign",
+          "summary": "Pre-flight check \u2014 can tutor assign homework for this session?",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/tutor/curriculum",
+          "summary": "Browse curriculum (year groups / subjects / topic tree) for homework creation",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework",
+          "summary": "Create a homework draft",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/:homeworkId/questions",
+          "summary": "Add questions to a draft (custom or from question bank)",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/:homeworkId/assign",
+          "summary": "Assign draft to a child \u2014 creates new ASSIGNED homework record",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/:homeworkId/cancel",
+          "summary": "Cancel an ASSIGNED or IN_PROGRESS homework",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/:homeworkId/delete-draft",
+          "summary": "Permanently delete a DRAFT homework",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/:homeworkId/grade",
+          "summary": "Grade a SUBMITTED homework \u2014 transitions to COMPLETED (subscription required)",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/:homeworkId/revert",
+          "summary": "Revert specific questions for child to redo \u2014 transitions to REVERTED (subscription required)",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/tutor",
+          "summary": "List all tutor's homeworks (paginated, filterable by status/subject/child)",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/tutor/:homeworkId",
+          "summary": "Get full homework detail \u2014 tutor view (includes modelAnswer, objectiveCode, all answers)",
+          "tags": [
+            "Homework \u2014 Tutor"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/child/:childId",
+          "summary": "List homework assigned to a child (parent auth)",
+          "tags": [
+            "Homework \u2014 Child"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/child/:childId/:homeworkId",
+          "summary": "Get homework detail \u2014 child view (no modelAnswer/correctOption)",
+          "tags": [
+            "Homework \u2014 Child"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/child/:childId/:homeworkId/draft",
+          "summary": "Save draft answers \u2014 upsert, transitions ASSIGNED to IN_PROGRESS on first save",
+          "tags": [
+            "Homework \u2014 Child"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/child/:childId/:homeworkId/submit",
+          "summary": "Submit homework \u2014 MCQ auto-scored, written answers AI-graded async",
+          "tags": [
+            "Homework \u2014 Child"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/child/:childId/:homeworkId/resubmit",
+          "summary": "Resubmit reverted questions (REVERTED status only)",
+          "tags": [
+            "Homework \u2014 Child"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/price",
+          "summary": "Calculate question bank bundle price (SUBTOPIC/TOPIC/SUBJECT) \u2014 all prices in pence",
+          "tags": [
+            "Homework \u2014 Parent"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/child/:childId",
+          "summary": "List homework for a child \u2014 parent view (paginated)",
+          "tags": [
+            "Homework \u2014 Parent"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/:homeworkId",
+          "summary": "Get homework detail \u2014 parent view",
+          "tags": [
+            "Homework \u2014 Parent"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/question-bank/subjects",
+          "summary": "Browse subjects with published questions (subscription required)",
+          "tags": [
+            "Homework \u2014 Question Bank"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/question-bank/topics",
+          "summary": "Browse topics with subtopics for a subject+yearGroup (subscription required)",
+          "tags": [
+            "Homework \u2014 Question Bank"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/question-bank/subtopics",
+          "summary": "Browse subtopics for a topic (subscription required)",
+          "tags": [
+            "Homework \u2014 Question Bank"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/question-bank/questions",
+          "summary": "List published bank questions for a subtopic \u2014 paginated with filters (subscription required)",
+          "tags": [
+            "Homework \u2014 Question Bank"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/question-bank/questions/:bankQuestionId",
+          "summary": "Get bank question detail including modelAnswer and correctOption (subscription required)",
+          "tags": [
+            "Homework \u2014 Question Bank"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/admin/question-bank/questions",
+          "summary": "Admin \u2014 create a bank question (starts unpublished)",
+          "tags": [
+            "Homework \u2014 Admin"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/admin/question-bank/questions",
+          "summary": "Admin \u2014 list all bank questions including unpublished (paginated, filterable)",
+          "tags": [
+            "Homework \u2014 Admin"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/admin/question-bank/questions/:bankQuestionId/update",
+          "summary": "Admin \u2014 update a bank question",
+          "tags": [
+            "Homework \u2014 Admin"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/admin/question-bank/questions/:bankQuestionId/publish",
+          "summary": "Admin \u2014 publish a bank question (visible to tutors)",
+          "tags": [
+            "Homework \u2014 Admin"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/admin/question-bank/questions/:bankQuestionId/unpublish",
+          "summary": "Admin \u2014 unpublish a bank question",
+          "tags": [
+            "Homework \u2014 Admin"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/admin/question-bank/questions/:bankQuestionId/deactivate",
+          "summary": "Admin \u2014 soft delete a bank question (isActive: false)",
+          "tags": [
+            "Homework \u2014 Admin"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/subjects",
+          "summary": "Get subjects with purchasable questions \u2014 optionally filtered by yearGroupId",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/topics",
+          "summary": "Get topics with questions for a subject + yearGroup combination",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/subtopics",
+          "summary": "Get subtopics for a topic in the marketplace",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/parent/marketplace/checkout",
+          "summary": "Create a Stripe checkout session for a single marketplace item (direct purchase)",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/purchases",
+          "summary": "Get all past purchases with payment status, access grant info, topic and subject details",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/access",
+          "summary": "Check whether a child already has access to a specific subtopic",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/homework/parent/marketplace/cart",
+          "summary": "Get current cart with items, labels, child info and pricing breakdown",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/parent/marketplace/cart/items",
+          "summary": "Add a SUBTOPIC / TOPIC / SUBJECT item to cart for a specific child",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/parent/marketplace/cart/items/remove",
+          "summary": "Remove an item from cart by cartItemId",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/homework/parent/marketplace/cart/checkout",
+          "summary": "Create a Stripe checkout session for all items in cart (multi-item purchase)",
+          "tags": [
+            "Homework \u2014 Parent Marketplace"
+          ]
+        }
       ]
     }
   ],
